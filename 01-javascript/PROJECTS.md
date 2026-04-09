@@ -1,85 +1,85 @@
-# Stage 01 Projects
+# Stage 01 项目
 
-## Project 1 - File Summarizer CLI
+## 项目 1 - 文件汇总 CLI
 
-Build a CLI that:
+做一个 CLI，它能够：
 
-- accepts one or more input files
-- parses content into structured data
-- computes counts, warnings, and a short summary
-- prints either JSON or human-readable output
+- 接收一个或多个输入文件
+- 把内容解析成结构化数据
+- 计算计数、警告和简要摘要
+- 以 JSON 或可读文本格式输出结果
 
-Suggested input choices:
+建议输入类型：
 
-- log files
-- newline-delimited JSON
-- simple CSV-like text
+- 日志文件
+- 按行组织的 JSON
+- 简单 CSV 风格文本
 
-What this project trains:
+这个项目训练什么：
 
-- file handling
-- argument parsing
-- data transformation
-- output formatting
+- 文件处理
+- 参数解析
+- 数据转换
+- 输出格式化
 
-Acceptance criteria:
+验收标准：
 
-- handles malformed records explicitly
-- separates parsing, transformation, and output logic into distinct functions or modules
-- can be run repeatedly on different input files without code changes
+- 对坏记录有明确处理逻辑
+- 解析、转换和输出逻辑被拆到不同函数或模块中
+- 能对不同输入文件重复运行，而不需要改代码
 
-## Project 2 - HTTP Client CLI
+## 项目 2 - HTTP Client CLI
 
-Build a CLI that:
+做一个 CLI，它能够：
 
-- calls a public HTTP API
-- validates required arguments
-- prints a normalized result shape
-- handles network errors and non-200 responses clearly
+- 调用一个公共 HTTP API
+- 校验必需参数
+- 输出归一化后的结果结构
+- 清楚处理网络错误和非 200 响应
 
-Examples:
+例子：
 
-- weather lookup
-- currency conversion
-- GitHub repository metadata fetcher
+- 天气查询
+- 汇率换算
+- GitHub 仓库元数据查询
 
-What this project trains:
+这个项目训练什么：
 
-- request construction
-- JSON parsing
-- boundary handling
-- user-facing error output
+- 请求构造
+- JSON 解析
+- 边界处理
+- 面向用户的错误输出
 
-Acceptance criteria:
+验收标准：
 
-- no unhandled promise rejections
-- response parsing is isolated from display logic
-- error messages are specific enough to distinguish network, input, and API-level failures
+- 不出现未处理的 promise rejection
+- 响应解析逻辑和展示逻辑分离
+- 错误信息能区分网络、输入和 API 级失败
 
-## Project 3 - Batch Transformer
+## 项目 3 - 批处理转换器
 
-Build a utility that:
+做一个工具，它能够：
 
-- reads a directory of input files
-- transforms each file into a normalized JSON representation
-- skips or records failures without losing the whole batch
-- emits a summary report at the end
+- 读取一个目录中的输入文件
+- 把每个文件转换成标准化 JSON 结构
+- 遇到失败时跳过或记录，而不是丢掉整批处理结果
+- 在结束时输出汇总报告
 
-What this project trains:
+这个项目训练什么：
 
-- iteration over many units of work
-- state tracking
-- partial-failure handling
-- preparing for later tool and agent workflows
+- 多输入单元迭代
+- 状态跟踪
+- 局部失败处理
+- 为后续工具系统和 Agent 工作流做准备
 
-Acceptance criteria:
+验收标准：
 
-- success and failure counts are reported accurately
-- the code distinguishes pure transformation logic from orchestration logic
-- rerunning the tool on the same inputs produces stable output
+- 成功数与失败数统计准确
+- 代码能区分纯转换逻辑和编排逻辑
+- 对同一批输入重复执行时输出稳定
 
-## Recommended build order
+## 推荐完成顺序
 
-1. File Summarizer CLI
+1. 文件汇总 CLI
 2. HTTP Client CLI
-3. Batch Transformer
+3. 批处理转换器

@@ -1,83 +1,83 @@
-# Stage 07 Projects
+# Stage 07 项目
 
-## Project 1 - Harden an Existing Agent or Workflow
+## 项目 1 - 加固已有 Agent 或工作流
 
-Take a project from Stage 04, 05, or 06 and harden it for repeated use.
+取一个 Stage 04、05 或 06 的项目，为重复使用加固它。
 
-Required capabilities:
+必需能力：
 
-- boundary validation
-- structured logging and run IDs
-- explicit retry and timeout policy
-- failure categorization
-- operator-facing documentation
+- 边界校验
+- 结构化日志和运行 ID
+- 显式重试和超时策略
+- 失败分类
+- 面向运维者的文档
 
-What this project trains:
+这个项目训练什么：
 
-- turning prototypes into maintainable systems
-- disciplined failure handling
-- cross-stage integration of reliability practices
+- 把原型变成可维护系统
+- 纪律化的失败处理
+- 跨阶段可靠性实践的整合
 
-Acceptance criteria:
+验收标准：
 
-- key failure paths are visible in logs and documentation
-- inputs and outputs are validated at external boundaries
-- another engineer can explain the runtime behavior by reading the project and notes
+- 关键失败路径在日志和文档中可见
+- 输入输出在外部边界被校验
+- 另一个工程师能通过阅读项目和笔记解释运行时行为
 
-## Project 2 - Eval Suite and Benchmark Pack
+## 项目 2 - 评估套件和基准包
 
-Build a reusable eval harness for one AI-backed project.
+为一个 AI 支撑项目构建可复用的评估工具。
 
-Required capabilities:
+必需能力：
 
-- representative scenario set
-- expected outcomes or acceptance properties
-- prompt, retrieval, or tool-use coverage
-- result recording across revisions
+- 有代表性的场景集
+- 预期结果或接受属性
+- prompt、检索或工具使用覆盖
+- 跨版本的結果记录
 
-What this project trains:
+这个项目训练什么：
 
-- regression discipline
-- measurable improvement work
-- safe iteration on AI system behavior
+- 回归纪律
+- 可衡量的改进工作
+- 在 AI 系统行为上安全迭代
 
-Acceptance criteria:
+验收标准：
 
-- the suite can catch at least one real regression or weak case
-- results are stored in a way that supports comparison over time
-- pass/fail rules are explicit enough for another engineer to use
+- 该套件能抓到至少一个真实回归或弱案例
+- 結果以支持随时间对比的方式存储
+- 通过/失败规则足够具体，另一个工程师也能用
 
-## Project 3 - Minimal Deployable Service or Worker
+## 项目 3 - 最小可部署服务或 Worker
 
-Package one project as something that can be run repeatedly outside your development shell.
+把一个项目打包成能在你的开发 shell 之外重复运行的东西。
 
-Examples:
+例子：
 
-- a small API service
-- a scheduled worker
-- a command runner with deployment notes
+- 一个小型 API 服务
+- 一个定时 worker
+- 带部署笔记的命令运行器
 
-Required capabilities:
+必需能力：
 
-- startup validation
-- environment-specific configuration handling
-- operational documentation
-- safe shutdown or failure behavior
+- 启动校验
+- 环境特定配置处理
+- 运维文档
+- 安全关闭或失败行为
 
-What this project trains:
+这个项目训练什么：
 
-- deployment shape decisions
-- operational readiness
-- translating local development work into repeatable execution
+- 部署形态决策
+- 运维就绪
+- 把本地开发工作转化为可重复执行
 
-Acceptance criteria:
+验收标准：
 
-- startup fails clearly on invalid configuration
-- runtime logs are useful and safe
-- a basic rollout and rollback story exists
+- 配置无效时启动明确失败
+- 运行时日志有用且安全
+- 存在基本的发布和回滚故事
 
-## Recommended build order
+## 推荐完成顺序
 
-1. Harden an Existing Agent or Workflow
-2. Eval Suite and Benchmark Pack
-3. Minimal Deployable Service or Worker
+1. 加固已有 Agent 或工作流
+2. 评估套件和基准包
+3. 最小可部署服务或 Worker

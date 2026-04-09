@@ -1,84 +1,84 @@
-# Stage 03 Projects
+# Stage 03 项目
 
-## Project 1 - Multi-Command Utility
+## 项目 1 - 多命令工具集
 
-Build a Node.js CLI with multiple subcommands.
+做一个带多个子命令的 Node.js CLI。
 
-Suggested commands:
+建议命令：
 
-- inspect files
-- summarize JSON or logs
-- call an HTTP endpoint
-- run a local automation task
+- 查看文件信息
+- 汇总 JSON 或日志
+- 调用一个 HTTP endpoint
+- 执行一个本地自动化任务
 
-Required capabilities:
+必需能力：
 
-- argument parsing
-- config loading
-- structured error handling
-- clean separation between command handlers and shared helpers
+- 参数解析
+- 配置加载
+- 结构化错误处理
+- 命令处理逻辑与公共辅助模块的清晰分离
 
-What this project trains:
+这个项目训练什么：
 
-- CLI architecture
-- operational discipline
-- reusable backend utility structure
+- CLI 架构
+- 工程纪律
+- 可复用的后端工具结构
 
-Acceptance criteria:
+验收标准：
 
-- each command has a clear contract
-- failures return useful exit behavior
-- logs and user output are separated intentionally
+- 每个命令都有清楚契约
+- 失败路径有明确退出行为
+- 日志与用户输出被有意识地区分
 
-## Project 2 - Resilient API Integration Service
+## 项目 2 - 可靠的 API 集成服务
 
-Build a small service or worker-style script that integrates with one external API.
+做一个小型服务或 worker 风格脚本，集成一个外部 API。
 
-Requirements:
+要求：
 
-- typed configuration
-- retries and timeouts
-- normalized output
-- logging around attempts and failures
-- support for partial failure handling if multiple requests are processed
+- 带类型的配置
+- 重试与超时
+- 归一化输出
+- 对尝试与失败有日志记录
+- 如果一次处理多个请求，要支持局部失败处理
 
-What this project trains:
+这个项目训练什么：
 
-- durable I/O behavior
-- service-style control flow
-- preparation for model-provider integration
+- 稳定 I/O 行为
+- 服务式控制流
+- 为模型提供商集成做准备
 
-Acceptance criteria:
+验收标准：
 
-- transport and application errors are distinguished
-- timeout and retry policies are explicit
-- the service can be reasoned about from logs
+- transport error 与业务错误被区分
+- timeout 和 retry 策略写得清楚
+- 仅通过日志也能推理服务行为
 
-## Project 3 - Local Automation Suite
+## 项目 3 - 本地自动化脚本套件
 
-Build a small suite of scripts that wrap local tools or processes.
+做一小组脚本，用于包装本地工具或进程。
 
-Examples:
+例子：
 
-- repo inspection helpers
-- code search and summary workflow
-- file conversion pipeline
-- batch command runner with structured result output
+- 仓库检查辅助工具
+- 代码搜索与摘要工作流
+- 文件转换流水线
+- 带结构化结果输出的批命令执行器
 
-What this project trains:
+这个项目训练什么：
 
-- child-process handling
-- job orchestration
-- integrating external capabilities into a controlled Node shell
+- 子进程处理
+- 任务编排
+- 在 Node 环境中控制外部能力
 
-Acceptance criteria:
+验收标准：
 
-- command execution results are structured
-- partial failures are reported without collapsing unrelated work
-- rerunning the suite is predictable
+- 命令执行结果是结构化的
+- 局部失败不会拖垮无关任务
+- 对同一套输入重复执行时行为稳定
 
-## Recommended build order
+## 推荐完成顺序
 
-1. Multi-Command Utility
-2. Resilient API Integration Service
-3. Local Automation Suite
+1. 多命令工具集
+2. 可靠的 API 集成服务
+3. 本地自动化脚本套件

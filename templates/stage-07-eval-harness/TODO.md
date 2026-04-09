@@ -1,19 +1,19 @@
-# TODO - Stage 07 Eval Harness
+# TODO - Stage 07 评估工具
 
-## Build checklist
+## 构建检查清单
 
-- [ ] choose the project under test
-- [ ] define scenario categories
-- [ ] create representative cases
-- [ ] define pass/fail rules
-- [ ] implement result recording format
-- [ ] run a baseline evaluation
-- [ ] capture at least one weak case or regression
-- [ ] write instructions for rerunning the harness
-- [ ] document how prompt or schema changes should be evaluated
+- [ ] 选要被测的项目
+- [ ] 定义场景类别
+- [ ] 创建代表性案例
+- [ ] 定义通过/失败规则
+- [ ] 实现结果记录格式
+- [ ] 运行基线评估
+- [ ] 捕获至少一个弱案例或回归
+- [ ] 写重新运行工具的说明
+- [ ] 记录如何评估 prompt 或 schema 变更
 
-## Stretch goals
+## 延伸目标
 
-- [ ] add cross-version comparison
-- [ ] add summary reporting
-- [ ] integrate with a release checklist or CI later
+- [ ] 添加跨版本对比
+- [ ] 添加汇总报告
+- [ ] 后续与发布检查清单或 CI 集成

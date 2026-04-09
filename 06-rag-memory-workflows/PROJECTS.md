@@ -1,89 +1,89 @@
-# Stage 06 Projects
+# Stage 06 项目
 
-## Project 1 - Document QA Assistant
+## 项目 1 - 文档 QA 助手
 
-Build a retrieval-backed assistant over a bounded document set.
+在有界文档集上构建一个检索支撑的助手。
 
-Suitable corpora:
+适合的语料：
 
-- internal notes
-- technical design docs
-- incident reports
-- documentation snapshots
+- 内部笔记
+- 技术设计文档
+- 事件报告
+- 文档快照
 
-Required capabilities:
+必需能力：
 
-- ingestion pipeline
-- chunking and metadata strategy
-- retrieval step that can be inspected independently
-- grounded answers with citations or source references
+- 摄入流水线
+- 分块和元数据策略
+- 可独立检查的检索步骤
+- 带引用或来源参考的有据可查的答案
 
-What this project trains:
+这个项目训练什么：
 
-- end-to-end retrieval design
-- provenance-aware answer generation
-- preparation for production eval work
+- 端到端检索设计
+- provenance 感知的答案生成
+- 为生产评估工作做准备
 
-Acceptance criteria:
+验收标准：
 
-- answers cite the retrieved evidence they rely on
-- unsupported questions are refused or marked explicitly
-- retrieval results can be inspected separately from final output
+- 答案引用它们所依赖的检索证据
+- 不被支持的提问被显式拒绝或标记
+- 检索结果可以独立于最终输出被检查
 
-## Project 2 - Research Notebook Generator
+## 项目 2 - 研究笔记本生成器
 
-Build a workflow that collects material, extracts key points, and produces a structured notebook or report.
+构建一个收集材料、提取要点并产生结构化笔记本或报告的工作流。
 
-Required capabilities:
+必需能力：
 
-- retrieval over prior materials
-- intermediate summaries or extracted facts
-- explicit distinction between source-backed content and synthesis
-- workflow stages that can be rerun independently
+- 跨先前材料的检索
+- 中间摘要或提取的facts
+- 源支持内容与综合内容的显式区分
+- 可独立重新运行的流水线阶段
 
-What this project trains:
+这个项目训练什么：
 
-- workflow composition
-- intermediate artifact design
-- memory and retrieval boundaries for research tasks
+- 工作流组合
+- 中间产物设计
+- 研究任务的记忆和检索边界
 
-Acceptance criteria:
+验收标准：
 
-- the workflow is more inspectable than a single free-form agent loop
-- each stage produces an artifact that can be reviewed
-- final output includes references back to source material
+- 工作流比单个自由形式 agent 循环更可检查
+- 每个阶段产生可审查的产物
+- 最终输出包含回溯到源材料的参考
 
-## Project 3 - Retrieval-Backed Workflow Runner
+## 项目 3 - 检索支撑工作流运行器
 
-Build a backend or CLI workflow that uses retrieval to support a repeated operational task.
+构建一个使用检索来支持重复运维任务的后端或 CLI 工作流。
 
-Examples:
+例子：
 
-- incident triage helper
-- support-response draft pipeline
-- change-review context assembler
+- 事件分类助手
+- 支持响应草稿流水线
+- 变更审查上下文组装器
 
-Required capabilities:
+必需能力：
 
-- clear workflow stages
-- retrieval-backed context assembly
-- typed intermediate data
-- explicit handoff or approval points when needed
+- 清晰的工作流阶段
+- 检索支撑的上下文组装
+- 带类型的中间数据
+- 需要时的显式交接或批准点
 
-What this project trains:
+这个项目训练什么：
 
-- practical retrieval in operations-style workflows
-- bounded model use inside deterministic orchestration
-- preparation for production hardening in Stage 07
+- 运维风格工作流中的实用检索
+- 确定性编排内的有界模型使用
+- 为 Stage 07 的生产加固做准备
 
-Acceptance criteria:
+验收标准：
 
-- each workflow stage has a clear contract
-- context assembly is reproducible
-- the system can explain which retrieved inputs influenced the final output
+- 每个工作流阶段有清晰的契约
+- 上下文组装可重现
+- 系统能解释哪些检索输入实际上影响了最终输出
 
-## Recommended build order
+## 推荐完成顺序
 
-1. Document QA Assistant
-2. Research Notebook Generator
-3. Retrieval-Backed Workflow Runner
+1. 文档 QA 助手
+2. 研究笔记本生成器
+3. 检索支撑工作流运行器

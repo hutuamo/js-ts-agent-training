@@ -1,30 +1,32 @@
-# Stage 04 Checklist
+# Stage 04 检查清单
 
-## Readiness checklist
+## 就绪检查
 
-- [ ] I can integrate one model API behind a small, normalized wrapper.
-- [ ] I can explain the request, response, and error boundaries of that wrapper.
-- [ ] I can write prompts that specify task, constraints, and output format clearly.
-- [ ] I can require structured output and validate it before use.
-- [ ] I can explain why model output should not be trusted even when the SDK call succeeds.
-- [ ] I implemented one streamed path and can justify whether it is worth the added complexity.
-- [ ] I implemented at least one tool-calling roundtrip with argument validation.
-- [ ] I can distinguish prompt failure, model variance, schema failure, and tool-layer failure.
-- [ ] I saved representative examples that can be reused as regression cases later.
-- [ ] I measured at least one latency or cost tradeoff instead of guessing.
+- [ ] 我能把一个模型 API 集成到一个小型、归一化包装器后面。
+- [ ] 我能解释该包装器的请求、响应和错误边界。
+- [ ] 我能写出清楚定义任务、约束和输出格式的 prompt。
+- [ ] 我能要求结构化输出，并在使用前进行校验。
+- [ ] 我能解释为什么模型输出即使在 SDK 调用成功时也不应该被默认信任。
+- [ ] 我实现了一个流式路径，并能说明它是否值得增加的复杂度。
+- [ ] 我实现了至少一个带参数校验的工具调用往返。
+- [ ] 我能区分 prompt 失败、模型差异、schema 失败和工具层失败。
+- [ ] 我保存了有代表性的案例，可用于后续回归测试。
+- [ ] 我测量了至少一个延迟或成本权衡，而不是猜测。
 
-## Progression gate
+## 进入下一阶段的门槛
 
-Advance only if you can:
+只有当你已经可以：
 
-- build a model-backed backend or CLI feature with explicit validation
-- keep prompts, schemas, and tool execution boundaries separate
-- explain how your integration fails and where each failure is handled
+- 用显式校验构建一个模型支撑的后端或 CLI 功能
+- 保持 prompt、schema 和工具执行边界分离
+- 解释集成如何失败，以及每个失败在哪里被处理
 
-## If you are not ready
+才进入 Stage 05。
 
-Repeat Stage 04 work if any of these are still true:
+## 如果还没准备好
 
-- model output is still flowing directly into business logic
-- tool calls are being executed without validated arguments
-- prompt revisions are being made without saved examples or comparison cases
+如果下面这些仍然成立，建议重做 Stage 04：
+
+- 模型输出仍然直接流入业务逻辑
+- 工具调用在执行前没有校验参数
+- prompt 修订没有保存案例或对比用例作为依据

@@ -1,121 +1,111 @@
-# Stage 00 Exercises
+# Stage 00 练习
 
-## How to use these exercises
+## 使用方式
 
-Do them in order. The point is to remove setup friction and force explicit comparisons with C/C++ thinking. Keep all work small and local.
+按顺序做，不要跳着来。
 
-## Exercise 1 - Install and inspect the toolchain
+这个阶段的目标是消除环境和运行时层面的摩擦，并且强迫自己把 JS/TS 与 C/C++ 的差异写清楚。
 
-Objective: confirm you can run the core tools and identify their roles.
+所有练习都保持小而本地化。
 
-Tasks:
+## 练习 1 - 安装并检查工具链
 
-- install Node.js LTS
-- choose one package manager for this repo workflow
-- record the outputs of `node --version` and your package manager version command
-- write a short note describing what `node`, the package manager, and `npx` each do
+目标：确认你能运行核心工具，并能说出它们各自负责什么。
 
-Completion check:
+任务：
 
-- you can explain the difference between the runtime and the package manager in one paragraph
+- 安装 Node.js LTS
+- 为本仓库工作流选定一个包管理器
+- 记录 `node --version` 和包管理器版本命令的输出
+- 写一小段说明：`node`、包管理器和 `npx` 分别是干什么的
 
-## Exercise 2 - Create a minimal CLI workspace
+通过标准：
 
-Objective: create a project without scaffolding tools.
+- 你能用一段话解释运行时和包管理器的区别
 
-Tasks:
+## 练习 2 - 手工创建最小 CLI 工作区
 
-- make a new folder for stage-00 scratch work
-- create a `package.json`
-- add a simple `index.js`
-- run it with `node`
-- add a package script and run the same program through the script
+目标：不用脚手架，手动搭一个项目。
 
-Completion check:
+任务：
 
-- you can explain what changed, if anything, between direct execution and script execution
+- 新建一个 stage-00 scratch 目录
+- 创建 `package.json`
+- 写一个简单的 `index.js`
+- 用 `node` 直接运行它
+- 再加一个 package script，通过 script 运行同一个程序
 
-## Exercise 3 - Read your own package metadata
+通过标准：
 
-Objective: stop treating `package.json` as opaque.
+- 你能解释直接运行和通过 script 运行之间的差别（如果有）
 
-Tasks:
+## 练习 3 - 阅读自己的包元数据
 
-- add `name`, `version`, `type`, and `scripts`
-- add one dev tool such as a formatter or linter
-- inspect the lockfile after installation
-- write down which fields are for humans, which are for tooling, and which affect runtime behavior
+目标：不要再把 `package.json` 当成黑箱。
 
-Completion check:
+任务：
 
-- you can point to at least three fields in `package.json` and state why they exist
+- 增加 `name`、`version`、`type` 和 `scripts`
+- 加一个开发工具，比如 formatter 或 linter
+- 安装后观察锁文件
+- 写下哪些字段是给人看的，哪些是给工具看的，哪些会影响运行时行为
 
-## Exercise 4 - Debug a trivial program on purpose
+通过标准：
 
-Objective: build basic debugging muscle before the programs get larger.
+- 你能指出至少 3 个 `package.json` 字段，并说明它们为什么存在
 
-Tasks:
+## 练习 4 - 故意调试一个有 bug 的小程序
 
-- write a small script with a bug involving mutation, coercion, or async ordering
-- inspect it with `console` logging and then with your editor debugger
-- record what you expected and what actually happened
+目标：在程序还很小时就建立调试肌肉。
 
-Completion check:
+任务：
 
-- you can describe how the debugger helped more than print statements, or explain why it did not
+- 写一个包含 bug 的小脚本，bug 类型可以是：可变状态、类型转换、异步顺序
+- 先用 `console` 观察，再用编辑器调试器观察
+- 记录你原本的预期和真实发生的结果
 
-## Exercise 5 - Event loop sanity check
+通过标准：
 
-Objective: replace vague async intuition with a concrete execution model.
+- 你能说明调试器相比 print logging 多帮了你什么，或者为什么这次没有明显帮助
 
-Tasks:
+## 练习 5 - Event loop 基本认知校验
 
-- write a short script using synchronous code, `Promise.resolve().then(...)`, and `setTimeout(..., 0)`
-- predict the output order before running it
-- run it and compare with your prediction
-- write a short explanation of the observed order
+目标：把模糊的异步直觉替换成具体执行模型。
 
-Completion check:
+任务：
 
-- you can explain why "async" does not automatically mean "runs first" or "runs in parallel"
+- 写一个脚本，混合使用同步代码、`Promise.resolve().then(...)` 和 `setTimeout(..., 0)`
+- 在运行前预测输出顺序
+- 运行并和自己的预测比较
+- 写一段简短解释，说明为什么会是这个顺序
 
-## Exercise 6 - C/C++ assumption audit
+通过标准：
 
-Objective: surface the assumptions most likely to cause future bugs.
+- 你能解释为什么“异步”不代表“先执行”或“并行执行”
 
-Write short answers for each prompt:
+## 练习 6 - C/C++ 假设清单
 
-- what does "passing an object" mean in JS compared with passing a struct or pointer in C/C++?
-- what does "module boundary" feel like compared with header/source separation?
-- what kinds of errors move from compile time to runtime?
-- what performance instincts still help, and which ones are premature at this stage?
-- when does dynamic typing become a reliability problem?
+目标：把迁移中的错误直觉显式化。
 
-Completion check:
+任务：
 
-- your answers are specific enough that you could revisit them later and refine them
+写下至少 5 条你原本从 C/C++ 带来的假设，例如：
+- 对所有权和共享状态的直觉
+- 对阻塞 / 非阻塞的默认预期
+- 对模块和构建过程的理解
+- 对类型系统职责的期待
+- 对运行时错误的容忍度
 
-## Exercise 7 - Read a small Node project
+然后说明它们在 JS/TS / Node 中如何改变。
 
-Objective: learn to orient yourself quickly in a JS/TS repo.
+通过标准：
 
-Tasks:
+- 这份清单不是空泛感想，而是具体到工程行为的变化
 
-- pick a small open-source CLI or utility repo
-- identify the entry point
-- identify how scripts are run
-- identify where dependencies are declared
-- identify whether it uses ESM or CommonJS
-- write a short map of the repo in your own words
+## 最低完成要求
 
-Completion check:
+至少完成：
 
-- you can explain how to run the project and where you would start debugging it
-
-## Minimum bar to pass Stage 00
-
-You should have completed at least:
-
-- Exercises 1 through 6
-- one full written assumption audit
-- one repo-orientation read of an existing small project
+- 练习 1、2、5、6
+- 一个最小 CLI
+- 一份简短的迁移笔记

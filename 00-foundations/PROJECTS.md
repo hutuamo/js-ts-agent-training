@@ -1,82 +1,84 @@
-# Stage 00 Projects
+# Stage 00 项目
 
-## Project policy for this stage
+## 本阶段项目原则
 
-Keep the work deliberately small. Stage 00 projects exist to establish habits, not to show feature depth.
+刻意保持项目很小。
 
-## Project 1 - Developer Environment Bring-Up Pack
+Stage 00 的项目不是为了展示功能深度，而是为了建立正确习惯和最低工程手感。
 
-Build a small folder or repo that contains:
+## 项目 1 - 开发环境 Bring-Up Pack
 
-- a minimal CLI entry point
-- a `package.json` with at least two scripts
-- one formatter or linter configuration
-- a short `NOTES.md` documenting how to run and debug the project
+做一个小目录或仓库，至少包含：
 
-What this project teaches:
+- 一个最小 CLI 入口
+- 一个带至少两个 scripts 的 `package.json`
+- 一个 formatter 或 linter 配置
+- 一份简短的 `NOTES.md`，写明如何运行和调试这个项目
 
-- manual project setup
-- script-driven workflow
-- how much metadata surrounds even a tiny JS/TS project
+这个项目训练什么：
 
-Acceptance criteria:
+- 手工初始化项目
+- 基于 scripts 的工作流
+- 认识到即使一个很小的 JS/TS 项目，也会有不少元数据和工具链环节
 
-- another engineer could clone the folder and run the main script by following your notes
-- your setup is understandable without a framework generator
+验收标准：
 
-## Project 2 - Runtime Behavior Notebook
+- 另一个工程师仅根据你的说明就能 clone 并运行主脚本
+- 整个 setup 不依赖脚手架生成器也能看懂
 
-Create a small collection of tiny scripts that demonstrate:
+## 项目 2 - 运行时行为笔记本
 
-- coercion surprises
-- object mutation and aliasing
-- promise scheduling
-- timer ordering
-- thrown errors vs rejected promises
+做一组很小的脚本，分别演示：
 
-For each script, include:
+- 类型转换带来的意外
+- 对象可变性与别名引用
+- Promise 调度
+- timer 顺序
+- thrown error 与 rejected promise 的差别
 
-- your prediction
-- actual observed behavior
-- a brief explanation
+每个脚本都要附带：
 
-What this project teaches:
+- 你运行前的预测
+- 实际观察到的结果
+- 一段简短解释
 
-- practical runtime reasoning
-- how to test assumptions before relying on them
+这个项目训练什么：
 
-Acceptance criteria:
+- 从运行时角度推理程序
+- 在依赖直觉前先验证假设
 
-- each script is under 30 lines
-- every example includes a written explanation
-- at least two examples compare the behavior to a C/C++ expectation
+验收标准：
 
-## Project 3 - C/C++ to JS/TS Transition Memo
+- 每个脚本不超过 30 行
+- 每个例子都有文字解释
+- 至少两个例子明确对比 C/C++ 里的预期和 JS 中的真实行为
 
-Write a concise internal-style memo aimed at a peer who knows C/C++ but is new to JS/TS backend work.
+## 项目 3 - C/C++ 到 JS/TS 的迁移备忘录
 
-Required sections:
+写一份简短 memo，假设读者是一个懂 C/C++、但刚开始做 JS/TS 后端的人。
 
-- what transfers cleanly
-- what does not transfer cleanly
-- common setup pitfalls
-- the minimum tooling baseline
-- what to learn next and why
+必须包含：
 
-What this project teaches:
+- 哪些能力可以直接迁移
+- 哪些习惯不能直接迁移
+- 常见 setup 坑
+- 最低工具链配置基线
+- 下一步该学什么，为什么
 
-- conceptual compression
-- communication discipline
-- preparation for later code reviews and architecture notes
+这个项目训练什么：
 
-Acceptance criteria:
+- 概念压缩能力
+- 工程沟通能力
+- 为后续 code review 与架构说明做准备
 
-- 1 to 2 pages
-- concrete examples instead of general advice
-- clearly oriented toward backend/CLI/agent development
+验收标准：
 
-## Recommended submission order
+- 长度控制在 1～2 页
+- 用具体例子，不要只写泛泛建议
+- 明确面向后端 / CLI / agent 开发，而不是泛用前端路线
 
-1. Developer Environment Bring-Up Pack
-2. Runtime Behavior Notebook
-3. C/C++ to JS/TS Transition Memo
+## 推荐完成顺序
+
+1. 开发环境 Bring-Up Pack
+2. 运行时行为笔记本
+3. 迁移备忘录

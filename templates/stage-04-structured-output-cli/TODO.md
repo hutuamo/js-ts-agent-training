@@ -1,20 +1,20 @@
-# TODO - Stage 04 Structured Output CLI
+# TODO - Stage 04 结构化输出 CLI
 
-## Build checklist
+## 构建检查清单
 
-- [ ] choose one concrete extraction or normalization task
-- [ ] define the accepted output schema
-- [ ] create the CLI entry point
-- [ ] implement config loading
-- [ ] implement model wrapper
-- [ ] implement prompt builder
-- [ ] add runtime validation
-- [ ] save example inputs and outputs
-- [ ] document at least three failure cases
-- [ ] write short usage instructions
+- [ ] 选一个具体的提取或正规化任务
+- [ ] 定义接受的输出 schema
+- [ ] 创建 CLI 入口点
+- [ ] 实现配置加载
+- [ ] 实现模型包装器
+- [ ] 实现 prompt 构建器
+- [ ] 添加运行时校验
+- [ ] 保存示例输入和输出
+- [ ] 记录至少三个失败案例
+- [ ] 写简短使用说明
 
-## Stretch goals
+## 延伸目标
 
-- [ ] compare two prompt variants
-- [ ] add streaming path and document whether it is worth keeping
-- [ ] add a tiny regression runner for saved examples
+- [ ] 对比两个 prompt 变体
+- [ ] 添加流式路径，并记录是否值得保留
+- [ ] 添加一个小型回归运行器，运行保存的案例

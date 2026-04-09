@@ -1,35 +1,35 @@
-# Architecture - Stage 04 Structured Output CLI
+# 架构说明 - Stage 04 结构化输出 CLI
 
-## Core idea
+## 核心理念
 
-Keep the system split into five obvious parts:
+保持系统分成五个明显的部分：
 
-1. CLI input handling
-2. configuration loading
-3. prompt construction
-4. model invocation
-5. schema validation and output handling
+1. CLI 输入处理
+2. 配置加载
+3. Prompt 构建
+4. 模型调用
+5. Schema 校验和输出处理
 
-## Boundary rules
+## 边界规则
 
-- CLI parsing should not know provider-specific response details.
-- Prompt text should not contain business logic that belongs in code.
-- The model wrapper should normalize provider responses.
-- Output is not accepted until schema validation succeeds.
+- CLI 解析不应知道提供商特定的响应细节。
+- Prompt 文本不应包含属于代码的业务逻辑。
+- 模型包装器应归一化提供商响应。
+- 在 schema 校验成功之前，输出不被接受。
 
-## Recommended flow
+## 推荐流程
 
-1. Parse CLI input.
-2. Load and validate configuration.
-3. Construct prompt from input.
-4. Call model through a small wrapper.
-5. Validate the response against schema.
-6. Emit structured result or controlled error.
+1. 解析 CLI 输入。
+2. 加载并校验配置。
+3. 从输入构建 prompt。
+4. 通过小型包装器调用模型。
+5. 依据 schema 校验响应。
+6. 发出结构化结果或受控错误。
 
-## Failure categories to plan for
+## 需要计划的失败类别
 
-- missing config
-- provider/network failure
-- invalid or partial model output
-- schema mismatch
-- unsupported input shape
+- 配置缺失
+- 提供商/网络失败
+- 无效或部分模型输出
+- Schema 不匹配
+- 不支持的输入形状

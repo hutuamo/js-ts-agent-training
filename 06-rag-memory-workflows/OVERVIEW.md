@@ -1,159 +1,132 @@
-# Stage 06 - Retrieval, Memory, and Workflow-Oriented Agent Systems
+# Stage 06 - 检索、记忆与面向工作流的 Agent 系统
 
-## Stage intent
+## 阶段目标
 
-This stage teaches grounded context management. You will learn when to retrieve information, when to store memory, and when to replace open-ended agent behavior with explicit workflows.
+这个阶段教的是有据可查的上下文管理。你将学习何时检索信息、何时存储记忆、何时用显式工作流替代开放式 agent 行为。
 
-The emphasis is not on fashionable terminology. The emphasis is on getting the right information into the right step, with enough provenance and control that the system remains trustworthy.
+重点不在于赶时髦的术语，而在于把正确的信息在正确的步骤中传入，带有足够的来源和控制，使系统保持可信。
 
-## Why this stage matters
+## 为什么这个阶段很重要
 
-By Stage 05, you can build a small agent loop. That is not enough for serious tasks involving larger corpora, multi-step research, or repeated sessions. Without retrieval and workflow discipline, systems tend to fail in predictable ways:
+到了 Stage 05，你已经能构建一个小型的 agent 循环。但这对于涉及大型语料、多步研究或重复会话的严肃任务来说还不够。没有检索和工作流纪律，系统会以可预测的方式失败：
 
-- they rely on oversized prompts instead of queryable context
-- they "remember" the wrong things
-- they lose source provenance
-- they mix user data, session state, and generated summaries carelessly
-- they use autonomous loops where a deterministic pipeline would be safer
+- 它们依赖超大的 prompt，而不是可查询的上下文
+- 它们“记住”了错误的东西
+- 它们丢失了来源追溯
+- 它们随意混合用户数据、会话状态和生成的摘要
+- 它们在确定性流水线更安全的地方使用自主循环
 
-This stage corrects that by treating context as data engineering plus orchestration, not magic memory.
+这个阶段通过把上下文当作数据工程加编排来处理，而不是神奇的记忆系统，来纠正这些问题。
 
-## Learning outcomes
+## 学习结果
 
-At stage completion, you should be able to:
+完成本阶段后，你应该能够：
 
-- build a small retrieval pipeline from ingestion through answer generation
-- choose chunking, metadata, and indexing strategies for practical backend use cases
-- return citation-backed answers with explicit grounding
-- distinguish short-term working state from persisted memory and from retrieved context
-- decide when memory helps and when it introduces risk or confusion
-- design workflow-oriented systems that combine retrieval, deterministic steps, and selective model use
-- evaluate retrieval quality and workflow correctness with concrete cases
+- 构建一个从摄入到答案生成的小型检索流水线
+- 为实际后端用例选择分块、元数据和索引策略
+- 返回带引用的答案，并附有明确的依据
+- 区分短期工作状态、持久化记忆和检索到的上下文
+- 决定记忆何时有帮助，何时引入风险或混乱
+- 设计结合检索、确定性步骤和选择性模型使用的面向工作流的系统
+- 用具体案例评估检索质量和工作流正确性
 
-## Topic sequence
+## 主题顺序
 
-### 1. Retrieval pipeline fundamentals
+### 1. 检索流水线基础
 
-Learn:
+学习内容：
+- 来源收集和摄入
+- 归一化和清理
+- 分块策略
+- 元数据设计
+- 索引和查询
 
-- source collection and ingestion
-- normalization and cleanup
-- chunking strategies
-- metadata design
-- indexing and lookup
+从一个你能手动检查的小型语料库开始。你应该能够回答为什么某个 chunk 被检索到。
 
-Start with a small corpus you can inspect manually. You should be able to answer why a given chunk was retrieved.
+### 2. Embedding 与搜索行为
 
-### 2. Embeddings and search behavior
+学习内容：
+- 语义检索基础
+- 元数据过滤
+- top-k 选择和重排序概念
+- 失效模式，如近似重复、缺失上下文和无关联匹配
 
-Learn:
+实际目标不是理论掌握。目标是理解检索在你的应用中何时成功，何时失败。
 
-- semantic retrieval basics
-- metadata filtering
-- top-k selection and reranking concepts
-- failure modes such as near-duplicates, missing context, and irrelevant matches
+### 3. 有据可查的答案生成
 
-The practical goal is not theoretical mastery. The goal is understanding how retrieval succeeds or fails in your application.
+学习内容：
+- 把检索到的证据干净地传给模型
+- 要求输出带引用或来源参考
+- 区分直接支持的facts和综合得出的结论
+- 拒绝不支持的声明
 
-### 3. Grounded answer generation
+依据只有在答案使其证据可检查时才有用。
 
-Learn:
+### 4. 记忆设计
 
-- passing retrieved evidence into the model cleanly
-- requiring citations or source references
-- separating extracted facts from synthesized conclusions
-- refusing unsupported claims
+学习内容：
+- 一次运行的临时工作记忆
+- 会话摘要
+- 用户偏好或 profile 数据
+- 值得持久存储的长期产物
+- 什么不应该被自动持久化
 
-Grounding is only useful if the answer makes its evidence inspectable.
+记忆不只是“更多上下文”。它是具有操作和隐私后果的持久化状态。
 
-### 4. Memory design
+### 5. 何时用工作流替代 Agent
 
-Learn:
+学习内容：
+- 多步研究任务的流水线设计
+- 确定性的 vs. 模型驱动的步骤
+- 中间产物设计
+- 工作流可独立重新运行
 
-- ephemeral working memory for one run
-- session summaries
-- user preferences or profile data
-- long-term artifacts that deserve durable storage
-- what should not be persisted automatically
+工作流在合适的地方比 agent 更好。两者都很重要。
 
-Memory is not just "more context." It is retained state with operational and privacy consequences.
+### 6. 检索与记忆的组合
 
-### 5. Workflow composition
+学习内容：
+- 在工作流中使用检索
+- 在 agent 循环中使用记忆
+- 避免双重上下文的噪音
+- 保持 provenance 能追溯
 
-Learn:
+## 常见错误
 
-- deterministic pipelines with model-assisted steps
-- branching conditions
-- retry and review boundaries
-- human approval points
-- orchestration that is easier to inspect than a free-form loop
+- 把记忆当成越多越好的东西
+- 在不需要检索的地方使用检索，而不是先优化 prompt
+- 混论来源和综合
+- 过大的 chunk 导致检索粒度丢失
+- 不清理过时语料，导致系统基于陈旧信息回答
+- 用 agent 循环做简单任务，而不是用确定性工作流
 
-Many real systems improve when you reduce autonomy and increase structure.
+## 推荐学习方式
 
-### 6. Evaluation for retrieval and workflows
+这个阶段的最佳路径：
 
-Learn:
+1. 先构建一个小型检索流水线，仅使用你能手动验证的语料
+2. 把检索结果和最终答案分开检查
+3. 然后加入有据可查的答案生成
+4. 然后处理会话记忆
+5. 最后决定哪些部分应该用工作流替代 agent
 
-- retrieval hit-rate style checks on a small labeled set
-- citation correctness checks
-- workflow step validation
-- comparing retrieval-backed answers against no-retrieval baselines
+## 与后续阶段的关系
 
-### 7. Operational concerns
+- Stage 07 会把你在本阶段建立的检索、工作流和记忆系统变成可评估的生产系统
+- Stage 08 的 capstone 项目会要求你组合所有这些能力
+- 本阶段建立的 provenance 意识会决定后续系统能否被信任
 
-Learn:
+## 阶段闯关标准
 
-- corpus refresh strategy
-- stale index handling
-- memory invalidation or pruning
-- source access control
-- cost and latency impacts of retrieval and long contexts
+只有当你已经可以：
 
-## Recommended study pattern
+- 把一个答案追溯到源文档
+- 证明系统存储了什么以及为什么
+- 说明工作流结构何时比开放自主性更能提升可靠性
 
-For each retrieval or memory feature:
+才进入 Stage 07。
 
-1. define the source set and access rules
-2. choose a chunking and metadata strategy
-3. inspect retrieval results manually before tuning generation
-4. require source-aware outputs
-5. test stale, missing, and conflicting-source scenarios
-6. decide whether the problem is better solved as a workflow
+## 退出标准
 
-## Common mistakes at this stage
-
-- adding vector search before defining corpus quality and metadata
-- storing every conversation turn as "memory"
-- presenting unsupported model synthesis as sourced fact
-- using retrieval to compensate for missing workflow structure
-- forgetting update, deletion, and privacy concerns in stored memory
-- failing to inspect retrieval results separately from final answers
-- building large-context prompts when a narrower retrieval step would be clearer
-
-## Relationship to other stages
-
-- Stage 05 gave you explicit loop and tool orchestration patterns.
-- Stage 06 adds grounded context and workflow structure on top of those patterns.
-- Stage 07 will harden retrieval quality, memory handling, and workflow behavior with evals and production discipline.
-- Stage 08 capstones should justify retrieval and memory design choices, not just include them by default.
-
-## Required deliverables
-
-- one retrieval-backed assistant or utility with source grounding
-- one design note describing chunking, metadata, and retrieval choices
-- one memory policy note describing what is stored, for how long, and why
-- one workflow comparison showing when a deterministic pipeline beats a free-form agent loop
-
-## Stage gate
-
-Move on only when you can:
-
-- explain how data moves from source documents into retrieved context
-- inspect and debug retrieval independently from answer generation
-- justify what your system remembers and what it intentionally forgets
-- show a workflow where model use is selective and bounded
-- provide citation-backed outputs or explicit refusal when support is missing
-
-## Exit criteria
-
-You are ready for Stage 07 when your system uses retrieval, memory, and workflows deliberately rather than as generic "AI features." The context path should be auditable from source to answer.
+当检索、记忆和工作流对你来说已经是需要工程设计决策的系统组件，而不是“加个向量数据库就能解决”的特性时，就可以进入下一阶段。

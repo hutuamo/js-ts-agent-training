@@ -1,163 +1,142 @@
-# Stage 01 - JavaScript for Backend and CLI Engineering
+# Stage 01 - 面向后端与 CLI 工程的 JavaScript
 
-## Stage intent
+## 阶段目标
 
-This stage teaches enough JavaScript to read, write, and debug real backend and CLI code without depending on TypeScript as a crutch. If you come from C or C++, the target is not "learn the entire language." The target is to become operational in the subset of JavaScript that shows up constantly in Node-based tools and AI-agent systems.
+这个阶段的目标是让你掌握足够多的 JavaScript，能够不依赖 TypeScript 当拐杖，就写、读、调试真实的后端和 CLI 代码。
 
-## Why JavaScript first
+如果你来自 C 或 C++，这里的目标不是“把整门语言都学完”，而是尽快在 Node 工具和 AI Agent 系统最常用的那部分 JavaScript 上变得能打。
 
-Experienced engineers sometimes want to skip directly to TypeScript. That usually backfires. TypeScript explains intent; JavaScript determines runtime behavior. If you do not understand the language underneath the type layer, later agent bugs will be harder to diagnose:
+## 为什么必须先学 JavaScript
 
-- mutation leaks across tool boundaries
-- truthiness checks drop valid values
-- async control flow masks failure paths
-- object shape assumptions drift from reality
+很多有经验的工程师会想直接跳到 TypeScript。大多数时候，这会适得其反。
 
-Learn the runtime language first, then layer types on top.
+TypeScript 负责表达设计意图，JavaScript 决定运行时行为。如果你不理解底层语言本身，后面很多 agent bug 会更难诊断：
 
-## Learning outcomes
+- 可变对象跨工具边界泄漏
+- truthiness 判断误伤合法值
+- 异步流程掩盖失败路径
+- 对对象结构的预期与真实运行状态不一致
 
-At stage completion, you should be able to:
+先掌握运行时语言，再加类型层。
 
-- write medium-sized JavaScript modules for CLI and backend use
-- read unfamiliar JS code and identify data flow and control flow quickly
-- handle arrays, objects, functions, closures, and modules without hesitation
-- use promises and `async`/`await` correctly in ordinary application code
-- parse files, call HTTP APIs, and transform data with ordinary JS tools
-- recognize common "clever" JS patterns and simplify them when needed
+## 学习结果
 
-## Scope
+完成本阶段后，你应该能够：
 
-Focus on practical JavaScript for:
+- 编写中等规模的 JavaScript 模块，用于 CLI 和后端任务
+- 阅读陌生 JS 代码，并快速识别数据流和控制流
+- 熟练处理数组、对象、函数、闭包与模块
+- 在普通应用代码中正确使用 Promise 和 `async` / `await`
+- 解析文件、调用 HTTP API，并用普通 JS 完成数据转换
+- 识别“看起来聪明但会增加负担”的 JS 写法，并能简化它们
 
-- command-line utilities
-- file processing
-- API clients
-- data transformation
-- service glue code
-- agent support code
+## 本阶段范围
 
-Do not spend time here on DOM APIs, UI frameworks, or browser-specific patterns.
+重点放在下面这些 JavaScript 场景：
 
-## Topic sequence
+- 命令行工具
+- 文件处理
+- API 客户端
+- 数据转换
+- 服务胶水层代码
+- Agent 支撑代码
 
-### 1. Values, variables, and coercion
+不要在这个阶段把时间花在 DOM、UI 框架和浏览器特定模式上。
 
-Learn:
+## 主题顺序
 
-- primitives and reference-bearing objects
-- `const` vs `let`
-- equality and identity
-- truthiness and falsiness
-- string, number, and boolean conversion pitfalls
+### 1. 值、变量与类型转换
 
-C/C++ transition note:
+学习内容：
+- 基本类型和对象引用
+- `const` 与 `let`
+- 相等性与同一性
+- truthy / falsy
+- 字符串、数字、布尔转换的坑
 
-JavaScript has fewer compile-time barriers against bad state. You need sharper habits around validation and explicitness.
+C/C++ 迁移提醒：
 
-### 2. Functions, scope, and closures
+JavaScript 几乎没有那么多编译期护栏，所以你必须更主动地做显式边界控制和输入检查。
 
-Learn:
+### 2. 函数、作用域与闭包
 
-- function declarations and expressions
-- arrow functions and their tradeoffs
-- lexical scope
-- closure behavior
-- callback patterns you will still encounter in older code
+学习内容：
+- 函数声明与函数表达式
+- 箭头函数及其取舍
+- 词法作用域
+- 闭包行为
+- 旧代码中仍常见的回调模式
 
-C/C++ transition note:
+C/C++ 迁移提醒：
 
-Closures are ordinary design tools in JS, not special machinery. Read them as data plus behavior bundled by scope.
+闭包在 JS 里是普通设计工具，不是特殊技巧。请把它理解成“作用域打包后的数据 + 行为”。
 
-### 3. Objects, arrays, and iteration
+### 3. 对象、数组与迭代
 
-Learn:
+学习内容：
+- 对象字面量
+- 属性访问
+- 数组方法
+- map / filter / reduce 等基础变换
+- for...of 与其他迭代方式
 
-- object literals
-- property access and optional chaining
-- array iteration patterns
-- destructuring
-- spread syntax, with caution around copying assumptions
+### 4. 模块与代码组织
 
-C/C++ transition note:
+学习内容：
+- ESM 基本模式
+- import / export
+- 按模块拆分逻辑
+- 避免把所有逻辑堆进入口文件
 
-Object copying is often shallower than it looks. Aliasing bugs are common and subtle.
+### 5. 错误与异常
 
-### 4. Errors and control flow
+学习内容：
+- 抛错与捕获
+- 什么时候应该 fail-fast
+- 什么时候应该返回可控错误
+- 普通业务失败与程序员错误的区别
 
-Learn:
+### 6. Promise 与 async/await
 
-- `throw` and `try/catch`
-- when to catch and when to let failures propagate
-- distinguishing programmer errors from expected operational errors
+学习内容：
+- Promise 基本模型
+- 顺序执行与并发执行
+- 错误传播
+- 如何让异步代码仍然可读、可调试
 
-This matters later for agent tools, where swallowed errors create unreliable behavior that looks like model failure.
+## 推荐学习方式
 
-### 5. Modules and code organization
+这个阶段最好的做法是：
 
-Learn:
+1. 每学完一个主题就立刻写一个小脚本
+2. 优先做文件、API 和文本处理
+3. 多读别人写的普通 JS 模块
+4. 遇到让你不舒服的语法时，不要先逃到 TypeScript，先把 JS 行为吃透
 
-- ESM imports and exports
-- default vs named exports
-- avoiding tangled utility files
-- shaping modules around boundaries and responsibilities
+## 常见错误
 
-### 6. JSON, text, regex, and dates
+- 过早依赖 TypeScript，而不真正理解 JS 行为
+- 把数组/对象变换写得过度聪明，失去可读性
+- 低估可变状态和引用共享带来的 bug
+- 对 Promise 和 async 顺序理解不清
+- 在还没掌握基础时大量使用库式魔法 API
 
-Learn enough to:
+## 与后续阶段的关系
 
-- parse and emit JSON safely
-- process line-oriented text
-- use regex for bounded parsing tasks
-- handle dates without inventing fragile time logic
+- Stage 02 会在这里的语言理解之上加类型边界
+- Stage 03 会把这些语言能力放进真实 Node 工程环境中
+- 如果本阶段没打牢，后面的 Agent 系统调试会很痛苦
 
-### 7. Promises and async/await
+## 阶段闯关标准
 
-Learn:
+只有当你已经可以：
 
-- promise lifecycle
-- sequential vs concurrent async work
-- error propagation through `await`
-- batching and rate-awareness at a basic level
+- 不靠教程写出一个小型 CLI 或 API client
+- 清楚解释代码运行时行为，尤其是异步部分
+- 识别 mutation、类型转换和错误处理中的高概率 bug
 
-This is a major progression gate. If async reasoning is weak here, Stage 03 and later will stay difficult.
+才进入 Stage 02。
 
-## Recommended study pattern
+## 退出标准
 
-For each topic:
-
-1. write a small script from scratch
-2. read an existing example
-3. debug one failure case
-4. explain the result in your own words
-
-Do not overread. Build many small scripts instead.
-
-## Common mistakes at this stage
-
-- using array methods without understanding the intermediate shapes
-- relying on implicit coercion in boundary logic
-- mixing sync and async code without noticing where promises appear
-- writing "utility" modules that hide state and make testing harder
-- assuming destructuring or spread implies deep copy
-- overusing terse syntax before the basic model is stable
-
-## Relationship to later stages
-
-- Stage 02 will add type discipline to the boundaries you define here.
-- Stage 03 will assume you can already write asynchronous JS comfortably.
-- Stage 04 and Stage 05 rely on clear JS control flow around model calls, tool execution, and result handling.
-
-## Stage gate
-
-Move on only when you can:
-
-- build small JS CLI tools from scratch
-- explain the data flow of a medium-sized file without line-by-line guessing
-- debug mutation, coercion, and promise-ordering bugs
-- choose between loops, array methods, and helper functions for readability
-- write async code that is correct before it is clever
-
-## Exit criteria
-
-You are ready for Stage 02 when plain JavaScript feels usable, readable, and debuggable. TypeScript should feel like the next layer of rigor, not a rescue mechanism.
+当你已经能把 JavaScript 当成正常工程语言来使用，而不是一门“总让我不放心的动态脚本语言”，就可以进入下一阶段。

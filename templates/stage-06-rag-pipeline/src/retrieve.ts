@@ -1,1 +1,1 @@
-// Implement retrieval and retrieval inspection here.
+// 在此处实现检索和检索检查。

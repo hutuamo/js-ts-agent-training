@@ -1,120 +1,121 @@
-# Stage 05 Exercises
+# Stage 05 练习
 
-## Exercise policy
+## 练习原则
 
-Every exercise should include at least one saved trace or run log. Agent behavior must be inspectable while it is still small.
+每个练习都应该包含至少一个保存的 trace 或运行日志。Agent 行为在它还小的时候必须是可检查的。
 
-## Exercise 1 - Manual agent loop
+## 练习 1 - 手动 agent 循环
 
-Objective: make the control flow explicit.
+目标：让控制流显式化。
 
-Tasks:
+任务：
 
-- implement a simple observe-decide-act-update loop
-- track step count and termination reason
-- support a maximum number of steps
-- print or persist a summary of what happened
+- 实现一个简单的观察-决策-执行-更新循环
+- 跟踪步骤计数和终止原因
+- 支持最大步数限制
+- 打印或持久化发生了什么的小结
 
-Progression check:
+进度检查：
 
-- another engineer can tell where the loop begins, updates state, and stops
+- 另一个工程师能说出循环从哪里开始、状态在哪里更新、在哪里停止
 
-## Exercise 2 - Tool registry drill
+## 练习 2 - 工具注册表训练
 
-Objective: stop treating tool calls as ad hoc helper functions.
+目标：停止把工具调用当成临时的辅助函数。
 
-Tasks:
+任务：
 
-- define two or three tools with clear names and argument shapes
-- validate arguments before execution
-- normalize tool results into a consistent structure
-- record tool invocation metadata in the trace
+- 用清晰的名称和参数形状定义两三个工具
+- 执行前校验参数
+- 把工具结果归一化为一致的结构
+- 在 trace 中记录工具调用元数据
 
-Progression check:
+进度检查：
 
-- the loop can reason about tools without depending on tool-specific implementation details
+- 循环能推理工具，而不依赖工具特定的实现细节
 
-## Exercise 3 - Working state design
+## 练习 3 - 工作状态设计
 
-Objective: separate active task state from durable session data.
+目标：把活跃任务状态和持久会话数据分开。
 
-Tasks:
+任务：
 
-- define a small state object for the current run
-- identify which fields are ephemeral and which are safe to persist
-- update the state after each step
-- reject or clear stale state when it should not carry forward
+- 为当前运行定义一个小状态对象
+- 识别哪些字段是临时的，哪些适合持久化
+- 每步后更新状态
+- 当状态不应该继续传递时，拒绝或清除它
 
-Progression check:
+进度检查：
 
-- you can explain exactly what state survives between turns and why
+- 你能精确解释哪些状态在轮次之间存活，以及为什么
 
-## Exercise 4 - Planning versus direct execution comparison
+## 练习 4 - 规划与直接执行对比
 
-Objective: decide whether planning adds value.
+目标：决定规划是否增加了价值。
 
-Tasks:
+任务：
 
-- pick one multi-step task
-- implement a direct-execution version
-- implement a version with an explicit plan step
-- compare complexity, failure rate, and trace readability
-- write a short note on which version you would keep
+- 选一个多步任务
+- 实现一个直接执行版本
+- 再实现一个有显式计划步骤的版本
+- 对比复杂度、失败率和 trace 可读性
+- 写一段短笔记，说明你会保留哪个版本
 
-Progression check:
+进度检查：
 
-- you can justify planning with evidence instead of instinct
+- 你能用证据而不是直觉来为规划决策辩护
 
-## Exercise 5 - Loop guardrails drill
+## 练习 5 - 循环护栏训练
 
-Objective: ensure the loop fails safely.
+目标：确保循环能安全失败。
 
-Tasks:
+任务：
 
-- add a max-step limit
-- add handling for invalid tool requests
-- add a refusal or escalation path for unsupported tasks
-- add one path that returns partial progress instead of silently failing
+- 加一个最大步数限制
+- 加无效工具请求处理
+- 加一个不支持任务的拒绝或上报路径
+- 加一条路径，在失败时返回部分进展，而不是静默失败
 
-Progression check:
+进度检查：
 
-- you can show how the loop terminates under at least three different failure conditions
+- 你能展示循环在至少三种不同失败条件下如何终止
 
-## Exercise 6 - Trace review session
+## 练习 6 - Trace 回顾会话
 
-Objective: learn to debug agent runs after the fact.
+目标：学会在事后调试 agent 运行。
 
-Tasks:
+任务：
 
-- run several representative tasks
-- save the traces
-- classify failures by loop phase
-- identify one failure caused by prompt wording and one caused by orchestration logic
-- propose one concrete fix for each
+- 用多个有代表性的任务运行
+- 保存 trace
+- 按循环阶段对失败分类
+- 识别一个由 prompt 措辞引起的失败，和一个由编排逻辑引起的失败
+- 为每个提出一个具体的修复方案
 
-Progression check:
+进度检查：
 
-- you can debug from traces without rerunning the exact scenario immediately
+- 你能仅从 trace 调试，而不需要立即重放精确场景
 
-## Exercise 7 - Human handoff boundary
+## 练习 7 - 人工交接边界
 
-Objective: avoid pretending automation is always the right answer.
+目标：避免假装自动化永远是对的。
 
-Tasks:
+任务：
 
-- define one task class where the agent should stop and ask for confirmation
-- define what context should be handed to the human
-- make the handoff explicit in state and logs
-- test the handoff on at least two scenarios
+- 定义一类任务，其中 agent 应该停下来请求确认
+- 定义应该交给人类的上下文内容
+- 在状态和日志中显式化交接
+- 用至少两个场景测试交接
 
-Progression check:
+进度检查：
 
-- the handoff preserves useful context without hiding what the agent already did
+- 交接保留了有用的上下文
 
-## Required minimum
+## 最低完成要求
 
-Complete at least:
+至少完成：
 
-- Exercises 1, 2, 5, and 6
-- one explicit planning comparison
-- one example of a task that should become a workflow or human handoff instead of a loop
+- 练习 1、2、3、5
+- 一个显式 agent 循环实现
+- 一个有护栏和停止条件的版本
+- 至少保存了三个运行的 trace 或日志

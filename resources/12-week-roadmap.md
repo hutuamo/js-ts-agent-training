@@ -1,92 +1,92 @@
-# 12-Week JS/TS AI Agent Engineering Roadmap
+# 12 周 JS/TS AI Agent 工程路线图
 
-## Phase 1 — JavaScript + Runtime Fundamentals (Weeks 1-4)
+## 第一阶段：JavaScript 与运行时基础（第 1～4 周）
 
-### Week 1
-- Environment setup: Node, npm/pnpm, Git, editor, debugger
-- Syntax and values
-- Functions, scope, closures
-- Basic exercises every day
+### 第 1 周
+- 搭建环境：Node、npm/pnpm、Git、编辑器、调试器
+- 语法与基本值类型
+- 函数、作用域、闭包
+- 每天做少量基础练习
 
-### Week 2
-- Objects, arrays, prototypes
-- Iteration, modules, errors
-- JSON, dates, regular expressions
-- Build 2 small CLI tools
+### 第 2 周
+- 对象、数组、原型
+- 迭代、模块、错误处理
+- JSON、日期、正则表达式
+- 完成 2 个小型 CLI 工具
 
-### Week 3
-- Asynchrony: Promise, async/await, timers
-- Network requests with fetch
-- Filesystem basics
-- Build a file-processing script and an API client
+### 第 3 周
+- 异步：Promise、async/await、定时器
+- 用 fetch 发起网络请求
+- 文件系统基础
+- 完成一个文件处理脚本和一个 API 客户端
 
-### Week 4
-- JS review and consolidation
-- Read and write a medium-sized JS codebase
-- Exit project: a multi-command CLI utility
+### 第 4 周
+- JavaScript 复习与巩固
+- 阅读并修改一个中型 JS 代码库
+- 阶段结项项目：多命令 CLI 工具
 
-## Phase 2 — TypeScript + Node Engineering (Weeks 5-8)
+## 第二阶段：TypeScript 与 Node 工程（第 5～8 周）
 
-### Week 5
-- TS setup, compiler, tsconfig
-- Everyday types, interfaces, unions
-- Type narrowing, function types
-- Convert JS utilities to TS
+### 第 5 周
+- TypeScript 环境、编译器、tsconfig
+- 常用类型、interface、union
+- 类型收窄、函数类型
+- 把已有 JS 工具改写成 TS
 
-### Week 6
-- Generics, modules, type design
-- Runtime validation with schemas
-- Error modeling and config typing
-- Exit project: typed task manager or API SDK
+### 第 6 周
+- 泛型、模块、类型设计
+- 结合 schema 做运行时校验
+- 错误建模与配置类型化
+- 阶段结项项目：带类型的任务管理器或 API SDK
 
-### Week 7
-- Node architecture, streams, child processes, events
-- Packaging, scripts, env handling
-- Retries, timeouts, concurrency control
-- Exit project: robust CLI/service with tests
+### 第 7 周
+- Node 架构、流、子进程、事件
+- 包管理、脚本、环境变量处理
+- 重试、超时、并发控制
+- 阶段结项项目：带测试的可靠 CLI / 服务
 
-### Week 8
-- SDK integration with one model provider
-- Streaming, structured output, tool calling
-- Exit project: a typed tool-calling assistant
+### 第 8 周
+- 接入一个模型提供商 SDK
+- 流式输出、结构化输出、工具调用
+- 阶段结项项目：带类型的工具调用助手
 
-## Phase 3 — Agent Systems (Weeks 9-12)
+## 第三阶段：Agent 系统（第 9～12 周）
 
-### Week 9
-- Agent loops and tool abstractions
-- State and memory boundaries
-- Observability and logs
-- Exit project: single-agent workflow runner
+### 第 9 周
+- Agent loop 与工具抽象
+- 状态边界与记忆边界
+- 可观测性与日志
+- 阶段结项项目：单 Agent 工作流执行器
 
-### Week 10
-- Retrieval, chunking, embeddings, citations
-- Distinguish workflows from autonomous agents
-- Exit project: doc QA or research assistant
+### 第 10 周
+- 检索、chunking、embedding、引用
+- 学会区分 workflow 与 autonomous agent
+- 阶段结项项目：文档问答或研究助理
 
-### Week 11
-- Reliability: evals, fallbacks, retries, safeguards
-- Basic deployment and operations
-- Exit project: productionized agent service
+### 第 11 周
+- 可靠性：eval、fallback、retry、护栏
+- 基础部署与运行方式
+- 阶段结项项目：生产化的 Agent 服务
 
-### Week 12
-- Capstone build, polish, documentation, demo
-- README, architecture notes, benchmarks, known limits
-- Optional deployment and GitHub showcase
+### 第 12 周
+- 毕业项目开发、打磨、文档与演示
+- README、架构说明、基准、已知限制
+- 可选：部署上线并整理 GitHub 展示页
 
-## Weekly rhythm
+## 每周时间分配建议
 
-- 40% coding
-- 25% reading/docs
-- 20% debugging/refactoring
-- 15% notes/review
+- 40% 编码
+- 25% 阅读 / 文档
+- 20% 调试 / 重构
+- 15% 笔记 / 复盘
 
-## Success criteria
+## 成功标准
 
-At the end of 12 weeks, you should be able to independently:
+12 周结束时，你应该能够独立：
 
-- structure a TS project
-- integrate model APIs
-- define and execute tools
-- build multi-step agent workflows
-- reason about reliability and evaluation
-- explain architecture tradeoffs clearly
+- 组织一个 TypeScript 项目结构
+- 接入模型 API
+- 定义并执行工具调用
+- 构建多步骤 Agent 工作流
+- 思考系统可靠性与评估方法
+- 清楚解释你的架构取舍

@@ -1,1 +1,1 @@
-// Define the accepted structured output schema here.
+// 在此处定义接受的结构化输出 schema。

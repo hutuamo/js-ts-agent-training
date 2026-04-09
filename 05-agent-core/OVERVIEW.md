@@ -1,162 +1,144 @@
-# Stage 05 - Agent Loops, Tool Orchestration, and State Boundaries
+# Stage 05 - Agent 循环、工具编排与状态边界
 
-## Stage intent
+## 阶段目标
 
-This stage turns model integration into agent engineering. The goal is not to imitate a general autonomous assistant. The goal is to design small agent systems whose control flow, state transitions, tool usage, and stop conditions are understandable to another engineer.
+这个阶段把模型集成升级为 agent 工程。目标不是模仿一个通用自主助手，而是设计小型的 agent 系统，其控制流、状态转换、工具使用和停止条件对其他工程师来说是可以理解的。
 
-You should arrive here only after Stage 04 model and tool-calling basics are stable. If basic prompt contracts and structured outputs are still unreliable, adding an agent loop will only hide the problems.
+你应该只在 Stage 04 的模型和工具调用基础稳固之后才来这里。如果基本的 prompt 契约和结构化输出仍然不可靠，加入 agent 循环只会把问题掩盖起来。
 
-## Why this stage matters
+## 为什么这个阶段很重要
 
-An agent is not just "an LLM with tools." It is a control system that:
+agent 并不是“装了工具的 LLM”。它是一个控制系统，负责：
 
-- observes context
-- selects or is given a next action
-- invokes tools or workflow steps
-- updates state
-- decides whether to continue, branch, ask for help, or stop
+- 观察上下文
+- 选择或被给予下一个动作
+- 调用工具或工作流步骤
+- 更新状态
+- 决定是继续、分支、请求帮助还是停止
 
-If this control system is vague, debugging becomes impossible. A failed run could be caused by prompt wording, tool contracts, bad state, missing context, unbounded looping, or weak stop criteria.
+如果这个控制系统是模糊的，调试就不可能做到。一次失败的运行可能由 prompt 措辞、工具契约、状态错误、上下文丢失、无界循环或弱停止条件引起。
 
-This stage is where you learn to keep those concerns separate.
+这个阶段就是用来让这些关注点保持分离的。
 
-## Learning outcomes
+## 学习结果
 
-At stage completion, you should be able to:
+完成本阶段后，你应该能够：
 
-- implement a basic agent loop with explicit step boundaries
-- define and manage short-term working state across turns
-- structure a tool registry with clear contracts and ownership
-- decide when planning is useful and when direct execution is simpler
-- log agent steps so a failed run can be reconstructed
-- impose guardrails such as max steps, validation checks, and human escalation points
-- explain why a workflow should or should not be represented as an autonomous agent
+- 实现一个带有明确步骤边界的 basic agent 循环
+- 定义并管理跨轮次的短期工作状态
+- 构建带有清晰契约和所有权定义的工具注册表
+- 决定何时规划有用，何时直接执行更简单
+- 记录 agent 步骤，使一次失败的运行可以被重建
+- 施加护栏，如最大步数、校验检查和人工上报点
+- 解释一个工作流为什么应该或不应该被表示为自主 agent
 
-## Topic sequence
+## 主题顺序
 
-### 1. Agent loop anatomy
+### 1. Agent 循环解剖
 
-Learn:
+学习内容：
+- 观察、决策、执行、更新、停止
+- 显式循环状态
+- 最大步数和最大成本控制
+- 什么属于循环内部，什么属于外部
 
-- observe, decide, act, update, stop
-- explicit loop state
-- max-step and max-cost controls
-- what belongs inside the loop versus outside it
+保持循环可见且乏味。隐藏的编排逻辑会制造脆弱系统。
 
-Keep the loop visible and boring. Hidden orchestration logic creates fragile systems.
+### 2. 工具抽象与执行控制
 
-### 2. Tool abstraction and execution control
+学习内容：
+- 工具注册模式
+- 参数 schema 和运行时校验
+- 结果归一化
+- 副作用分类
+- 幂等操作与风险操作
 
-Learn:
+把工具当成后端接口，而不是 prompt 装饰品。
 
-- tool registration patterns
-- argument schemas and runtime validation
-- result normalization
-- side-effect classification
-- idempotent versus risky actions
+### 3. 状态与记忆边界
 
-Treat tools as backend interfaces, not as prompt decorations.
+学习内容：
+- 当前请求状态
+- 草稿或工作笔记
+- 持久化的对话或会话状态
+- 什么永远不应该被自动存储
 
-### 3. State and memory boundaries
+在这个阶段，专注于有界状态，而不是长期记忆系统。Stage 06 会更深入地处理检索和记忆。
 
-Learn:
+### 4. 规划与直接执行
 
-- current request state
-- scratchpad or working notes
-- persisted conversation or session state
-- what should never be stored automatically
+学习内容：
+- 多步任务的显式计划
+- 何时跳过规划直接行动
+- 对照工具可用性检查计划
+- 保持计划可检查，而不是神秘的
 
-At this stage, focus on bounded state, not long-term memory systems. Stage 06 will handle retrieval and memory in more depth.
+不要对简单任务过度使用规划。规划应该降低风险或增加清晰度。
 
-### 4. Planning versus direct execution
+### 5. 可观测性与调试
 
-Learn:
+学习内容：
+- 步骤级日志
+- trace 标识符
+- 工具调用记录
+- 有用但不过度的状态快照
+- 运行后摘要
 
-- explicit plans for multi-step tasks
-- when to skip planning and act directly
-- checking plans against tool availability
-- keeping plans inspectable instead of mystical
+如果运行失败时你还不知道发生了什么，那你的可观测性就不够。
 
-Do not overuse planning for simple tasks. Planning should reduce risk or increase clarity.
+### 6. 护栏与人工交接
 
-### 5. Observability and debugging
+学习内容：
+- 最大步数限制
+- 无效工具请求处理
+- 不支持任务时的拒绝或上报路径
+- 返回部分进展而非静默失败的路径
 
-Learn:
+### 7. 何时不用 Agent
 
-- step-level logs
-- trace identifiers
-- tool-call records
-- state snapshots that are useful but not excessive
-- post-run summaries
+学习内容：
+- 确定性的、规则驱动的工作流不需要 agent
+- 简单任务上 agent 的额外复杂性不值得
+- 何时用工作流替代开放循环
 
-If you cannot reconstruct the agent's decisions, you do not control the system.
+这是被过度炒作的阶段。你要学会在合适的地方用它，而不是处处用它。
 
-### 6. Recovery and guardrails
+## 常见错误
 
-Learn:
+- 把 agent loop 当成让模糊系统变清晰的方式，而不是显式化控制流
+- 状态所有权混乱：不知道谁拥有什么、何时清理
+- 缺乏有意义的停止条件，导致无限循环
+- 工具 schema 不完整或校验宽松
+- 把所有问题都当成 prompt 问题，而不是编排问题
+- 没有保留足够的 trace 信息，导致失败后无法重建
 
-- retries at the correct layer
-- invalid-tool-request handling
-- recovery from partial progress
-- escalation to deterministic workflows or humans
-- refusing unsafe or unsupported actions
+## 推荐学习方式
 
-### 7. Basic evaluation for agent behavior
+这个阶段的最佳路径：
 
-Learn:
+1. 先实现一个最简单的循环，不需要任何高级特性
+2. 加一个具体工具
+3. 加状态跟踪和步骤日志
+4. 加停止条件和护栏
+5. 运行多次，记录失败模式
+6. 每次只改一个变量
 
-- scenario-based tests
-- step-count expectations
-- tool-use expectations
-- failure categorization by stage in the loop
+## 与后续阶段的关系
 
-This prepares you for Stage 07 production eval suites.
+- Stage 06 会在这里的 agent 循环基础上加入检索和记忆
+- Stage 07 会把你在本阶段建立的 traced、bounded 系统变成可评估的生产系统
+- 本阶段建立的工程纪律会决定后面能否维护
 
-## Recommended study pattern
+## 阶段闯关标准
 
-For each agent design:
+只有当你已经可以：
 
-1. define the task boundary
-2. list the available tools and their side effects
-3. define the loop state explicitly
-4. add stop conditions before adding extra capabilities
-5. run representative tasks and save traces
-6. review failures by layer: prompt, planning, tool selection, tool execution, state update, stop logic
+- 用后端术语捍卫你的 agent 架构
+- 从初始请求追踪一次运行，经历状态更新和工具调用
+- 说明循环是有界的且可调试的
 
-## Common mistakes at this stage
+才进入 Stage 06。
 
-- calling something an agent when it is really a deterministic workflow
-- letting the model invent tool semantics that code never defined
-- mixing transient reasoning state with durable user state
-- allowing infinite or poorly bounded loops
-- hiding control flow inside prompt instructions instead of code
-- adding memory before tool and state boundaries are stable
-- logging too little to debug or too much to operate safely
+## 退出标准
 
-## Relationship to other stages
-
-- Stage 04 gave you prompt, structured-output, and tool-calling foundations.
-- Stage 06 will extend these systems with retrieval, memory, and workflow orchestration choices.
-- Stage 07 will add stronger validation, evals, observability, and operational hardening.
-- Stage 08 expects you to justify your architecture, not just present a working demo.
-
-## Required deliverables
-
-- one manual or semi-manual agent loop implementation
-- one tool registry or equivalent explicit tool layer
-- one trace log or run-record format that lets you inspect a failed execution
-- one short design note explaining what state exists, who owns it, and when the loop stops
-
-## Stage gate
-
-Move on only when you can:
-
-- explain your loop control flow without hand-waving
-- justify why each tool exists and how it is validated
-- show where state is stored and why
-- stop the agent predictably under success, failure, and ambiguity
-- compare your agent design against a simpler workflow and defend the choice
-
-## Exit criteria
-
-You are ready for Stage 06 when your agent code reads like backend orchestration rather than prompt theater. The loop should be explicit, bounded, and inspectable.
+当 agent 对你来说已经是一个“需要工程化设计的控制系统”，而不是“往 prompt 里加工具就能自动变智能”时，就可以进入下一阶段。

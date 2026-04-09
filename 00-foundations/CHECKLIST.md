@@ -1,33 +1,33 @@
-# Stage 00 Checklist
+# Stage 00 检查清单
 
-## Readiness checklist
+## 就绪检查
 
-- [ ] I installed Node.js LTS and can verify the version from the terminal.
-- [ ] I chose a package manager and can explain why the repo should stay consistent on one.
-- [ ] I created and ran a minimal CLI with `node`.
-- [ ] I created and ran the same CLI through a package script.
-- [ ] I can explain the purpose of `package.json` at a practical level.
-- [ ] I know whether my scratch project is using ESM or CommonJS.
-- [ ] I can explain why `async` does not imply parallel execution.
-- [ ] I tested event-loop ordering with a small script instead of relying on intuition.
-- [ ] I wrote down at least five C/C++ assumptions that fail or change in JS/TS.
-- [ ] I used a debugger or equivalent tracing on a small program.
-- [ ] I can orient myself in a small Node project and identify its entry point.
+- [ ] 我已经安装 Node.js LTS，并能在终端验证版本。
+- [ ] 我已经选定一个包管理器，并能解释为什么仓库里应尽量保持一致。
+- [ ] 我已经用 `node` 创建并运行一个最小 CLI。
+- [ ] 我已经通过 package script 运行同一个 CLI。
+- [ ] 我能从工程角度解释 `package.json` 的作用。
+- [ ] 我知道当前 scratch 项目使用的是 ESM 还是 CommonJS。
+- [ ] 我能解释为什么 `async` 不代表并行执行。
+- [ ] 我已经用小脚本验证过 event loop 的基本顺序。
+- [ ] 我写下了至少 5 条在 JS/TS 中失效或变化的 C/C++ 假设。
+- [ ] 我已经用调试器或等效追踪方式看过一个小程序。
+- [ ] 我能在一个小型 Node 项目中定位入口文件和基本结构。
 
-## Progression gate
+## 进入下一阶段的门槛
 
-Advance only if you can do all of the following without searching every step:
+只有当你已经可以在不需要每一步都搜索的情况下做到下面这些，才进入 Stage 01：
 
-- initialize a small backend or CLI project
-- run, modify, and debug it
-- explain the runtime model at a practical level
-- describe what TypeScript will add later and what it will not fix
+- 初始化一个小型后端或 CLI 项目
+- 运行、修改并调试它
+- 从工程实践角度解释运行时模型
+- 说清楚 TypeScript 之后会增加什么，又解决不了什么
 
-## If you are not ready
+## 如果还没准备好
 
-Repeat Stage 00 if any of these are still true:
+如果下面这些情况仍然存在，建议重做 Stage 00：
 
-- package scripts still feel opaque
-- module format differences are still confusing
-- async behavior still feels surprising most of the time
-- you are still trying to map every JS concept directly onto C/C++
+- package scripts 仍然像黑箱
+- 模块格式差异仍然混乱
+- 异步行为大多数时候仍然让你意外
+- 你仍试图把每个 JS 概念直接映射成 C/C++ 概念

@@ -1,30 +1,32 @@
-# Stage 07 Checklist
+# Stage 07 检查清单
 
-## Readiness checklist
+## 就绪检查
 
-- [ ] I validated config, model output, tool inputs, and other external boundaries explicitly.
-- [ ] I added structured logs and identifiers that let me trace a run.
-- [ ] I defined redaction or safe-logging rules for sensitive content.
-- [ ] I can explain which failures are retryable and which are not.
-- [ ] I documented timeout and fallback behavior.
-- [ ] I have a regression set for prompts, schemas, retrieval, or tool use.
-- [ ] I can compare system behavior across prompt or contract revisions.
-- [ ] I wrote at least one incident-style review for a failure scenario.
-- [ ] I documented how the system is started, monitored, and safely disabled or rolled back.
-- [ ] I hardened at least one real project instead of only writing isolated examples.
+- [ ] 我显式校验了配置、模型输出、工具输入和其他外部边界。
+- [ ] 我添加了结构化日志和标识符，能追踪一次运行。
+- [ ] 我定义了敏感内容的脱敏或安全日志规则。
+- [ ] 我能解释哪些失败可重试，哪些不可以。
+- [ ] 我记录了超时和 fallback 行为。
+- [ ] 我有 prompt、schema、检索或工具使用的回归集。
+- [ ] 我能跨 prompt 或契约版本比较系统行为。
+- [ ] 我为一个失败场景写了至少一个事件风格的回顾。
+- [ ] 我记录了系统如何启动、监控和安全禁用或回滚。
+- [ ] 我加固了至少一个真实项目，而不是只写孤立例子。
 
-## Progression gate
+## 进入下一阶段的门槛
 
-Advance only if you can:
+只有当你已经可以：
 
-- prove behavior with logs, tests, and evals
-- explain operational behavior under common failure
-- hand the system to another engineer without relying on tribal knowledge
+- 用日志、测试和评估证明行为
+- 解释常见失败下的运维行为
+- 把系统交给另一个工程师，而不需要靠隐性知识
 
-## If you are not ready
+才进入 Stage 08。
 
-Repeat Stage 07 work if any of these are still true:
+## 如果还没准备好
 
-- regressions are still being detected mainly by manual demos
-- telemetry is too weak to explain a failed run
-- deployment or operator behavior still depends on unrecorded assumptions
+如果下面这些仍然成立，建议重做 Stage 07：
+
+- 回归仍然主要靠人工演示检测
+- 遥测太弱，无法解释一次失败的运行
+- 部署或运维行为仍然依赖于未记录的假设

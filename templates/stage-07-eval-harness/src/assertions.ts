@@ -1,1 +1,1 @@
-// Define pass/fail checks for evaluation cases here.
+// 在此处为评估案例定义通过/失败检查。

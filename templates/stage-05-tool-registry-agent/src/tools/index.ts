@@ -1,1 +1,1 @@
-// Register tools and their contracts here.
+// 在此处注册工具及其契约。

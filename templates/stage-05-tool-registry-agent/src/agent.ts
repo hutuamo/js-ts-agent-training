@@ -1,2 +1,2 @@
-// Entry point placeholder for the agent.
-// Suggested responsibility: initialize state, run loop, emit result and trace summary.
+// Agent 的入口占位符。
+// 建议职责：初始化状态，运行循环，发出结果和 trace 摘要。

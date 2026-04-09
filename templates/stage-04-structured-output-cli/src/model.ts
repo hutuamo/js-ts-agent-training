@@ -1,2 +1,2 @@
-// Wrap the chosen model provider here.
-// Normalize provider-specific responses before returning them to the rest of the program.
+// 在此处包装选定的模型提供商。
+// 在将响应返回给程序其余部分之前，归一化提供商特定的响应。

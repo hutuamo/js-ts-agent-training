@@ -1,39 +1,39 @@
-# Architecture - Stage 05 Tool Registry Agent
+# 架构说明 - Stage 05 工具注册表 Agent
 
-## Core idea
+## 核心理念
 
-The system should read like backend orchestration, not prompt theater.
+系统应该读起来像后端编排，而不是 prompt 表演。
 
-## Core components
+## 核心组件
 
-1. input/task boundary
-2. agent loop
-3. state model
-4. tool registry
-5. trace/log layer
-6. stop and escalation rules
+1. 输入/任务边界
+2. Agent 循环
+3. 状态模型
+4. 工具注册表
+5. Trace/日志层
+6. 停止和上报规则
 
-## Boundary rules
+## 边界规则
 
-- tools must validate arguments before execution
-- loop state must be explicit, not hidden in prompt text
-- traces must record actions and outcomes at step boundaries
-- tool results should be normalized before re-entering the loop
-- stop conditions should exist in code, not only in model instructions
+- 工具必须在执行前校验参数
+- 循环状态必须是显式的，不能隐藏在 prompt 文本中
+- Trace 必须记录步骤边界上的动作和结果
+- 工具结果在重新进入循环前必须被归一化
+- 停止条件应该存在于代码中，而不仅仅在模型指令中
 
-## Recommended flow
+## 推荐流程
 
-1. accept a bounded task
-2. initialize state
-3. select next action
-4. validate and run tool if needed
-5. update state and trace
-6. stop, continue, or escalate
+1. 接受一个有界任务
+2. 初始化状态
+3. 选择下一个动作
+4. 必要时校验并运行工具
+5. 更新状态和 trace
+6. 停止、继续或上报
 
-## Failure categories to plan for
+## 需要计划的失败类别
 
-- invalid tool selection
-- invalid tool arguments
-- loop exceeds step budget
-- ambiguous task requiring handoff
-- partial progress with no safe next step
+- 无效工具选择
+- 无效工具参数
+- 循环超出步骤预算
+- 需要交接的歧义任务
+- 部分进展但没有安全的下一步

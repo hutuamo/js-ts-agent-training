@@ -1,115 +1,116 @@
-# Stage 02 Exercises
+# Stage 02 练习
 
-## Exercise policy
+## 练习原则
 
-Every exercise should make a boundary safer or clearer. Avoid abstract type puzzles that do not improve runtime code.
+每个练习都应该让某个边界更安全或更清楚。
 
-## Exercise 1 - Convert a JS utility to strict TypeScript
+不要做对运行时代码没有帮助的抽象类型谜题。
 
-Objective: feel the compiler pressure on real code.
+## 练习 1 - 把一个 JS 工具改成 strict TypeScript
 
-Tasks:
+目标：在真实代码里感受编译器压力。
 
-- take one Stage 01 utility
-- add a `tsconfig.json` with strict settings
-- convert the utility to TypeScript
-- remove implicit `any` and weak return types
+任务：
 
-Progression check:
+- 选一个 Stage 01 工具
+- 加上 `tsconfig.json` 并启用 strict 设置
+- 把工具改写成 TypeScript
+- 去掉隐式 `any` 和含糊的返回类型
 
-- the typed version is easier to review than the JS version
+通过标准：
 
-## Exercise 2 - Model a CLI contract
+- 改写后的版本比 JS 更容易 review，而不是更难读
 
-Objective: express command inputs and outputs cleanly.
+## 练习 2 - 建模一个 CLI 契约
 
-Tasks:
+目标：把命令行输入输出表达清楚。
 
-- define types for parsed CLI arguments
-- define a result type for success and failure cases
-- type the main execution path end to end
+任务：
 
-Progression check:
+- 为解析后的 CLI 参数定义类型
+- 为成功 / 失败结果定义结果类型
+- 把主执行路径从头到尾类型化
 
-- you can point to where invalid states were reduced by the type design
+通过标准：
 
-## Exercise 3 - Union and narrowing drill
+- 你能指出哪些无效状态因为类型设计被提前收缩了
 
-Objective: make conditional logic explicit and safe.
+## 练习 3 - Union 与收窄练习
 
-Tasks:
+目标：把条件分支写得显式而安全。
 
-- create a discriminated union for three command outcomes
-- write code that handles all cases
-- add an impossible branch check or equivalent exhaustiveness pattern
+任务：
 
-Progression check:
+- 为三种命令执行结果定义判别联合
+- 写出覆盖全部分支的处理逻辑
+- 加一个 exhaustiveness check 或等价模式
 
-- you can explain how the compiler helps detect missed cases
+通过标准：
 
-## Exercise 4 - Replace `any` with `unknown`
+- 你能解释编译器是如何帮助你发现漏分支的
 
-Objective: stop bypassing type safety at boundaries.
+## 练习 4 - 用 `unknown` 替换 `any`
 
-Tasks:
+目标：不要在边界绕过类型安全。
 
-- take one function that accepts loose input
-- change the boundary type to `unknown`
-- add a narrowing function or schema validation
-- compare the readability before and after
+任务：
 
-Progression check:
+- 选一个接受松散输入的函数
+- 把输入边界从 `any` 改成 `unknown`
+- 增加 narrowing 函数或 schema 校验
+- 比较前后可读性
 
-- you can explain why `unknown` is safer than `any` for external data
+通过标准：
 
-## Exercise 5 - Generic helper drill
+- 你能解释为什么对外部数据来说，`unknown` 比 `any` 更安全
 
-Objective: practice useful generics without overengineering.
+## 练习 5 - 泛型 helper 练习
 
-Tasks:
+目标：练习有用但不过度的泛型。
 
-- write a generic `mapValues` or equivalent transform helper
-- write a generic result wrapper for command execution or API calls
-- avoid adding constraints you do not need
+任务：
 
-Progression check:
+- 写一个泛型 `mapValues` 或类似 helper
+- 写一个泛型结果包装器，用于命令执行或 API 调用
+- 避免不必要的复杂约束
 
-- the generic form is still understandable by a teammate seeing it for the first time
+通过标准：
 
-## Exercise 6 - Runtime validation boundary
+- 这个泛型版本对第一次看到代码的人仍然可理解
 
-Objective: separate compile-time belief from runtime truth.
+## 练习 6 - 运行时校验边界
 
-Tasks:
+目标：把编译期信念与运行时真相分开。
 
-- read JSON from a file or API
-- validate it against a schema
-- convert the validated data into internal typed objects
-- reject invalid data with clear errors
+任务：
 
-Progression check:
+- 从文件或 API 读取 JSON
+- 用 schema 验证它
+- 把验证后的数据转换成内部类型对象
+- 对非法数据报出清楚错误
 
-- no direct type assertions are used in place of validation at the input boundary
+通过标准：
 
-## Exercise 7 - Read a typed codebase slice
+- 在输入边界上，没有用类型断言替代真正的校验
 
-Objective: learn to interpret real-world TS usage.
+## 练习 7 - 阅读一段真实 TS 代码
 
-Tasks:
+目标：学会读真实世界中的 TypeScript。
 
-- inspect a small TS module from a backend tool or SDK
-- list the exported public types
-- identify where runtime validation happens, if it happens
-- identify one place where the types improve design clarity and one place where they add noise
+任务：
 
-Progression check:
+- 找一个中小型后端工具或 SDK 里的 TS 模块
+- 标出它的公共类型、内部类型和边界设计
+- 写一段评价：哪里因为类型更清楚，哪里因为类型更难读
 
-- you can critique the type design instead of only copying it
+通过标准：
 
-## Required minimum
+- 你能批判性地看 TS 设计，而不是只会照抄
 
-Complete at least:
+## 最低完成要求
 
-- Exercises 1, 2, 3, and 6
-- one conversion of an existing JS utility to strict TS
-- one written critique of a real TS module
+至少完成：
+
+- 练习 1、2、3、6
+- 把一个已有 JS 工具改成 strict TS
+- 写一段对真实 TS 模块的评估说明

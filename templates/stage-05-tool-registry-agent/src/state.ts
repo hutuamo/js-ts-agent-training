@@ -1,1 +1,1 @@
-// Define the explicit loop state model here.
+// 在此处定义显式的循环状态模型。

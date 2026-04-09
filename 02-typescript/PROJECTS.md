@@ -1,79 +1,79 @@
-# Stage 02 Projects
+# Stage 02 项目
 
-## Project 1 - Typed Task Runner
+## 项目 1 - 带类型的任务执行器
 
-Build a small CLI task runner with:
+做一个小型 CLI task runner，要求具备：
 
-- typed command definitions
-- typed configuration input
-- discriminated result types
-- clear error messages
+- 带类型的命令定义
+- 带类型的配置输入
+- 判别化结果类型
+- 清晰的错误消息
 
-Examples:
+例子：
 
-- file cleanup tasks
-- report generation tasks
-- local automation tasks
+- 文件清理任务
+- 报告生成任务
+- 本地自动化任务
 
-What this project trains:
+这个项目训练什么：
 
-- boundary typing
-- command dispatch structure
-- typed result handling
+- 边界类型设计
+- 命令分发结构
+- 带类型的结果处理
 
-Acceptance criteria:
+验收标准：
 
-- the main command flow is type-checked end to end
-- invalid configuration is handled deliberately
-- the type structure helps explain the design
+- 主命令流从头到尾都被类型系统覆盖
+- 对非法配置有明确处理
+- 类型结构有助于解释设计，而不是增加阅读负担
 
-## Project 2 - Typed API Client
+## 项目 2 - 带类型的 API Client
 
-Build a small SDK-style module for one HTTP API.
+做一个面向单个 HTTP API 的小型 SDK 模块。
 
-Requirements:
+要求：
 
-- typed request parameters
-- typed normalized response shapes
-- explicit error model
-- no blind trust in remote JSON
+- 带类型的请求参数
+- 带类型的归一化响应结构
+- 显式错误模型
+- 不盲目信任远端 JSON
 
-What this project trains:
+这个项目训练什么：
 
-- interface design
-- schema alignment
-- making service integrations maintainable
+- 接口设计
+- schema 与类型对齐
+- 让服务集成更可维护
 
-Acceptance criteria:
+验收标准：
 
-- response parsing is separate from transport logic
-- runtime validation exists at the API boundary
-- public exported types are small and clear
+- 响应解析逻辑和 transport 逻辑分离
+- API 边界有运行时校验
+- 对外导出的公共类型小而清楚
 
-## Project 3 - Typed Tool Registry
+## 项目 3 - 带类型的工具注册表
 
-Build a tool registry suitable as a precursor to agent systems.
+做一个工具注册表，作为后续 Agent 系统的前置模块。
 
-Requirements:
+要求：
 
-- each tool has a name, description, input contract, and execution function
-- tool execution returns a typed result
-- invalid input is rejected before tool logic runs
+- 每个工具都有名称、描述、输入契约和执行函数
+- 工具执行结果有明确类型
+- 非法输入在进入工具逻辑前就被拒绝
 
-What this project trains:
+这个项目训练什么：
 
-- contract-first design
-- preparation for model tool calling
-- generic patterns with restraint
+- 契约优先设计
+- 为模型工具调用做准备
+- 克制使用泛型
 
-Acceptance criteria:
+验收标准：
 
-- adding a new tool follows a predictable pattern
-- the registry API is readable without advanced TS knowledge
-- runtime validation and TypeScript types agree on the expected shape
+- 新增工具时有稳定、可重复的模式
+- registry API 不依赖高级 TS 技巧也能读懂
+- 运行时校验和 TypeScript 类型表达的是同一套预期
 
-## Recommended build order
+## 推荐完成顺序
 
-1. Typed Task Runner
-2. Typed API Client
-3. Typed Tool Registry
+1. 带类型的任务执行器
+2. 带类型的 API Client
+3. 带类型的工具注册表

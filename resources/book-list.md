@@ -1,30 +1,30 @@
-# Recommended Books and References
+# 推荐书单与参考资料
 
-## Core books
+## 核心书籍
 
 ### JavaScript
-- *JavaScript: The Definitive Guide (7th ed.)* — main language foundation
-- *You Don't Know JS Yet* — optional alternate perspective for language mechanics
+- *JavaScript 权威指南（第七版）*：主线语言基础
+- *You Don’t Know JS Yet*：可选，适合补语言机制理解
 
 ### TypeScript
-- *Programming TypeScript* — primary structured introduction
-- *Effective TypeScript* — best practices and pitfalls
-- *TypeScript Quickly* — optional fast-track companion
+- *Programming TypeScript*：主线入门书
+- *Effective TypeScript*：最佳实践与踩坑规避
+- *TypeScript Quickly*：可选，偏快速上手
 
 ### Node.js
-- *Node.js Design Patterns* — engineering patterns and runtime thinking
+- *Node.js Design Patterns*：Node 工程方法与运行时思维
 
-### Systems / architecture
-- *Designing Data-Intensive Applications* — long-term systems thinking
-- *Designing Machine Learning Systems* — helpful for production AI systems
+### 系统 / 架构
+- *Designing Data-Intensive Applications*：长期系统思维
+- *Designing Machine Learning Systems*：生产 AI 系统视角
 
-## Primary documentation
+## 主要文档
 - TypeScript Handbook
-- Node.js docs
-- MDN JavaScript docs
-- One model provider SDK docs
+- Node.js 官方文档
+- MDN JavaScript 文档
+- 一个模型提供商的 SDK / API 文档
 
-## Advice
-- Don’t read all books cover-to-cover before coding.
-- Use one main book per layer, then build.
-- For this training, code is the center; books are support.
+## 使用建议
+- 不要先把所有书从头到尾看完再写代码。
+- 每一层只保留一本主书，然后边做边查。
+- 在这个训练体系里，代码是主线，书是辅助。

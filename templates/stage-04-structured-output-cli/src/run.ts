@@ -1,2 +1,2 @@
-// Orchestrate one end-to-end task here.
-// Recommended flow: config -> prompt -> model -> validation -> output.
+// 在此处编排一个端到端任务。
+// 推荐流程：配置 -> prompt -> 模型 -> 校验 -> 输出。

@@ -1,95 +1,95 @@
-# Stage 05 Projects
+# Stage 05 项目
 
-## Project 1 - Research Helper Agent
+## 项目 1 - 研究助手 Agent
 
-Build a small agent that can answer bounded research questions using a few controlled tools.
+构建一个能用几个受控工具回答有界研究问题的小型 agent。
 
-Suggested tools:
+建议工具：
 
-- local note lookup
-- web or document fetch wrapper if available in your environment
-- summarization or extraction helper
-- citation formatter
+- 本地笔记查找
+- Web 或文档获取包装器（如果环境允许）
+- 摘要或提取辅助工具
+- 引用格式化器
 
-Required capabilities:
+必需能力：
 
-- explicit agent loop
-- tool registry with validated arguments
-- per-step trace output
-- final answer that separates evidence from synthesis
+- 显式 agent 循环
+- 带校验参数的工具体系
+- 每步 trace 输出
+- 分开证据和综合的最终答案
 
-What this project trains:
+这个项目训练什么：
 
-- bounded research orchestration
-- tool-use inspection
-- preparation for retrieval-heavy work in Stage 06
+- 有界研究编排
+- 工具使用检查
+- 为 Stage 06 的检索密集型工作做准备
 
-Acceptance criteria:
+验收标准：
 
-- the agent stops after a clear completion rule
-- traces show which tools were called and why
-- unsupported or ambiguous questions are rejected or escalated explicitly
+- agent 在明确的完成规则后停止
+- trace 显示哪些工具被调用了以及为什么
+- 不支持或歧义的查询被显式拒绝或上报
 
-## Project 2 - Multi-Step Local Workflow Agent
+## 项目 2 - 多步本地工作流 Agent
 
-Build an agent that coordinates local tools to complete a backend or CLI task.
+构建一个能协调本地工具完成一个后端或 CLI 任务的 agent。
 
-Examples:
+例子：
 
-- inspect logs and produce an incident summary
-- gather repo metadata and produce a review checklist
-- run a local analysis pipeline with intermediate validation
+- 检查日志并产生事件摘要
+- 收集仓库元数据并产生审查清单
+- 运行带中间校验的本地分析流水线
 
-Required capabilities:
+必需能力：
 
-- bounded steps
-- structured intermediate state
-- at least one side-effect-aware tool classification
-- trace logs with step outcomes
+- 有界步数
+- 结构化中间状态
+- 至少一个副作用感知工具分类
+- 带步骤结果的 trace 日志
 
-What this project trains:
+这个项目训练什么：
 
-- local tool orchestration
-- state management across steps
-- deciding where agent behavior should stop and deterministic workflow should begin
+- 本地工具编排
+- 跨步骤的状态管理
+- 决定 agent 行为在哪里停止、确定性工作流在哪里开始
 
-Acceptance criteria:
+验收标准：
 
-- the system does not hide side effects behind vague tool descriptions
-- state updates are visible and reviewable
-- the final output can be traced back to concrete tool results
+- 系统不把副作用隐藏在模糊的工具描述后面
+- 状态更新是可见的且可审查的
+- 最终输出可以追溯到具体的工具结果
 
-## Project 3 - Tool-Using Assistant with Reviewable Traces
+## 项目 3 - 带可审查 Trace 的工具调用助手
 
-Build an assistant for a small operational task that emphasizes inspectability.
+构建一个强调可检查性的小型运维任务助手。
 
-Examples:
+例子：
 
-- support ticket triage assistant
-- repo maintenance helper
-- operations summary assistant
+- 支持工单分类助手
+- 仓库维护助手
+- 运维摘要助手
 
-Required capabilities:
+必需能力：
 
-- short-lived session state
-- trace persistence or reviewable run records
-- invalid-tool-request handling
-- explicit stop and escalation rules
+- 短生命周期会话状态
+- Trace 持久化或可审查的运行记录
+- 无效工具请求处理
+- 显式停止和上报规则
 
-What this project trains:
+这个项目训练什么：
 
-- review-friendly agent design
-- operational debugging habits
-- foundation for Stage 07 eval and hardening work
+- 审查友好的 agent 设计
+- 运维调试习惯
+- 为 Stage 07 评估和加固工作打基础
 
-Acceptance criteria:
+验收标准：
 
-- a reviewer can reconstruct the run from logs or trace artifacts
-- the assistant does not continue indefinitely on unclear tasks
-- failure outcomes are categorized instead of collapsed into one generic error
+- 审查者能仅从日志或 trace 工件重建运行过程
+- 助手不会在不清楚的任务上无限继续
+- 失败结果被分类，而不是被collapse成一个通用错误
 
-## Recommended build order
+## 推荐完成顺序
 
-1. Research Helper Agent
-2. Multi-Step Local Workflow Agent
-3. Tool-Using Assistant with Reviewable Traces
+1. 研究助手 Agent
+2. 多步本地工作流 Agent
+3. 带可审查 Trace 的工具调用助手

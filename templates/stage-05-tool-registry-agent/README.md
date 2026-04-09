@@ -1,26 +1,26 @@
-# Template - Stage 05 Tool Registry Agent
+# 模板 - Stage 05 工具注册表 Agent
 
-## Purpose
+## 目的
 
-This template is a starter blueprint for a small agent with a visible loop and a controlled tool registry.
+本模板是一个具有可见循环和受控工具注册表的小型 agent 启动蓝图。
 
-The point is not to build a general assistant. The point is to make tool use, state, and stop conditions explicit.
+重点不是建造一个通用助手。重点是让工具使用、状态和停止条件显式化。
 
-## Good use cases
+## 适用场景
 
-- bounded research helper
-- local repo inspection helper
-- operations summary assistant
-- small multi-step workflow with one or two dynamic choices
+- 有界研究助手
+- 本地仓库检查助手
+- 运维摘要助手
+- 带一两个动态选择的小型多步工作流
 
-## Build goals
+## 构建目标
 
-- define a small tool registry with validated arguments
-- keep loop state explicit and inspectable
-- add trace logging for each step
-- enforce stop conditions and escalation paths
+- 定义一个带校验参数的小工具注册表
+- 保持循环状态显式和可检查
+- 为每步添加 trace 日志
+- 强制停止条件和上报路径
 
-## Suggested file tree
+## 建议文件树
 
 ```text
 stage-05-tool-registry-agent/
@@ -39,17 +39,17 @@ stage-05-tool-registry-agent/
     stop-rules.ts
 ```
 
-## Minimum acceptance criteria
+## 最低接受标准
 
-- at least two tools with explicit contracts
-- one loop with step count and termination reason
-- one saved trace format
-- one invalid-tool-request path
-- one human handoff or refusal path
+- 至少两个带显式契约的工具
+- 一个带步骤计数和终止原因的循环
+- 一种保存的 trace 格式
+- 一条无效工具请求路径
+- 一条人工交接或拒绝路径
 
-## Extension ideas
+## 扩展想法
 
-- planning versus direct-execution comparison
-- side-effect classification for tools
-- trace viewer or trace summarizer
-- scenario-based loop evaluation
+- 规划 vs 直接执行对比
+- 工具副作用分类
+- Trace 查看器或 trace 摘要器
+- 基于场景的循环评估

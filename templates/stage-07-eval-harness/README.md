@@ -1,27 +1,27 @@
-# Template - Stage 07 Eval Harness
+# 模板 - Stage 07 评估工具
 
-## Purpose
+## 目的
 
-This template is a starter blueprint for a small evaluation and regression harness around an existing AI-backed tool, workflow, or agent.
+本模板是一个小型评估和回归工具的启动蓝图，围绕一个已存在的 AI 支撑工具、工作流或 agent。
 
-The purpose is not to build a leaderboard. The purpose is to make behavior change visible.
+目的不是建排行榜。目的是使行为变更可见。
 
-## Good use cases
+## 适用场景
 
-- prompt regression checks
-- structured-output validity checks
-- retrieval quality checks
-- tool-use scenario checks
-- workflow-level pass/fail cases
+- Prompt 回归检查
+- 结构化输出有效性检查
+- 检索质量检查
+- 工具使用场景检查
+- 工作流级别通过/失败案例
 
-## Build goals
+## 构建目标
 
-- define a repeatable scenario set
-- define acceptance criteria clearly
-- record results across revisions
-- make regressions visible before demo or deployment
+- 定义一个可重复的场景集
+- 清楚定义接受标准
+- 跨版本记录结果
+- 在演示或部署前使回归可见
 
-## Suggested file tree
+## 建议文件树
 
 ```text
 stage-07-eval-harness/
@@ -37,17 +37,17 @@ stage-07-eval-harness/
     report.ts
 ```
 
-## Minimum acceptance criteria
+## 最低接受标准
 
-- one reusable scenario set
-- one explicit pass/fail rule per case type
-- one result-recording format
-- one example of a real weak case or regression
-- one short note on how to use the harness before releases or prompt changes
+- 一个可复用的场景集
+- 每种案例类型一条显式通过/失败规则
+- 一种结果记录格式
+- 一个真实弱案例或回归的例子
+- 一条简短笔记，说明在发布或 prompt 变更前如何使用工具
 
-## Extension ideas
+## 扩展想法
 
-- compare results across prompt versions
-- compare retrieval or tool behavior across revisions
-- add simple summary reporting
-- integrate with CI later if useful
+- 跨 prompt 版本对比结果
+- 跨版本对比检索或工具行为
+- 添加简单汇总报告
+- 如有需要，后续与 CI 集成

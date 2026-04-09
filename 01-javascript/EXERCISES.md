@@ -1,115 +1,118 @@
-# Stage 01 Exercises
+# Stage 01 练习
 
-## Exercise policy
+## 练习原则
 
-Keep the exercises backend-oriented. Most should be solvable in one sitting. Prefer file, process, and API tasks over algorithm puzzles.
+保持后端导向。大多数练习都应能在一次专注编码中完成。
 
-## Exercise 1 - Data-shape warmup
+优先做文件、进程、API 和数据处理问题，不做纯算法刷题式练习。
 
-Objective: build fluency with arrays, objects, and transformations.
+## 练习 1 - 数据形状热身
 
-Tasks:
+目标：熟悉数组、对象和数据变换。
 
-- take a small JSON file containing an array of records
-- filter by one condition
-- group by one field
-- compute summary counts
-- output a new JSON report
+任务：
 
-Progression check:
+- 读取一个包含记录数组的小 JSON 文件
+- 按一个条件筛选
+- 按一个字段分组
+- 计算汇总计数
+- 输出新的 JSON 报告
 
-- you can explain the shape of the data before and after each transform
+通过标准：
 
-## Exercise 2 - Coercion and comparison audit
+- 你能清楚解释每一步前后的数据形状变化
 
-Objective: stop making accidental truthiness and equality bugs.
+## 练习 2 - 类型转换与比较审计
 
-Tasks:
+目标：避免 truthiness 和相等性带来的边界 bug。
 
-- write small examples for `==` vs `===`
-- test empty string, zero, `null`, `undefined`, empty arrays, and empty objects in conditionals
-- write a short rule set for your future code style
+任务：
 
-Progression check:
+- 写出 `==` 与 `===` 的几个对比例子
+- 测试空字符串、0、`null`、`undefined`、空数组、空对象在条件判断中的行为
+- 写一份简短规则，作为你自己的后端代码风格约束
 
-- you can justify when a loose check is unacceptable in backend code
+通过标准：
 
-## Exercise 3 - Closure and state drill
+- 你能解释为什么在后端代码里，宽松判断通常是不合适的
 
-Objective: understand captured state well enough to recognize bugs.
+## 练习 3 - 闭包与状态练习
 
-Tasks:
+目标：足够理解被捕获状态，从而识别相关 bug。
 
-- write a counter factory
-- write a logger decorator that adds timing or labels
-- write one intentionally broken example where shared mutable state leaks across calls
+任务：
 
-Progression check:
+- 写一个 counter factory
+- 写一个 logger decorator，给函数增加计时或标签
+- 再写一个故意设计的错误例子，展示共享可变状态如何跨调用泄漏
 
-- you can explain what data each closure retains and why
+通过标准：
 
-## Exercise 4 - Text and JSON processor
+- 你能解释每个闭包保留了哪些数据，以及为什么
 
-Objective: practice everyday file and transform work.
+## 练习 4 - 文本与 JSON 处理器
 
-Tasks:
+目标：练习日常文件解析与数据转换。
 
-- read a line-oriented text file
-- parse each line into structured records
-- reject malformed lines
-- emit JSON output plus a short error report
+任务：
 
-Progression check:
+- 读取一个按行组织的文本文件
+- 把每一行解析成结构化记录
+- 对格式错误的行进行拒绝或记录
+- 输出 JSON 结果和简短错误报告
 
-- malformed input does not crash the entire script unless you deliberately choose fail-fast behavior
+通过标准：
 
-## Exercise 5 - Error-handling drill
+- 非法输入不会直接把整个脚本带崩，除非你明确选择 fail-fast
 
-Objective: distinguish normal failure from programmer mistakes.
+## 练习 5 - 错误处理练习
 
-Tasks:
+目标：区分普通失败和程序员错误。
 
-- write a function that validates input and throws on invalid programmer usage
-- write a function that returns a controlled operational error for bad external data
-- compare the two cases in a short note
+任务：
 
-Progression check:
+- 写一个函数，在调用方传错参数时抛错
+- 写另一个函数，在外部输入坏掉时返回可控业务错误
+- 用短文比较这两种情况的不同处理方式
 
-- you can explain when a caught error should be logged, wrapped, rethrown, or allowed to terminate execution
+通过标准：
 
-## Exercise 6 - Async sequencing drill
+- 你能解释什么时候应记录、包装、重抛，什么时候应直接终止执行
 
-Objective: reason about promise control flow in ordinary code.
+## 练习 6 - 异步顺序练习
 
-Tasks:
+目标：能正确推理普通 Promise 控制流。
 
-- run three async tasks sequentially
-- run the same tasks concurrently
-- add one failing task and inspect how the failure propagates
-- add timing output to compare the two strategies
+任务：
 
-Progression check:
+- 依次顺序执行三个异步任务
+- 再并发执行同样三个任务
+- 加入一个失败任务，观察失败如何传播
+- 加计时输出，对比两种策略
 
-- you can explain the difference between concurrency and ordering in your own words
+通过标准：
 
-## Exercise 7 - Read unfamiliar code
+- 你能清楚解释并发与顺序执行的差异，以及它们各自的风险
 
-Objective: transition from writing toy scripts to reading real code.
+## 练习 7 - 模块阅读练习
 
-Tasks:
+目标：学会读真实世界的普通 JS 模块。
 
-- pick a small JS CLI or API client module
-- identify entry points, pure transforms, and side-effecting functions
-- draw a short flow of how input reaches output
+任务：
 
-Progression check:
+- 选一个中小型 JS 模块
+- 标出入口函数、辅助函数、状态来源和主要边界
+- 写一段短说明，解释这个模块“实际上在干什么”
 
-- you can explain the module without narrating every line
+通过标准：
 
-## Required minimum
+- 你的说明能让别人不看源码就先理解整体结构
 
-Complete at least:
+## 最低完成要求
 
-- Exercises 1, 4, 5, and 6
-- one written coercion rule set
-- one read-through of unfamiliar JS code
+至少完成：
+
+- 练习 1、2、4、6
+- 一个文件处理脚本
+- 一个 API 调用脚本
+- 一份你自己写的错误处理规则笔记

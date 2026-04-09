@@ -1,1 +1,1 @@
-// Implement the observe -> decide -> act -> update -> stop loop here.
+// 在此处实现 observe -> decide -> act -> update -> stop 循环。

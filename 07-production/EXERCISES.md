@@ -1,120 +1,121 @@
-# Stage 07 Exercises
+# Stage 07 练习
 
-## Exercise policy
+## 练习原则
 
-Use an existing Stage 04, 05, or 06 project as the base whenever possible. Production hardening is most useful when applied to real systems you already understand.
+尽可能用一个已有的 Stage 04、05 或 06 项目作为基础。生产加固在应用于你已经理解的真实系统时最有价值。
 
-## Exercise 1 - Boundary validation audit
+## 练习 1 - 边界校验审计
 
-Objective: find every place bad data can enter or leave the system.
+目标：找出坏数据能进入或离开系统的每个地方。
 
-Tasks:
+任务：
 
-- list config, model, tool, retrieval, and user-input boundaries
-- define the validation expected at each boundary
-- identify at least one boundary that is currently under-validated
-- add or specify a fix
+- 列出配置、模型、工具、检索和用户输入边界
+- 定义每个边界上预期的校验
+- 识别至少一个当前校验不足的边界
+- 增加或指定一个修复方案
 
-Progression check:
+进度检查：
 
-- you can explain what invalid data is blocked at each layer
+- 你能解释每一层阻断了哪些无效数据
 
-## Exercise 2 - Structured logging and trace IDs
+## 练习 2 - 结构化日志和 trace ID
 
-Objective: make runs diagnosable.
+目标：使运行可诊断。
 
-Tasks:
+任务：
 
-- add structured logs for key events
-- attach request or run identifiers
-- distinguish normal output from diagnostics
-- define redaction rules for secrets and sensitive content
+- 为关键事件添加结构化日志
+- 附加请求或运行标识符
+- 区分正常输出和诊断输出
+- 定义敏感内容的脱敏规则
 
-Progression check:
+进度检查：
 
-- a failed run can be reconstructed from the logs you keep
+- 一次失败的运行能仅从你保留的日志中重建
 
-## Exercise 3 - Retry and timeout policy review
+## 练习 3 - 重试和超时策略审查
 
-Objective: stop using generic resilience patterns blindly.
+目标：停止盲目使用通用弹性模式。
 
-Tasks:
+任务：
 
-- list the external calls your system makes
-- classify which failures are retryable
-- add or document timeout behavior
-- define one degraded-mode or fail-fast path
-- test at least one rate-limit or timeout scenario
+- 列出系统所做的外部调用
+- 分类哪些失败可重试
+- 增加或记录超时行为
+- 定义一条降级模式或 fail-fast 路径
+- 测试至少一个限速或超时场景
 
-Progression check:
+进度检查：
 
-- you can justify why each retry exists
+- 你能为每个重试的存在提供合理性辩护
 
-## Exercise 4 - Prompt and schema regression set
+## 练习 4 - Prompt 和 schema 回归集
 
-Objective: catch behavior drift before it reaches users.
+目标：在行为漂移到达用户之前抓住它。
 
-Tasks:
+任务：
 
-- select representative inputs
-- define expected output properties or failure behavior
-- run the cases before and after a prompt or schema change
-- record deltas and decide whether they are acceptable
+- 选择有代表性的输入
+- 定义预期输出属性或失败行为
+- 在 prompt 或 schema 变更前后运行案例
+- 记录差异，决定是否可接受
 
-Progression check:
+进度检查：
 
-- you have at least one repeatable set that exposes regressions
+- 你有至少一个可重复的集合来暴露回归
 
-## Exercise 5 - Retrieval or tool-use eval drill
+## 练习 5 - 检索或工具使用评估训练
 
-Objective: evaluate the parts that ordinary unit tests miss.
+目标：评估普通单元测试忽略的部分。
 
-Tasks:
+任务：
 
-- choose retrieval quality or tool-use behavior as the target
-- build a small labeled scenario set
-- define pass conditions
-- record at least one surprising miss or regression
-- propose a fix at the correct layer
+- 选择检索质量或工具使用行为作为目标
+- 构建一个小型的带标签场景集
+- 定义通过条件
+- 记录至少一个意外的未命中或回归
+- 在正确层提出修复方案
 
-Progression check:
+进度检查：
 
-- the eval points to a concrete system weakness instead of a vague quality impression
+- 评估指向一个具体的系统弱点，而不是模糊的质量印象
 
-## Exercise 6 - Incident-style failure review
+## 练习 6 - 事件风格失败回顾
 
-Objective: practice postmortem thinking before production incidents happen.
+目标：在生产事件发生之前练习事后思考。
 
-Tasks:
+任务：
 
-- choose one real or simulated failure
-- write a short incident note with timeline, impact, and root cause
-- identify what telemetry was missing
-- identify what guardrail would have reduced the impact
+- 选择一个真实或模拟的失败
+- 写一个包含时间线、影响和根本原因的短事件记录
+- 识别缺少了哪些遥测
+- 识别哪个护栏本可以减少影响
 
-Progression check:
+进度检查：
 
-- the review distinguishes root cause from symptom
+- 回顾区分了根本原因和症状
 
-## Exercise 7 - Deployment and operator note
+## 练习 7 - 部署和运维笔记
 
-Objective: treat the system like something another engineer may have to run.
+目标：把系统当作另一个工程师可能需要运维的东西来对待。
 
-Tasks:
+任务：
 
-- define the runtime shape: CLI, service, worker, or hybrid
-- document required configuration
-- document startup checks and health signals
-- document rollback or safe-disable steps
+- 定义运行时形态：CLI、服务、worker 还是混合
+- 记录必需的配置
+- 记录启动检查和健康信号
+- 记录回滚或安全禁用步骤
 
-Progression check:
+进度检查：
 
-- another engineer could operate the system from your notes
+- 另一个工程师能仅根据你的笔记运维系统
 
-## Required minimum
+## 最低完成要求
 
-Complete at least:
+至少完成：
 
-- Exercises 1, 2, 3, and 4
-- one retrieval or tool-use eval drill
-- one incident-style review tied to a real project
+- 练习 1、2、3
+- 一个重试或超时策略的明确文档
+- 至少一个回归场景集
+- 一个真实项目的加固版本

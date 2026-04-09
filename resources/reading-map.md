@@ -1,216 +1,215 @@
-# Reading Map
+# 阅读地图
 
-## Purpose
+## 目的
 
-This file maps books, official documentation, and selected study materials to the curriculum stages in this repository.
+这份文件把书籍、官方文档和补充资料映射到本仓库的各个阶段中。
 
-The intended reader already knows how to program, likely has strong systems-language habits from C or C++, and wants to become effective at JavaScript/TypeScript backend and AI agent engineering.
+默认读者已经会编程，可能有较强的 C / C++ 系统语言习惯，希望高效进入 JavaScript / TypeScript 后端与 AI Agent 工程。
 
-The goal is not to read everything. The goal is to read enough at each stage to support building.
+目标不是把资料全看完，而是在每个阶段读到足够支撑构建和调试的程度。
 
-## Reading principles
+## 阅读原则
 
-- Prefer one main source per layer, then build.
-- Use official docs as reference, not as the only learning method.
-- Read in service of a stage project whenever possible.
-- If a book chapter does not affect how you build or debug, defer it.
+- 每一层优先保留一个主资料源，然后立刻进入实践。
+- 官方文档是权威参考，但不应该是唯一学习方式。
+- 阅读最好服务于当前阶段项目，而不是脱离项目空读。
+- 如果一章内容不影响你怎么写、怎么调试，就可以推迟。
 
 ## Stage 00 - Foundations
 
-### Primary reading
-- Node.js official documentation: getting started, modules, process basics
-- MDN JavaScript guide: overview-level refreshers
+### 主资料
+- Node.js 官方文档：入门、模块、process 基础
+- MDN JavaScript 指南：概览级刷新
 
-### Why it matters
-At this stage, you are replacing incorrect assumptions about runtime, packaging, modules, and tooling.
+### 为什么重要
+这个阶段的主要任务，是修正你对运行时、包管理、模块和工具链的错误预期。
 
-### C/C++ transition focus
-- runtime versus compiled-binary expectations
-- package manager and ecosystem habits
-- async model differences
-- modules and project layout conventions
+### C/C++ 迁移重点
+- 运行时程序与已编译二进制的差异
+- 包管理和生态习惯
+- 异步模型差异
+- 模块与项目结构约定
 
-### Read just enough to:
-- install the toolchain confidently
-- run and inspect a small CLI
-- explain the event loop at a practical level
+### 读到什么程度就够
+- 能自信搭好工具链
+- 能运行并观察一个小型 CLI
+- 能用工程视角解释 event loop
 
 ## Stage 01 - JavaScript
 
-### Primary reading
-- *JavaScript: The Definitive Guide (7th ed.)* — main structured source
-- MDN docs — lookup and clarification while building
-- *You Don't Know JS Yet* — optional selective reading for language mechanics
+### 主资料
+- *JavaScript 权威指南（第七版）*：主线书
+- MDN 文档：写代码时随查随用
+- *You Don’t Know JS Yet*：可选，用于补语言机制理解
 
-### Focus areas
-- values and coercion
-- functions, closures, scope
-- objects and arrays
-- prototypes at a practical level
-- modules
-- errors
-- promises and async/await
+### 重点内容
+- 值与类型转换
+- 函数、闭包、作用域
+- 对象和数组
+- 原型的实用理解
+- 模块
+- 错误处理
+- Promise 和 async/await
 
-### What to skim
-- browser-heavy sections not relevant to backend/CLI work
+### 可略读内容
+- 与后端 / CLI 无关的重浏览器章节
 
-### C/C++ transition focus
-- dynamic typing and runtime coercion
-- object model versus class-first instincts
-- closures and functional patterns
-- asynchronous thinking
+### C/C++ 迁移重点
+- 动态类型与运行时转换
+- 对象模型和 class-first 思维的差异
+- 闭包和函数式模式
+- 异步思维
 
 ## Stage 02 - TypeScript
 
-### Primary reading
-- *Programming TypeScript* — main book
-- TypeScript Handbook — authoritative syntax and feature reference
-- *Effective TypeScript* — best practices and pitfalls
+### 主资料
+- *Programming TypeScript*：主书
+- TypeScript Handbook：权威语法和特性参考
+- *Effective TypeScript*：最佳实践与坑点
 
-### Focus areas
-- type annotations and inference
-- object and function typing
-- unions and narrowing
-- generics for ordinary engineering
-- strict mode and tsconfig
-- runtime validation boundary thinking
+### 重点内容
+- 类型标注与推导
+- 对象与函数类型
+- union 与 narrowing
+- 面向普通工程的泛型
+- strict mode 和 tsconfig
+- 运行时校验边界思维
 
-### What to defer
-- advanced type-level programming
-- clever type-system tricks without practical payoff
+### 应延后内容
+- 高级类型体操
+- 对项目实际收益不大的炫技型类型设计
 
-### C/C++ transition focus
-- structural typing
-- compile-time help versus runtime truth
-- when types improve design versus when they add noise
+### C/C++ 迁移重点
+- 结构化类型
+- 编译期帮助与运行时真相的差别
+- 什么时候类型在帮你，什么时候它只是在制造噪音
 
 ## Stage 03 - Node.js
 
-### Primary reading
-- *Node.js Design Patterns* — main engineering book
-- Node.js official docs — fs, path, process, streams, child_process, fetch/http
+### 主资料
+- *Node.js Design Patterns*：主工程书
+- Node.js 官方文档：fs、path、process、streams、child_process、fetch/http
 
-### Focus areas
-- filesystem and paths
-- config and environment variables
-- retries, timeouts, and external I/O failure
-- streams and buffers
-- child process integration
-- packaging and CLI/service structure
+### 重点内容
+- 文件与路径
+- 配置与环境变量
+- 重试、超时与外部 I/O 失败
+- 流与缓冲
+- 子进程集成
+- 包结构、CLI 与服务结构
 
-### C/C++ transition focus
-- high-level runtime convenience without losing operational discipline
-- evented I/O and concurrency patterns
-- shell/tool integration from Node
+### C/C++ 迁移重点
+- 在高层运行时里保持工程纪律
+- 事件驱动 I/O 与并发模式
+- 从 Node 驱动 shell / 外部工具
 
 ## Stage 04 - LLM Basics
 
-### Primary reading
-- one model provider SDK/documentation set
-- official docs for structured output and tool calling in your chosen provider
-- provider API error and rate-limit docs
+### 主资料
+- 一个模型提供商的 SDK / 文档路径
+- 你选定提供商的结构化输出与工具调用官方文档
+- 提供商错误处理、限流与速率限制文档
 
-### Focus areas
-- request and response lifecycle
-- prompt contracts
-- structured output
-- streaming tradeoffs
-- tool calling roundtrip
-- token and latency awareness
+### 重点内容
+- 请求 / 响应生命周期
+- prompt 契约
+- 结构化输出
+- streaming 取舍
+- 工具调用 roundtrip
+- token 与延迟意识
 
-### What to avoid
-- reading five providers at once
-- vague prompt-engineering content without implementation detail
+### 不要做的事
+- 同时研究 5 家 provider
+- 看很多没有落地实现细节的 prompt 工程文章
 
-### C/C++ transition focus
-- probabilistic subsystem inside deterministic software
-- validation at every model boundary
-- logging and saved examples as debugging tools
+### C/C++ 迁移重点
+- 在确定性系统中接入概率型子系统
+- 在模型边界做严格验证
+- 用日志和保存样例作为调试手段
 
 ## Stage 05 - Agent Core
 
-### Primary reading
-- your own Stage 04 project notes and traces
-- selected docs or articles on tool orchestration and eval-minded design
-- framework docs only after you can hand-build a loop
+### 主资料
+- 你自己在 Stage 04 里积累的项目笔记与 trace
+- 少量关于工具编排、评估和 system design 的材料
+- 框架文档应放在你能手写 loop 之后再看
 
-### Focus areas
-- loop anatomy
-- state boundaries
-- tool registry design
-- planning versus direct execution
-- traces and guardrails
+### 重点内容
+- loop 结构
+- 状态边界
+- 工具注册表设计
+- planning 与 direct execution 的取舍
+- trace 与 guardrails
 
-### What to avoid
-- framework-first learning
-- abstract “agent” essays with no system design consequences
+### 不要做的事
+- 先学框架，再理解系统结构
+- 看大量抽象“agent 哲学”而没有系统后果
 
-## Stage 06 - RAG, Memory, and Workflows
+## Stage 06 - RAG / Memory / Workflows
 
-### Primary reading
-- vector/retrieval documentation only as needed for your chosen stack
-- selected materials on chunking, retrieval evaluation, and citation grounding
-- internal notes from your own experiments
+### 主资料
+- 只按需要阅读向量检索 / 检索框架文档
+- 少量关于 chunking、retrieval eval、citation grounding 的材料
+- 你自己实验积累的检索结果与失败案例
 
-### Focus areas
-- ingestion
-- chunking and metadata
+### 重点内容
+- 数据导入
+- chunking 与 metadata
 - retrieval inspection
 - grounded output
 - memory policy
-- workflow versus autonomy
+- workflow 与 autonomy 的边界
 
-### What to avoid
-- adding retrieval before defining corpus quality
-- treating “memory” as a marketing term instead of retained state
+### 不要做的事
+- 在没定义 corpus 质量前就上向量检索
+- 把“记忆”当营销词，而不是保留状态
 
 ## Stage 07 - Production
 
-### Primary reading
-- *Designing Data-Intensive Applications* — selective, for long-term systems thinking
-- *Designing Machine Learning Systems* — selective, for production AI perspective
-- provider docs for rate limits, retries, and operational guidance
+### 主资料
+- *Designing Data-Intensive Applications*：选择性阅读，用于长期系统思维
+- *Designing Machine Learning Systems*：选择性阅读，用于生产 AI 系统视角
+- provider 关于 rate limit、重试与运营的文档
 
-### Focus areas
-- validation and contracts
-- observability
-- retries, backoff, fallbacks
-- evals and regression
-- secrets and data handling
-- deployment shape and operator notes
+### 重点内容
+- 校验与契约
+- 可观测性
+- 重试、回退与降级
+- eval 与回归测试
+- 密钥与数据处理
+- 部署形态和 operator note
 
-### What to avoid
-- over-reading architecture books instead of hardening a real project
+### 不要做的事
+- 只读系统书，不在自己的项目上做加固
 
 ## Stage 08 - Capstones
 
-### Primary reading
-- your own project documentation and prior stage notes
-- comparable open-source projects, read critically
-- deployment and operator documentation for your chosen runtime shape
+### 主资料
+- 你自己的项目文档和阶段笔记
+- 可对照的开源项目，带批判性阅读
+- 你所采用部署方式的文档
 
-### Focus areas
-- architecture coherence
-- evaluation discipline
-- limitations and scope control
-- documentation quality
+### 重点内容
+- 架构一致性
+- 评估与证明能力
+- 限制、范围和文档质量
 
-## Minimal reading stack for this curriculum
+## 最小有效阅读组合
 
-If you want the shortest useful stack, use:
+如果你想走最短可用路线，保留这些就够了：
 
-- *JavaScript: The Definitive Guide (7th ed.)*
+- *JavaScript 权威指南（第七版）*
 - *Programming TypeScript*
 - *Effective TypeScript*
 - *Node.js Design Patterns*
 - TypeScript Handbook
-- Node.js official docs
-- one provider SDK/documentation set
+- Node.js 官方文档
+- 一个模型提供商的 SDK / API 文档
 
-## Advice for experienced C/C++ engineers
+## 给 C/C++ 工程师的建议
 
-- Do not try to reproduce native-language certainty through excessive TypeScript tricks.
-- Learn the runtime and ecosystem conventions before optimizing them away.
-- Prefer boring backend code over fashionable abstractions.
-- Keep frontend reading out of the critical path unless your capstone truly needs it.
-- Read enough to unblock implementation, then return to code.
+- 不要试图用 TypeScript 的复杂技巧去复制原生语言的确定感。
+- 先掌握运行时和生态约定，再考虑优化它们。
+- 优先写朴素、清楚的后端代码，而不是追求“看起来很高级”。
+- 前端相关阅读不要进入主线，除非你的 capstone 确实需要。
+- 读到足够能写下一步代码，就停下来开始构建。

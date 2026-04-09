@@ -1,180 +1,164 @@
-# Curriculum Map
+# 课程地图
 
-## Purpose
+## 目的
 
-This file defines the intended flow of the curriculum so a self-learner can move through it without guessing sequence, scope, or readiness.
+这份文件用来定义整个训练体系的推荐推进顺序，让自学者不用靠猜来判断：
+- 先学什么
+- 为什么学这个
+- 什么时候能进入下一阶段
 
-The repository is designed for an experienced programmer, especially someone coming from C or C++, who wants to become effective at backend, CLI, and AI-agent engineering in JavaScript and TypeScript.
+本仓库面向已经有编程经验，尤其是有 C / C++ 背景，并希望转向 JavaScript / TypeScript 后端与 AI Agent 工程的人。
 
-## Audience assumptions
+## 读者前提假设
 
-You are likely already comfortable with:
+你大概率已经熟悉：
 
-- functions, data structures, and debugging
-- command-line workflows
-- building and reading non-trivial code
-- reasoning about performance and failure
+- 函数、数据结构与调试
+- 命令行与开发工具链
+- 阅读和编写中型代码库
+- 性能、边界条件与失败处理的基本思维
 
-You are likely not yet comfortable with:
+你大概率还不够熟悉：
 
-- JavaScript runtime behavior
-- TypeScript’s structural typing model
-- Node.js process and I/O conventions
-- model APIs, tool calling, and agent workflows
+- JavaScript 运行时行为
+- TypeScript 的结构化类型系统
+- Node.js 的进程、I/O 和包生态
+- 模型 API、工具调用与 Agent 工作流
 
-## Stage sequence
+## 阶段顺序
 
-### Stage 00 - Foundations
+### Stage 00 - 基础环境与认知迁移
 
-Primary outcome:
+主要目标：
+- 建立环境、工具链与正确的运行时心智模型
 
-- establish environment, tooling, and correct runtime mental models
+为什么不能跳过：
+- 后面大多数困惑，都来自对模块、异步、包管理和运行时的误判
 
-Do not skip because:
-
-- most later confusion comes from wrong assumptions about modules, async behavior, and package tooling
-
-Advance when:
-
-- Node workflow and runtime basics no longer feel opaque
+进入下一阶段的标准：
+- 你已经不再把 Node 视作一个陌生黑箱
 
 ### Stage 01 - JavaScript
 
-Primary outcome:
+主要目标：
+- 能够用纯 JavaScript 编写、阅读和调试中小型后端 / CLI 程序
 
-- become productive in plain JavaScript for backend and CLI tasks
+为什么不能跳过：
+- TypeScript 不能替你弥补对 JavaScript 运行时的无知
 
-Do not skip because:
-
-- TypeScript cannot compensate for weak JavaScript runtime understanding
-
-Advance when:
-
-- you can build and debug small JS tools confidently
+进入下一阶段的标准：
+- 你能独立完成小型 JS 工具，而不是只能照着教程敲
 
 ### Stage 02 - TypeScript
 
-Primary outcome:
+主要目标：
+- 用类型系统澄清系统边界、减少可避免错误
 
-- use types to clarify boundaries and reduce avoidable mistakes
+为什么不能跳过：
+- Agent 和工具系统非常依赖明确的输入输出契约
 
-Do not skip because:
-
-- agent and tool code benefits heavily from explicit contracts
-
-Advance when:
-
-- types improve clarity instead of adding noise
+进入下一阶段的标准：
+- 类型开始帮你理清设计，而不是制造噪音
 
 ### Stage 03 - Node.js
 
-Primary outcome:
+主要目标：
+- 围绕文件、网络、进程和配置构建可靠的工具与服务
 
-- build robust tools and services around filesystem, process, and network I/O
+为什么不能跳过：
+- Agent 系统本质上是运行中的软件系统，不是 prompt 外壳
 
-Do not skip because:
+进入下一阶段的标准：
+- 你能写出带真实失败处理的 CLI 或后端工具
 
-- agent systems are operational software, not just prompt wrappers
+### Stage 04 - LLM 基础接入
 
-Advance when:
+主要目标：
+- 掌握模型 API、结构化输出和工具调用的基本工程做法
 
-- you can build a reliable CLI or backend utility with real failure handling
-
-### Stage 04 - LLM Basics
-
-Primary outcome:
-
-- integrate model APIs, structured outputs, and tool-calling fundamentals
-
-Depends most on:
-
-- Stage 02 typing discipline
-- Stage 03 I/O and HTTP discipline
+主要依赖：
+- Stage 02 的类型与边界表达
+- Stage 03 的 I/O、HTTP 与配置能力
 
 ### Stage 05 - Agent Core
 
-Primary outcome:
+主要目标：
+- 构建 loop、工具抽象和有边界的状态系统
 
-- build loops, tool abstractions, and stateful agent workflows
+主要依赖：
+- 已验证的模型边界
+- Node 侧的工具与过程控制能力
 
-Depends most on:
+### Stage 06 - 检索、记忆与工作流
 
-- validated boundaries
-- Node process and orchestration knowledge
+主要目标：
+- 构建基于检索和工作流的上下文系统，而不是滥用“智能体自动化”
 
-### Stage 06 - RAG, Memory, and Workflows
+### Stage 07 - 生产化
 
-Primary outcome:
+主要目标：
+- 提升可靠性、可观测性、评估能力和运营可维护性
 
-- build retrieval and memory-backed systems without confusing workflow logic with agent autonomy
+### Stage 08 - 毕业项目
 
-### Stage 07 - Production
+主要目标：
+- 交付能进入作品集的端到端项目
 
-Primary outcome:
+## 推荐节奏
 
-- improve reliability, observability, evaluation, and operational safety
+### 快速路径
 
-### Stage 08 - Capstones
+- 10～12 周
+- 适合已经有较强后端经验、能持续投入的人
 
-Primary outcome:
+### 标准路径
 
-- ship portfolio-grade end-to-end systems
+- 3～5 个月
+- 适合绝大多数自学者
 
-## Suggested pacing
+### 深入路径
 
-### Fast track
+- 6 个月以上
+- 适合想把项目打磨到更成熟程度的人
 
-- 10 to 12 weeks
-- suitable if you already have strong backend discipline and can study consistently
+## 推进规则
 
-### Standard track
+不要因为“看完了”就进入下一阶段。
 
-- 3 to 5 months
-- suitable for most self-learners balancing work with study
+只有满足这三点，才算真正完成当前阶段：
 
-### Deep track
+- 已完成要求练习
+- 已完成一个阶段项目或同等级替代项目
+- 能在不查笔记的情况下解释常见失败情形
 
-- 6 months or longer
-- suitable if you want stronger project polish, deeper reading, and repeated project rewrites
+## 每周推荐节奏
 
-## Required progression rule
+- 2～3 次短阅读/笔记整理
+- 2～4 次编码练习或项目推进
+- 1 次调试、复盘和重构
 
-Do not advance just because you finished the reading.
+## 每阶段的最低输出
 
-Advance only when all three are true:
+每个阶段至少应留下：
 
-- you completed the required exercises
-- you built the stage project or equivalent
-- you can explain common failure cases without consulting notes
+- 可执行代码或脚本
+- 对困惑点的简短说明
+- 至少一个能复用的项目产物
+- 一次基于 checklist 的通过/不通过判断
 
-## Recommended weekly pattern
+## 给 C/C++ 工程师的特别提醒
 
-- 2 to 3 short study sessions for reading and note consolidation
-- 2 to 4 build sessions for exercises and projects
-- 1 review session for debugging, refactoring, and writing stage notes
+- 不要执着于把每个概念直接映射回原生语言模型
+- 先接受平台习惯，再谈优化和抽象
+- 优先写清楚、可维护的“笨代码”
+- 把外部 JSON、模型输出、进程输出都当成不可信输入
+- 在平台真正熟悉之前，不要让前端内容偏离主线
 
-## Minimum output per stage
+## 每阶段内部推荐顺序
 
-Each completed stage should leave you with:
+1. 先读 `OVERVIEW.md`
+2. 再按顺序完成 `EXERCISES.md`
+3. 至少做一个 `PROJECTS.md` 中的项目
+4. 最后用 `CHECKLIST.md` 决定是否进入下一阶段
 
-- executable code or scripts
-- short written notes on confusing concepts
-- one or more artifacts you can revisit later
-- a pass/fail decision against the stage checklist
-
-## Practical advice for C/C++ engineers
-
-- resist the urge to map every concept directly onto native-language equivalents
-- learn the platform conventions before optimizing them away
-- prefer boring, explicit code over dense JS idioms
-- treat external JSON, model output, and process output as untrusted input
-- keep backend and CLI work central until the platform feels natural
-
-## Recommended order of use inside each stage
-
-1. Read `OVERVIEW.md`.
-2. Complete `EXERCISES.md` in order.
-3. Build one project from `PROJECTS.md`.
-4. Use `CHECKLIST.md` to decide whether to advance.
-
-If a stage still feels shaky, repeat it with a different project instead of skimming ahead.
+如果某一阶段仍然发虚，就换一个题目再做一遍，而不是急着往后跳。

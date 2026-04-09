@@ -1,30 +1,30 @@
-# Stage 08 Checklist
+# Stage 08 检查清单
 
-## Capstone readiness checklist
+## Capstone 就绪检查
 
-- [ ] I defined a narrow problem statement and explicit non-goals.
-- [ ] I chose an architecture that matches the problem instead of forcing full autonomy.
-- [ ] I can explain where the model is used and where deterministic code is preferred.
-- [ ] I documented tool, state, retrieval, and memory boundaries where applicable.
-- [ ] I wrote acceptance criteria for representative scenarios.
-- [ ] I created an eval or scenario pack that includes at least one limitation or failure case.
-- [ ] I included validation, logging, and operational guidance in the project plan or implementation.
-- [ ] I documented known limitations and future work separately.
-- [ ] I can demonstrate the project end to end without relying on one fragile happy path.
-- [ ] I can defend the project to another backend engineer as serious engineering work.
+- [ ] 我定义了窄的问题陈述和显式的非目标。
+- [ ] 我选择了匹配问题的架构，而不是强行上全套自主性。
+- [ ] 我能解释在哪里使用模型，在哪里优先使用确定性代码。
+- [ ] 我记录了工具、状态、检索和记忆边界（适用时）。
+- [ ] 我为有代表性的场景写了接受标准。
+- [ ] 我创建了一个评估或场景包，包含至少一个局限性或失败案例。
+- [ ] 我在项目计划或实现中包含了校验、日志和运维指导。
+- [ ] 我把已知局限性和未来工作分开记录。
+- [ ] 我能不依赖一条脆弱的 happy path 端到端演示项目。
+- [ ] 我能向另一个后端工程师捍卫这个项目是严肃的工程工作。
 
-## Completion gate
+## 完成门槛
 
-A capstone is complete only if:
+Capstone 只有在以下情况才算完成：
 
-- the implementation and documentation tell the same story
-- the core scenarios are validated and explainable
-- tradeoffs and limitations are explicit instead of hidden in vague language
+- 实现和文档讲述同一个故事
+- 核心场景被校验且可解释
+- 权衡和局限性是显式的，而不是隐藏在模糊语言中
 
-## If the capstone is weak
+## 如果 Capstone 薄弱
 
-Re-scope the project if any of these are still true:
+如果以下情况仍然成立，重新 scoping 项目：
 
-- the project claims more capability than it can validate
-- the architecture is harder to explain than the problem itself
-- the demo depends on unrecorded setup, manual intervention, or one lucky run
+- 项目声称的能力超过它能校验的范围
+- 架构比问题本身更难解释
+- 演示依赖于未记录的设置、人工干预或一次幸运的运行

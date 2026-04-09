@@ -1,96 +1,96 @@
-# Stage 04 Projects
+# Stage 04 项目
 
-## Project 1 - Single-Turn Assistant CLI
+## 项目 1 - 单轮助手 CLI
 
-Build a CLI that performs one practical task with an LLM.
+构建一个用 LLM 完成一个实际任务的 CLI。
 
-Suitable examples:
+适合的例子：
 
-- summarize operational notes
-- classify issue reports
-- rewrite rough text into a strict internal format
-- extract action items from meeting notes
+- 汇总运维笔记
+- 对 issue 报告分类
+- 把粗糙文本改写成严格的内部格式
+- 从会议记录中提取行动项
 
-Required capabilities:
+必需能力：
 
-- typed configuration
-- normalized model wrapper
-- safe logging
-- clear separation between prompt construction, model call, and output handling
+- 带类型的配置
+- 归一化模型包装器
+- 安全的日志记录
+- prompt 构建、模型调用和输出处理之间的清晰分离
 
-What this project trains:
+这个项目训练什么：
 
-- basic provider integration
-- prompt-as-contract thinking
-- backend-first LLM usage
+- 基本的提供商集成
+- prompt 即契约的思维
+- 后端优先的 LLM 使用
 
-Acceptance criteria:
+验收标准：
 
-- the CLI can be run repeatedly with predictable I/O behavior
-- transport failures and invalid responses are reported clearly
-- prompt text is not mixed into unrelated business logic
+- CLI 可以重复运行，有可预测的 I/O 行为
+- transport 失败和无效响应被清晰报告
+- prompt 文本不混入无关业务逻辑
 
-## Project 2 - Structured Extraction Tool
+## 项目 2 - 结构化提取工具
 
-Build a tool that converts unstructured input into validated structured data.
+构建一个把非结构化输入转换为已校验结构化数据的工具。
 
-Examples:
+例子：
 
-- extract TODOs, owners, and due dates from notes
-- extract incident fields from log or support text
-- convert rough research notes into a typed outline
+- 从笔记中提取 TODO、负责人和截止日期
+- 从日志或支持文本中提取事件字段
+- 把粗糙的研究笔记转换成带类型的大纲
 
-Required capabilities:
+必需能力：
 
-- schema-defined output
-- runtime validation
-- explicit invalid-response handling
-- saved input and output examples for regression comparison
+- schema 定义的输出
+- 运行时校验
+- 显式无效响应处理
+- 保存的输入输出案例，用于后续回归对比
 
-What this project trains:
+这个项目训练什么：
 
-- structured output reliability
-- schema-first design
-- the difference between model generation and accepted system state
+- 结构化输出可靠性
+- schema 优先设计
+- 模型生成与系统接受状态的区别
 
-Acceptance criteria:
+验收标准：
 
-- only validated output is emitted to downstream consumers
-- invalid output is either rejected or repaired by a documented path
-- examples are saved in a way that can later support regression tests
+- 只有经过校验的输出才会被发给下游消费者
+- 无效输出要么被拒绝，要么通过有文档记录的路径修复
+- 案例以可后续支持回归测试的方式保存
 
-## Project 3 - Typed Tool-Calling Assistant
+## 项目 3 - 带类型的工具调用助手
 
-Build a small assistant that can call one or two tools to complete a request.
+构建一个能调用一两个工具来完成请求的小型助手。
 
-Suggested tools:
+建议工具：
 
-- local file lookup
-- a simple calculator or parser
-- one HTTP-backed lookup
-- a small internal data reader
+- 本地文件查找
+- 简单计算器或解析器
+- 一个 HTTP 支撑的查询
+- 一个小型内部数据读取器
 
-Required capabilities:
+必需能力：
 
-- tool registry or equivalent explicit tool definition
-- argument validation before execution
-- normalized tool result shape
-- one controlled loop with a stop condition
+- 工具注册表或等效的显式工具定义
+- 执行前的参数校验
+- 归一化的工具结果形状
+- 一个有停止条件的受控循环
 
-What this project trains:
+这个项目训练什么：
 
-- model-to-tool handoff
-- action boundary design
-- preparation for Stage 05 agent loops
+- 模型到工具的交接
+- 动作边界设计
+- 为 Stage 05 agent 循环做准备
 
-Acceptance criteria:
+验收标准：
 
-- tools cannot be called with unchecked arguments
-- tool execution and model reasoning remain visibly separate in the code
-- the assistant can explain failure cleanly when the model requests an invalid action
+- 工具不能被用未校验的参数调用
+- 工具执行和模型推理在代码中保持可见分离
+- 当模型请求无效动作时，助手能干净地解释失败
 
-## Recommended build order
+## 推荐完成顺序
 
-1. Single-Turn Assistant CLI
-2. Structured Extraction Tool
-3. Typed Tool-Calling Assistant
+1. 单轮助手 CLI
+2. 结构化提取工具
+3. 带类型的工具调用助手

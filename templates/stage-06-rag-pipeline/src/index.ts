@@ -1,1 +1,1 @@
-// Build or load the retrieval index here.
+// 在此处构建或加载检索索引。

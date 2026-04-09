@@ -1,20 +1,20 @@
 # TODO - Stage 06 RAG Pipeline
 
-## Build checklist
+## 构建检查清单
 
-- [ ] choose and bound the corpus
-- [ ] define source metadata fields
-- [ ] implement ingestion and normalization
-- [ ] choose and document chunking strategy
-- [ ] implement retrieval inspection path
-- [ ] implement grounded answer path
-- [ ] require citations or refusal for unsupported claims
-- [ ] create a small labeled query set
-- [ ] document one retrieval failure and one generation failure
-- [ ] write setup and update notes for the corpus
+- [ ] 选择并界定语料库
+- [ ] 定义源元数据字段
+- [ ] 实现摄入和归一化
+- [ ] 选择并记录分块策略
+- [ ] 实现检索检查路径
+- [ ] 实现有据答案路径
+- [ ] 要求引用或对不支持的声明拒绝
+- [ ] 创建一个小型的带标签查询集
+- [ ] 记录一个检索失败和一个生成失败
+- [ ] 写语料库的设置和更新笔记
 
-## Stretch goals
+## 延伸目标
 
-- [ ] compare two chunking strategies
-- [ ] add workflow versus assistant comparison
-- [ ] add simple retrieval metrics reporting
+- [ ] 对比两种分块策略
+- [ ] 添加工作流 vs 助手对比
+- [ ] 添加简单检索指标报告

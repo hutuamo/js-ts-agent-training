@@ -1,100 +1,104 @@
-# Contributing
+# 贡献说明
 
-## Purpose
+## 目的
 
-This repository is a staged training system, not a loose collection of notes. Contributions should improve sequencing, clarity, and practical outcomes for experienced programmers moving from C/C++ into JavaScript, TypeScript, Node.js, and AI-agent engineering.
+这个仓库是一个**分阶段训练系统**，不是松散的资料堆。所有贡献都应该服务于一个目标：
 
-## Content standard
+> 帮助有编程经验、尤其是有 C/C++ 背景的开发者，更高效地转向 JavaScript、TypeScript、Node.js 与 AI Agent 工程。
 
-Prefer content that is:
+## 内容标准
 
-- practical
-- concise
-- structured
-- backend- and CLI-oriented
-- explicit about progression gates
+优先接受这样的内容：
 
-Avoid content that is:
+- 实用
+- 简洁
+- 结构清晰
+- 面向后端、CLI 与 Agent 工程
+- 明确写出阶段目标和闯关标准
 
-- hype-driven
-- framework-chasing
-- frontend-heavy unless clearly justified
-- vague about prerequisites or expected outcomes
+尽量避免这样的内容：
 
-## Audience contract
+- 口号化、鸡血化
+- 追逐框架热词
+- 前端导向过重
+- 没有前置条件说明
+- 没有练习或项目支撑的纯理论长文
 
-Write for readers who:
+## 读者契约
 
-- already know how to program
-- may have strong systems or native-language experience
-- need help with JS/TS runtime habits, Node workflows, and agent-system engineering patterns
+默认读者：
 
-Do not write as if the reader is a beginner to programming in general.
+- 已经会编程
+- 可能具备较强系统编程经验
+- 需要补 JS/TS 运行时、Node 工程习惯和 Agent 系统设计
 
-## Preferred document pattern
+不要按“编程零基础入门课”的方式来写。
 
-For stage content, preserve the current structure:
+## 推荐文档结构
 
-- `OVERVIEW.md` for purpose, sequence, and stage gate
-- `EXERCISES.md` for concrete drills
-- `PROJECTS.md` for applied builds
-- `CHECKLIST.md` for progression decisions
+对于阶段内容，尽量保持当前结构：
 
-When editing or adding stage material:
+- `OVERVIEW.md`：阶段目的、顺序、进入/退出标准
+- `EXERCISES.md`：可执行练习
+- `PROJECTS.md`：项目任务
+- `CHECKLIST.md`：是否通过本阶段的判断清单
 
-- define the target learner clearly
-- explain why the stage exists
-- include concrete exercises, not only reading
-- include a progression gate
-- connect the stage to later stages
+如果新增或修改阶段内容，应保证：
 
-## Scope guidance
+- 明确面向谁
+- 解释为什么这个阶段存在
+- 给出练习，而不只是给出阅读建议
+- 有清楚的 progression gate
+- 能连接前后阶段
 
-Good additions:
+## 范围建议
 
-- clearer stage sequencing
-- better drills for backend and CLI work
-- stronger agent-systems framing
-- more realistic failure-mode exercises
-- improved project prompts and acceptance criteria
+比较好的贡献方向：
 
-Weak additions:
+- 更清晰的阶段顺序
+- 更贴近后端/CLI/Agent 的练习
+- 更强的失败处理与系统可靠性训练
+- 更好的项目提示和验收标准
+- 更实用的模板、review 指南和 artifact 示例
 
-- long theory dumps without exercises
-- frontend framework tutorials unrelated to agent work
-- advanced type-system tricks without practical payoff
-- generic productivity advice detached from the curriculum
+比较弱的贡献方向：
 
-## Style guidance
+- 不带练习的理论大段落
+- 与主线无关的前端框架教程
+- 没有实际收益的高级类型体操
+- 脱离仓库结构的泛泛效率建议
 
-- keep headings informative and short
-- prefer direct statements over motivational language
-- use examples that reflect backend, tooling, automation, or agent use cases
-- avoid unnecessary jargon
-- define progression in terms of demonstrated ability, not time spent
+## 风格要求
 
-## Editing rules
+- 标题要直接、清晰
+- 少用空泛激励，多用可执行说明
+- 尽量用后端、自动化、工具、工作流、Agent 场景举例
+- 少用不必要术语
+- 阶段通过标准应基于能力，而不是时间投入
 
-- preserve the repository structure unless there is a strong reason to change it
-- improve existing documents rather than replacing them with unrelated formats
-- keep stages coherent enough that a self-learner can proceed without guessing sequence
-- if you add a new resource, state where it fits in the stage flow
+## 编辑规则
 
-## Review checklist for contributors
+- 除非有很强理由，否则不要随意改变仓库结构
+- 优先增强现有文档，而不是换成风格完全不同的新格式
+- 保持每个阶段对自学者可用，不靠猜来判断顺序
+- 新增资源时，请写明它属于哪个阶段、该怎么使用
 
-Before submitting documentation changes, confirm:
+## 提交前检查
 
-- [ ] the content is aimed at experienced programmers transitioning into JS/TS
-- [ ] the content favors backend, CLI, and agent engineering over frontend work
-- [ ] the sequence is explicit
-- [ ] exercises and projects are concrete
-- [ ] progression gates are visible
-- [ ] the tone is practical and concise
+在提交文档改动前，请确认：
 
-## Commit guidance
+- [ ] 内容面向的是已有编程经验的学习者
+- [ ] 内容偏向后端、CLI 与 Agent 工程，而不是前端路线
+- [ ] 阶段顺序明确
+- [ ] 练习和项目具体可执行
+- [ ] progression gate 清晰可见
+- [ ] 语言风格务实而不空泛
 
-Use commit messages that describe the instructional change clearly, for example:
+## 提交信息建议
+
+commit message 尽量直接说明教学改动，例如：
 
 - `docs: expand stage 02 TypeScript exercises`
 - `docs: tighten progression gates for stage 03`
-- `docs: add curriculum map for staged learner flow`
+- `docs: add review guidelines for templates`
+- `docs: add sample artifacts for stage 06`

@@ -1,37 +1,37 @@
-# Architecture - Stage 07 Eval Harness
+# 架构说明 - Stage 07 评估工具
 
-## Core idea
+## 核心理念
 
-An eval harness should make change measurable, not mystical.
+评估工具应该使变更可衡量，而不是神秘的。
 
-## Core components
+## 核心组件
 
-1. scenario definitions
-2. execution runner
-3. assertion rules or acceptance checks
-4. results storage
-5. comparison and reporting layer
+1. 场景定义
+2. 执行运行器
+3. 断言规则或接受检查
+4. 结果存储
+5. 对比和报告层
 
-## Boundary rules
+## 边界规则
 
-- scenarios should represent real tasks or failure classes
-- assertions should be explicit enough that another engineer can review them
-- results should be comparable over time
-- evaluation logic should be separate from the system under test
+- 场景应代表真实任务或失败类别
+- 断言应足够显式，另一个工程师能审查它们
+- 結果应能随时间对比
+- 评估逻辑应与被测系统分离
 
-## Recommended flow
+## 推荐流程
 
-1. define representative cases
-2. run the target system
-3. apply assertions or acceptance checks
-4. record outputs and results
-5. compare with prior runs when relevant
+1. 定义代表性案例
+2. 运行目标系统
+3. 应用断言或接受检查
+4. 记录输出和结果
+5. 在适当时与先前运行对比
 
-## Failure categories to plan for
+## 需要计划的失败类别
 
-- prompt regressions
-- invalid structured output
-- retrieval misses
-- tool-use mistakes
-- workflow step failures
-- operator-visible behavior drift
+- Prompt 回归
+- 无效结构化输出
+- 检索未命中
+- 工具使用错误
+- 工作流步骤失败
+- 运维可见的行为漂移

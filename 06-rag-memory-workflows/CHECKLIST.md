@@ -1,30 +1,32 @@
-# Stage 06 Checklist
+# Stage 06 检查清单
 
-## Readiness checklist
+## 就绪检查
 
-- [ ] I can ingest a bounded corpus and describe its source and quality assumptions.
-- [ ] I compared at least two chunking strategies on real queries.
-- [ ] I can inspect retrieval results independently from model-generated answers.
-- [ ] I can require citation-backed or source-referenced answers.
-- [ ] I can explain the difference between retrieved context, working state, and stored memory.
-- [ ] I wrote a memory policy that includes update and deletion rules.
-- [ ] I compared an agent-loop solution against a workflow-oriented solution for the same task.
-- [ ] I created a small labeled retrieval set for regression checking.
-- [ ] I can explain how stale or conflicting source material should be handled.
-- [ ] I built at least one retrieval-backed system whose context path is auditable.
+- [ ] 我能摄入一个有界语料库，并能描述其来源和质量假设。
+- [ ] 我对比过至少两种分块策略在真实查询上的表现。
+- [ ] 我能独立于模型生成的答案检查检索结果。
+- [ ] 我能要求带引用或来源参考的答案。
+- [ ] 我能解释检索到的上下文、工作状态和存储记忆之间的区别。
+- [ ] 我写了包含更新和删除规则的记忆策略。
+- [ ] 我对比过同一个任务的 agent 循环方案和面向工作流的方案。
+- [ ] 我创建了一个小型的带标签检索集，用于回归检查。
+- [ ] 我能解释应该如何处理过时或冲突的源材料。
+- [ ] 我至少构建了一个上下文路径可审计的检索支撑系统。
 
-## Progression gate
+## 进入下一阶段的门槛
 
-Advance only if you can:
+只有当你已经可以：
 
-- trace an answer back to source documents
-- justify what the system stores and why
-- show when workflow structure improves reliability over open-ended autonomy
+- 把一个答案追溯到源文档
+- 证明系统存储了什么以及为什么
+- 说明工作流结构何时比开放自主性能提升可靠性
 
-## If you are not ready
+才进入 Stage 07。
 
-Repeat Stage 06 work if any of these are still true:
+## 如果还没准备好
 
-- retrieval quality is being judged only by final answer fluency
-- memory is being added without clear ownership or retention rules
-- the system cannot explain which sources actually informed an output
+如果下面这些仍然成立，建议重做 Stage 06：
+
+- 检索质量仍然只通过最终答案流畅度来判断
+- 记忆被添加，但没有清晰的所属权或保留规则
+- 系统无法解释哪些来源实际上影响了输出

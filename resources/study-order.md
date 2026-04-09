@@ -1,97 +1,99 @@
-# Study Order
+# 学习顺序
 
-## Purpose
+## 目的
 
-This file gives a practical sequence for using the curriculum. It is designed for a self-learner who already knows how to program and wants to move efficiently into JavaScript/TypeScript AI agent engineering.
+这份文件给出一个务实的学习顺序，帮助你把这个仓库当成训练路径来使用，而不是当成资料库随意翻看。
 
-## Core rule
+适用对象是：已经会编程，希望高效进入 JavaScript / TypeScript AI Agent 工程的人。
 
-Do not consume the repository as a library of notes.
-Use it as a staged build sequence.
+## 核心规则
 
-For each stage:
-1. Read `OVERVIEW.md`.
-2. Read the matching sections in `reading-map.md`.
-3. Complete the required exercises.
-4. Build one project.
-5. Use the checklist to decide whether to advance.
+不要把这个仓库当成“看完就算学会”的文档集合。
+它应该被当成一个阶段化构建流程。
 
-## Recommended primary path
+对于每个阶段，请按这个顺序走：
+1. 读 `OVERVIEW.md`
+2. 对照 `reading-map.md` 看对应资料
+3. 完成必须做的练习
+4. 完成至少一个项目
+5. 用 checklist 判断自己是否能进下一阶段
 
-### Phase 1 - Language and runtime foundation
-1. Stage 00 - Foundations
+## 推荐主路线
+
+### Phase 1 - 语言与运行时基础
+1. Stage 00 - 基础环境与认知迁移
 2. Stage 01 - JavaScript
 3. Stage 02 - TypeScript
 4. Stage 03 - Node.js
 
-Do not skip this phase. Weakness here causes confusion everywhere else.
+这一段不要跳。这里没打牢，后面的问题都会变形出现。
 
-### Phase 2 - Model-backed software
+### Phase 2 - 模型接入与系统化
 5. Stage 04 - LLM Basics
 6. Stage 05 - Agent Core
 
-Only start Stage 05 when Stage 04 outputs, validation, and tool-calling boundaries are stable.
+只有当 Stage 04 的输出校验、工具调用和边界控制已经稳定时，才进入 Stage 05。
 
-### Phase 3 - Grounding and system structure
+### Phase 3 - 上下文、检索与系统结构
 7. Stage 06 - RAG, Memory, and Workflows
 8. Stage 07 - Production
 
-You should harden a real project here, not invent an entirely new one unless necessary.
+这一阶段最好在已有项目上做增强，而不是每次都重新开新坑。
 
-### Phase 4 - Demonstration
+### Phase 4 - 证明能力
 9. Stage 08 - Capstones
 
-Use the capstone to prove judgment, not to maximize scope.
+毕业项目的重点是证明判断力，而不是堆功能。
 
-## Suggested pacing
+## 推荐节奏
 
-### 12-week path
-- Weeks 1-4: Stages 00-03
-- Weeks 5-6: Stage 04
-- Weeks 7-8: Stage 05
-- Weeks 9-10: Stage 06
-- Week 11: Stage 07
-- Week 12: Stage 08
+### 12 周路径
+- 第 1～4 周：Stages 00～03
+- 第 5～6 周：Stage 04
+- 第 7～8 周：Stage 05
+- 第 9～10 周：Stage 06
+- 第 11 周：Stage 07
+- 第 12 周：Stage 08
 
-### 16-week path
-- Weeks 1-5: Stages 00-03
-- Weeks 6-7: Stage 04
-- Weeks 8-9: Stage 05
-- Weeks 10-11: Stage 06
-- Weeks 12-13: Stage 07
-- Weeks 14-16: Stage 08
+### 16 周路径
+- 第 1～5 周：Stages 00～03
+- 第 6～7 周：Stage 04
+- 第 8～9 周：Stage 05
+- 第 10～11 周：Stage 06
+- 第 12～13 周：Stage 07
+- 第 14～16 周：Stage 08
 
-## Best way to study each week
+## 每周怎么学最有效
 
-Use a simple rhythm:
-- 2 reading sessions
-- 2 or 3 coding sessions
-- 1 debugging/refactoring session
-- 1 short review note
+推荐一个简单节奏：
+- 2 次阅读
+- 2～3 次编码
+- 1 次调试 / 重构 / 复盘
+- 1 次简短笔记整理
 
-## What to do when stuck
+## 卡住时怎么办
 
-If a stage feels weak:
-- repeat the exercises with a different small problem
-- build a narrower project instead of a larger one
-- write down the exact failure mode
-- go back to the reading map for that stage only
+如果你发现当前阶段发虚：
+- 换一个更小的问题重做练习
+- 缩小项目范围，而不是继续加功能
+- 把失败点写下来
+- 回到该阶段的 reading map，只补相关部分
 
-Do not jump ahead to agents when the current problem is really about JS runtime, TS boundaries, or Node I/O.
+不要在当前问题其实是 JS、TS 或 Node 基础没打牢时，盲目跳到 Agent 层面。
 
-## Anti-patterns
+## 常见反模式
 
-Avoid these common mistakes:
-- reading Stage 05 before building a real Stage 04 tool-calling path
-- learning through frameworks before hand-building one small system yourself
-- treating RAG as mandatory for every project
-- trying to build a “general assistant” as your first serious project
-- using capstones to cover weak fundamentals instead of proving them
+尽量避免：
+- 还没做稳定的 Stage 04 工程，就跳去学 Stage 05 agent loop
+- 先学重框架，再补基础运行时
+- 把 RAG 当成每个项目都必须加的模块
+- 第一个 serious project 就想做“通用智能助理”
+- 用毕业项目掩盖基础薄弱，而不是证明基础扎实
 
-## Completion heuristic
+## 判断自己是否可以进入下一阶段
 
-You are ready to move forward when:
-- you can explain the current stage in your own words
-- you can debug common failures without panic
-- you have executable artifacts from the stage
-- the checklist feels honestly passed, not negotiated
+只有当下面这些都成立时，才算可以继续：
+- 你能用自己的话解释这一阶段
+- 你遇到常见失败不会慌
+- 你留下了可运行的代码或产物
+- checklist 是真正通过，而不是勉强糊弄过去

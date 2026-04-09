@@ -1,99 +1,99 @@
-# Stage 08 Exercises
+# Stage 08 练习
 
-## Exercise policy
+## 练习原则
 
-These exercises are for shaping the capstone before implementation drifts. Do them before expanding scope.
+这些练习用于在实现漂移之前塑造 capstone。在扩大范围之前做它们。
 
-## Exercise 1 - Problem statement and boundaries
+## 练习 1 - 问题陈述与边界
 
-Objective: define a capstone that is narrow enough to execute well.
+目标：定义一个窄到能执行好的 capstone。
 
-Tasks:
+任务：
 
-- write the user or operator problem in one page or less
-- define what the system will do
-- define what it will explicitly not do
-- list the main external dependencies and data sources
+- 用一页或更少写清楚用户或运维者的问题
+- 定义系统将做什么
+- 定义它将明确不做什么
+- 列出主要外部依赖和数据来源
 
-Progression check:
+进度检查：
 
-- the project scope is specific enough that acceptance criteria can be written
+- 项目范围足够具体，可以写出接受标准
 
-## Exercise 2 - Architecture sketch
+## 练习 2 - 架构草图
 
-Objective: make the system shape visible early.
+目标：尽早让系统形态可见。
 
-Tasks:
+任务：
 
-- sketch the major components
-- identify model boundaries, tool boundaries, and retrieval or memory boundaries
-- identify deterministic workflow steps
-- identify where validation occurs
+- 勾画主要组件
+- 识别模型边界、工具边界和检索或记忆边界
+- 识别确定性工作流步骤
+- 识别在哪里进行校验
 
-Progression check:
+进度检查：
 
-- another engineer could critique the design before any code exists
+- 另一个工程师能在任何代码存在之前批评这个设计
 
-## Exercise 3 - Acceptance criteria pack
+## 练习 3 - 接受标准包
 
-Objective: define what "done" means before implementation grows.
+目标：在实现增长之前定义“完成”意味着什么。
 
-Tasks:
+任务：
 
-- choose representative user scenarios
-- define expected outputs or success properties
-- define failure behavior for unsupported or unsafe cases
-- identify what evidence is needed to claim the project works
+- 选择有代表性的用户场景
+- 定义预期输出或成功属性
+- 定义不支持或不安全案例的失败行为
+- 识别需要什么证据来声称项目有效
 
-Progression check:
+进度检查：
 
-- the criteria are concrete enough to support an eval suite
+- 标准足够具体，可以支撑一个评估套件
 
-## Exercise 4 - Risk register
+## 练习 4 - 风险登记
 
-Objective: identify the ways the project can become weak or misleading.
+目标：识别项目可能变得薄弱或误导的方式。
 
-Tasks:
+任务：
 
-- list likely reliability, data, and scope risks
-- list at least one prompt-level risk, one tool-level risk, and one operational risk
-- decide which risks must be mitigated before completion
-- decide which risks are acceptable but must be documented
+- 列出可能的可靠性、数据和范围风险
+- 至少列出一种 prompt 级别风险、一种工具级别风险和一种运维风险
+- 决定哪些风险必须在完成前被缓解
+- 决定哪些风险可接受但必须记录
 
-Progression check:
+进度检查：
 
-- the project has explicit non-goals and known tradeoffs
+- 项目有明确的非目标和已知权衡
 
-## Exercise 5 - Eval and demo plan
+## 练习 5 - 评估和演示计划
 
-Objective: avoid building a capstone that only works in one happy-path demo.
+目标：避免建造一个只在一个 happy path 演示中工作的 capstone。
 
-Tasks:
+任务：
 
-- define a small eval set of representative scenarios
-- define what artifacts or logs will be shown in the demo
-- include at least one failure or limitation case
-- define how results will be recorded
+- 定义一个小的有代表性场景评估集
+- 定义将在演示中展示的产物或日志
+- 包含至少一个失败或局限性案例
+- 定义如何记录结果
 
-Progression check:
+进度检查：
 
-- the project can be presented honestly without hiding weak cases
+- 项目能诚实地演示，而不需要隐藏弱案例
 
-## Exercise 6 - Documentation outline
+## 练习 6 - 文档大纲
 
-Objective: make explanation part of the engineering work.
+目标：把解释作为工程工作的一部分。
 
-Tasks:
+任务：
 
-- outline the README
-- outline the architecture note
-- outline the setup guide
-- outline the limitations section
+- 写出 README 大纲
+- 写出架构笔记大纲
+- 写出设置指南大纲
+- 写出局限性部分大纲
 
-Progression check:
+进度检查：
 
-- the project can be handed to another engineer without relying on verbal explanation alone
+- 项目能交给另一个工程师，而不需要仅靠口头解释
 
-## Required minimum
+## 必需最低要求
 
-Complete all six exercises before declaring capstone scope stable.
+在宣布 capstone 范围稳定之前，完成全部六个练习。

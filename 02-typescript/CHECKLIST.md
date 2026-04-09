@@ -1,31 +1,33 @@
-# Stage 02 Checklist
+# Stage 02 检查清单
 
-## Readiness checklist
+## 就绪检查
 
-- [ ] I can explain what `tsconfig.json` is doing in my project.
-- [ ] I use strict mode or can justify any deviation.
-- [ ] I understand the difference between inference and explicit annotation.
-- [ ] I can model ordinary application data with readable types.
-- [ ] I know when to use unions and how to narrow them safely.
-- [ ] I prefer `unknown` over `any` at external boundaries.
-- [ ] I can design typed async function contracts.
-- [ ] I can use generics for ordinary reuse without making the code harder to read.
-- [ ] I do not confuse compile-time types with runtime validation.
-- [ ] I added schema or manual validation where untrusted data enters the system.
-- [ ] I converted at least one existing JS tool into a clean TS version.
+- [ ] 我能解释 `tsconfig.json` 在项目里到底做了什么。
+- [ ] 我在用 strict mode，或者我能说清为什么暂时不这么做。
+- [ ] 我理解类型推导与显式标注的区别。
+- [ ] 我能用可读类型表达普通应用数据结构。
+- [ ] 我知道什么时候该用 union，以及如何安全收窄它。
+- [ ] 在外部边界上，我优先使用 `unknown` 而不是 `any`。
+- [ ] 我能设计带类型的异步函数契约。
+- [ ] 我能用泛型做普通复用，而不会把代码写得更难懂。
+- [ ] 我不会把编译期类型和运行时校验混为一谈。
+- [ ] 在不可信数据进入系统的地方，我已经加了 schema 或手写校验。
+- [ ] 我至少把一个已有 JS 工具改写成了干净的 TS 版本。
 
-## Progression gate
+## 进入下一阶段的门槛
 
-Advance only if you can:
+只有当你已经可以：
 
-- design and explain typed boundaries for CLI commands, APIs, or tools
-- critique a TS design for both safety and readability
-- validate external data instead of asserting it into place
+- 为 CLI、API 或工具系统设计并解释清楚类型边界
+- 从“安全性”和“可读性”两个维度 critique 一个 TS 设计
+- 面对外部数据时优先做验证，而不是直接断言
 
-## If you are not ready
+才进入 Stage 03。
 
-Repeat Stage 02 if any of these are still true:
+## 如果还没准备好
 
-- you use `as` assertions to silence uncertainty routinely
-- your type definitions are harder to understand than the runtime code
-- you still expect the compiler to protect you from invalid external data
+如果下面这些仍然成立，建议继续补 Stage 02：
+
+- 你经常用 `as` 来压住不确定性
+- 你的类型定义比运行时代码更难懂
+- 你仍然期待编译器替你挡住无效外部数据

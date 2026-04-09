@@ -1,162 +1,127 @@
-# Stage 04 - LLM Integration, Structured Output, and Tool Calling
+# Stage 04 - LLM 集成、结构化输出与工具调用
 
-## Stage intent
+## 阶段目标
 
-This stage moves from general Node.js backend engineering into model-backed software. The goal is not to build a chatbot demo. The goal is to learn how to integrate an LLM as one unreliable subsystem inside a larger, testable, typed backend or CLI workflow.
+这个阶段是从普通 Node.js 后端工程，过渡到模型支撑软件的关键一步。目标不是做一个聊天 demo，而是学会如何把 LLM 作为系统内一个不可靠的子系统，嵌入到一个可测试的、带类型的backend或CLI工作流里。
 
-For an experienced C/C++ engineer, the main adjustment is that model behavior is probabilistic even when the rest of your system is deterministic. Reliability comes from contracts, validation, retries, tool boundaries, and careful control of state, not from assuming the model will "just follow instructions."
+对于有经验的 C/C++ 工程师来说，主要调整在于：即使系统其他部分都是确定性的，模型行为也是概率性的。可靠性来自于契约、校验、重试、工具边界和对状态的谨慎控制，而不是“模型会乖乖听话”的假设。
 
-## Why this stage matters
+## 为什么这个阶段很重要
 
-Before this stage, you have the Node.js skills needed to call external services safely. Now you need to apply those skills to model APIs, which add new failure modes:
+在此阶段之前，你已经具备了安全调用外部服务的 Node.js 技能。现在你需要把这些技能应用到模型 API 上，但模型 API 引入了新的失败模式：
 
-- malformed or partial structured output
-- prompt sensitivity and response variance
-- token-window limits
-- latency and cost tradeoffs
-- tool invocation requests that may be incomplete or invalid
-- provider-specific request and response conventions
+- 格式错误或部分的结构化输出
+- prompt 敏感性和响应差异
+- token 窗口限制
+- 延迟和成本权衡
+- 工具调用请求可能不完整或无效
+- 提供商特定的请求和响应约定
 
-If you do not learn these boundaries early, later "agent" systems will be difficult to debug because the model, tool layer, and orchestration logic will all be mixed together.
+如果不在早期理解这些边界，后面搭建 "agent" 系统时就会很难调试，因为模型、工具层和编排逻辑会混在一起。
 
-## Learning outcomes
+## 学习结果
 
-At stage completion, you should be able to:
+完成本阶段后，你应该能够：
 
-- integrate a model API into a Node.js CLI or backend utility
-- structure prompts and message history for repeatable single-turn and short multi-turn tasks
-- require structured output and validate it before downstream use
-- stream responses when appropriate and handle partial output safely
-- implement one full tool-calling roundtrip with validation on both request and result
-- measure the practical impact of model choice, latency, and token usage
-- explain which parts of the system are deterministic and which are not
+- 把模型 API 集成到一个 Node.js CLI 或后端工具中
+- 为可重复的单轮和短多轮任务构建 prompt 和消息历史
+- 要求结构化输出，并在下游使用前进行校验
+- 在适当时机流式返回响应，并安全处理部分输出
+- 实现一个完整的工具调用往返，包含请求和结果两侧的校验
+- 量化模型选择、延迟和 token 消耗的实际影响
+- 解释系统中哪些部分是确定性的，哪些不是
 
-## Topic sequence
+## 主题顺序
 
-### 1. Model API contracts
+### 1. 模型 API 契约
 
-Learn:
+学习内容：
+- 请求和响应结构
+- 认证和密钥处理
+- 提供商 SDK 与直接 HTTP 调用
+- 模型选择是工程决策，不是品牌决策
 
-- request and response shapes
-- auth and secret handling
-- provider SDKs versus direct HTTP calls
-- model selection as an engineering choice, not a branding choice
+你在学习如何把模型提供商当成一个外部依赖，有明确的契约和失败处理。
 
-You are learning how to treat the model provider as an external dependency with explicit contracts and failure handling.
+### 2. 消息、prompt 与任务框架
 
-### 2. Messages, prompts, and task framing
+学习内容：
+- system、developer 和 user 指令角色（适用于有这些概念的场景）
+- 如何约束范围和定义输出要求
+- 如何区分持久化指令和每次请求的上下文
+- 如何在不写 prompt 小说的情况下减少歧义
 
-Learn:
+这个阶段的好的 prompt 写作，意味着为软件行为写出清晰的任务规格说明。
 
-- system, developer, and user instruction roles where applicable
-- how to constrain scope and define output requirements
-- how to separate durable instructions from per-request context
-- how to reduce prompt ambiguity without writing prompt novels
+### 3. 结构化输出与运行时校验
 
-Good prompting at this stage means writing clear task specifications for software behavior.
+学习内容：
+- JSON 导向的输出
+- schema 优先思维
+- 在执行或存储前校验输出
+- 如何处理“几乎正确”的模型响应，而不是默默接受它们
 
-### 3. Structured output and runtime validation
+这是 AI 支撑软件第一个主要的可靠性边界。
 
-Learn:
+### 4. 流式与增量处理
 
-- JSON-oriented outputs
-- schema-first thinking
-- validating output before execution or storage
-- handling "almost correct" model responses without silently accepting them
+学习内容：
+- 何时流式能改善 UX 或流水线延迟
+- 何时流式只会让正确性更复杂
+- 增量消费时如何不把中间状态当成最终状态
+- 如何在部分输出时做出有意义的处理决策
 
-This is the first major reliability boundary in AI-backed software.
+### 5. 工具调用基础
 
-### 4. Streaming and incremental handling
+学习内容：
+- 工具名称、描述和参数 schema
+- 参数校验（工具执行前）
+- 结果归一化
+- 一次完整往返：模型请求 → 参数校验 → 执行 → 结果归一化 → 模型后续响应
 
-Learn:
+### 6. 成本与延迟意识
 
-- when streaming improves UX or pipeline latency
-- when it complicates validation and should be avoided
-- buffering strategy for partial content
-- end-of-stream checks before accepting output as complete
+学习内容：
+- token 计数和成本估算基础
+- 延迟分析和优化方向
+- 何时值得优化，何时应该接受当前表现
+- 模型选择对系统稳定性的实际影响
 
-Streaming is useful, but only if the receiver logic is designed for incomplete data.
+## 常见错误
 
-### 5. Tool calling fundamentals
+- 把模型输出当成确定性的、可信的
+- 不校验结构化输出就进入业务逻辑
+- 用模型调用替代本该用确定性代码解决的问题
+- 把“prompt 工程”当成修复边界问题的首选方案
+- 对工具 schema 的模糊或不完整
+- 忽视 token 窗口和成本约束
 
-Learn:
+## 推荐学习方式
 
-- how the model requests a tool
-- validating tool name and arguments
-- executing the tool in controlled code
-- feeding the tool result back to the model
-- deciding when to stop instead of looping
+这个阶段的最佳路径：
 
-Tool calling is where the system stops being a text generator and starts acting like a controlled coordinator.
+1. 先从一次简单模型调用开始
+2. 加结构化输出要求，再加运行时校验
+3. 加一个工具调用往返
+4. 保存每一次运行的输入输出作为回归素材
+5. 对比不同 prompt 版本和模型选择的效果
 
-### 6. Cost, latency, and operational tradeoffs
+## 与后续阶段的关系
 
-Learn:
+- Stage 05 会把这个阶段的工具基础扩展成完整 agent 循环
+- Stage 06 会把这里的上下文管理扩展成检索和记忆系统
+- 生产化系统（Stage 07）能否维护，取决于你在本阶段建立的模型边界意识
 
-- token budgeting
-- latency sources
-- choosing smaller or larger models deliberately
-- retries that do not multiply cost blindly
-- logging enough context to debug without leaking secrets or large prompts unnecessarily
+## 阶段闯关标准
 
-### 7. Evaluation at the integration level
+只有当你已经可以：
 
-Learn:
+- 写出带显式校验的模型支撑后端或 CLI 功能
+- 把 prompts、schemas 和工具执行边界分离清楚
+- 解释集成如何失败，以及每个失败在哪里被处理
 
-- golden examples for prompt and structured-output tasks
-- tracking failure classes
-- comparing prompt revisions on the same task set
-- identifying when a bug is in the prompt, parser, schema, or tool layer
+才进入 Stage 05。
 
-This prepares you for the deeper eval and production work in Stage 07.
+## 退出标准
 
-## Recommended study pattern
-
-For each new model-backed feature:
-
-1. define the input contract and required output shape
-2. build a happy-path call with minimal prompt text
-3. add runtime validation around the response
-4. record at least three realistic failure modes
-5. decide whether retries, fallback, or rejection is correct
-6. save examples so you can regression-test later
-
-Do not move directly from "prompt works once" to "feature is done."
-
-## Common mistakes at this stage
-
-- treating the provider SDK as if it guarantees valid output
-- passing model output directly into business logic without validation
-- letting prompts encode business rules that should exist in code
-- streaming output into downstream logic before completeness checks
-- tool-calling without argument validation or tool result normalization
-- retrying every failure class even when the request itself is bad
-- adding multi-turn memory before single-turn contracts are stable
-
-## Relationship to other stages
-
-- Stage 03 provided the backend discipline needed for HTTP, config, logging, and retries.
-- Stage 05 will build agent loops on top of the prompt, tool-calling, and state boundaries from this stage.
-- Stage 06 will extend the context model with retrieval and memory once you already know how to validate model interactions.
-- Stage 07 will harden these integrations with evals, observability, and production constraints.
-
-## Required deliverables
-
-- one single-turn CLI or backend task that calls an LLM API
-- one structured-output task with runtime validation
-- one tool-calling roundtrip with typed arguments and normalized tool results
-- a short note describing at least five failure modes you observed and how you handled them
-
-## Stage gate
-
-Move on only when you can:
-
-- explain the full request and response lifecycle for one model call
-- validate structured output before using it
-- implement one controlled tool-calling cycle without hidden side effects
-- describe the tradeoffs between buffering and streaming for your use case
-- show logs or saved examples that let you debug prompt or schema regressions
-
-## Exit criteria
-
-You are ready for Stage 05 when you can treat the model as a bounded subsystem with explicit contracts. You do not need a sophisticated agent yet. You do need model integration that is deliberate, inspectable, and hard to misuse.
+当模型对你来说已经是一个“需要工程化处理的外部依赖”，而不是“能解决一切的智能系统”时，就可以进入下一阶段。

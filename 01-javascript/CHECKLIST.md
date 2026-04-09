@@ -1,31 +1,33 @@
-# Stage 01 Checklist
+# Stage 01 检查清单
 
-## Readiness checklist
+## 就绪检查
 
-- [ ] I can read and write plain JavaScript without depending on TypeScript for basic understanding.
-- [ ] I understand the difference between primitives and object references.
-- [ ] I can explain common coercion pitfalls and avoid them in boundary logic.
-- [ ] I can use functions, closures, and modules without confusion about scope.
-- [ ] I can transform arrays and objects while keeping track of data shape changes.
-- [ ] I can parse JSON and handle malformed input deliberately.
-- [ ] I can throw, catch, and propagate errors with a reasoned approach.
-- [ ] I can write and debug promise-based code using `async` and `await`.
-- [ ] I can explain when async tasks should run sequentially versus concurrently.
-- [ ] I built at least one backend or CLI tool from scratch in plain JavaScript.
-- [ ] I read at least one unfamiliar JS module and explained its structure in my own words.
+- [ ] 我已经能在不依赖 TypeScript 的情况下读写普通 JavaScript。
+- [ ] 我理解基本类型与对象引用的区别。
+- [ ] 我能解释常见类型转换陷阱，并在边界逻辑中避免它们。
+- [ ] 我能使用函数、闭包和模块，而不会对作用域感到混乱。
+- [ ] 我能跟踪数组和对象变换中的数据形状变化。
+- [ ] 我能解析 JSON，并有意识地处理坏输入。
+- [ ] 我能用有理由的方式抛错、捕获和传播错误。
+- [ ] 我能用 `async` / `await` 正确写和调试 Promise 代码。
+- [ ] 我能解释什么时候该顺序执行，什么时候该并发执行。
+- [ ] 我至少从零写过一个 plain JavaScript 的后端或 CLI 工具。
+- [ ] 我读过至少一个陌生 JS 模块，并能用自己的话解释它的结构。
 
-## Progression gate
+## 进入下一阶段的门槛
 
-Advance only if you can:
+只有当你已经可以：
 
-- build a small CLI or API client without tutorial-following
-- explain the runtime behavior of your code, including async behavior
-- identify likely bugs involving mutation, coercion, and error handling
+- 不靠教程独立写一个小型 CLI 或 API client
+- 解释代码运行时行为，尤其是异步部分
+- 识别 mutation、类型转换和错误处理中的高概率 bug
 
-## If you are not ready
+才进入 Stage 02。
 
-Repeat more plain-JS work if any of these are true:
+## 如果还没准备好
 
-- you still reach for TypeScript before you can explain the JS behavior
-- promise control flow still feels surprising
-- array/object transforms become hard to follow once the script grows past a few functions
+如果下面这些情况仍然成立，建议继续补 plain JS：
+
+- 你还是会先依赖 TypeScript，而不是先解释 JS 行为
+- Promise 控制流仍让你频繁意外
+- 一旦脚本稍微大一点，数组 / 对象变换就开始失控

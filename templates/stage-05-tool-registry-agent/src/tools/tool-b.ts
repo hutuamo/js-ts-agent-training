@@ -1,1 +1,1 @@
-// Placeholder for tool B.
+// 工具 B 的占位符。

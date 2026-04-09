@@ -1,1 +1,1 @@
-// Load and validate runtime configuration here.
+// 在此处加载并校验运行时配置。

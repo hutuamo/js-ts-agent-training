@@ -1,147 +1,153 @@
-# Stage 03 - Node.js Engineering for Tools, Services, and Agent Runtimes
+# Stage 03 - 面向工具、服务与 Agent 运行时的 Node.js 工程
 
-## Stage intent
+## 阶段目标
 
-This stage is where JS and TS become operational backend engineering. You will learn how Node.js code behaves as a process that reads files, performs network I/O, spawns commands, handles failure, and coordinates asynchronous work. This is the stage that turns language knowledge into infrastructure for AI-agent systems.
+这个阶段是 JS 和 TS 真正变成后端工程能力的地方。
 
-For a C/C++-experienced engineer, the challenge is not low-level capability. The challenge is learning the Node idioms that make backend code reliable instead of fragile.
+你将学习 Node.js 程序作为进程是如何工作的：
+- 读取文件
+- 发起网络 I/O
+- 拉起子进程
+- 处理失败
+- 编排异步工作
 
-## Why this stage matters for agent engineering
+这一步会把“语言知识”转化成 AI Agent 系统需要的基础设施能力。
 
-Agents are not just prompts around API calls. Real agent systems need:
+对于一个有 C/C++ 背景的工程师来说，挑战不在于底层能力，而在于学会那些能让 Node 后端代码变得可靠而不是脆弱的工程习惯。
 
-- filesystem access
-- process control
-- HTTP integration
-- timeouts and retries
-- validated config
-- logs and traces
-- concurrency discipline
-- deterministic wrappers around nondeterministic models
+## 为什么这个阶段对 Agent 工程重要
 
-Those are Node engineering problems before they are "AI" problems.
+Agent 并不是“套在 API 调用上的 prompt”。
 
-## Learning outcomes
+真实 Agent 系统会依赖：
 
-At stage completion, you should be able to:
+- 文件系统访问
+- 进程控制
+- HTTP 集成
+- 超时与重试
+- 配置校验
+- 日志与 trace
+- 并发纪律
+- 对概率型模型做确定性包裹
 
-- build robust CLI and backend utilities on Node.js
-- handle filesystem, environment, and process interactions deliberately
-- structure HTTP clients with retries, timeouts, and clear failures
-- use streams and buffering appropriately for common backend cases
-- manage concurrency and task orchestration without accidental races
-- package and run a small tool or service predictably
+这些首先是 Node 工程问题，其次才是“AI 问题”。
 
-## Topic sequence
+## 学习结果
 
-### 1. Filesystem and paths
+完成本阶段后，你应该能够：
 
-Learn:
+- 用 Node.js 构建可靠的 CLI 和后端工具
+- 有意识地处理文件系统、环境变量和进程交互
+- 构建带重试、超时和清晰失败边界的 HTTP client
+- 根据实际情况选择流式处理或一次性缓冲
+- 管理并发与任务编排，避免无意识 race condition
+- 以可预测方式打包和运行一个小型工具或服务
 
-- reading and writing files
-- directory traversal
-- path normalization and cross-platform safety
-- deciding when to load whole files versus stream them
+## 主题顺序
 
-This matters for log processing, local corpora ingestion, tool outputs, and artifact generation.
+### 1. 文件系统与路径
 
-### 2. Process and environment
+学习内容：
+- 读写文件
+- 目录遍历
+- 路径规范化与跨平台安全性
+- 什么时候读完整文件，什么时候用 stream
 
-Learn:
+这些能力会直接用于日志处理、本地语料导入、工具输出和工件生成。
 
+### 2. 进程与环境
+
+学习内容：
 - `process.argv`
-- environment variable handling
-- exit codes
-- stdin, stdout, stderr
-- signal awareness at a practical level
+- 环境变量处理
+- exit code
+- stdin / stdout / stderr
+- 实用层面的 signal 感知
 
-CLI and service reliability both start here.
+CLI 和服务的可靠性都从这里开始。
 
-### 3. HTTP, fetch, and boundary failure
+### 3. HTTP、fetch 与边界失败
 
-Learn:
+学习内容：
+- 请求构造
+- header、认证与 payload
+- retries 与 backoff
+- timeout 与 cancellation
+- transport failure 与业务失败的区别
 
-- request construction
-- headers, auth, and payload handling
-- retries and backoff
-- timeouts and cancellation
-- distinguishing transport failures from application-level failures
+这一步直接为模型提供商 SDK 和 API 工具做准备。
 
-This is direct preparation for model-provider SDKs and API-backed tools.
+### 4. Streams、buffer 与大输出处理
 
-### 4. Streams, buffers, and large-output handling
+学习内容：
+- 什么时候 stream 真有价值
+- 什么时候它只会让代码更复杂
+- pipe 和 transform 基本模式
+- 如何处理大输出而不做天真内存假设
 
-Learn:
+### 5. 子进程与自动化
 
-- when streams help
-- when they complicate code unnecessarily
-- piping and transform patterns
-- handling large output without naive memory assumptions
+学习内容：
+- 运行外部命令
+- 捕获输出
+- 处理非零退出码
+- 安全包装本地工具
 
-### 5. Child processes and automation
+很多实际 Agent 系统都会依赖本地二进制、代码搜索工具、包管理器或 shell 脚本。
 
-Learn:
+### 6. 日志、配置与运维卫生
 
-- running external commands
-- capturing output
-- handling non-zero exits
-- wrapping local tools safely
+学习内容：
+- 结构化日志基础
+- 配置加载与校验
+- fail-fast 与 degrade-gracefully 的取舍
+- 区分面向用户的输出与诊断输出
 
-Many practical agent systems use external binaries, code search tools, package managers, or local scripts.
+### 7. 打包与项目结构
 
-### 6. Logging, config, and operational hygiene
+学习内容：
+- script 组织
+- 可复用模块与一次性脚本的边界
+- package entry point
+- 什么时候做 CLI、什么时候做服务、什么时候做库
 
-Learn:
+## 常见错误
 
-- structured logging basics
-- configuration loading and validation
-- fail-fast vs degrade-gracefully decisions
-- separating user-facing output from diagnostic output
+- 网络调用没有 timeout
+- 以为 retry 永远安全
+- 把日志和用户输出混在一起
+- 读大文件时想当然地一次性全读
+- 拉起 shell 命令时不处理 stderr、exit code 和参数安全
+- 在 I/O 与失败模型还没稳定时就急着写“agent 代码”
 
-### 7. Packaging and project structure
+## 推荐学习方式
 
-Learn:
+对每个子系统都按这个顺序练：
 
-- script layout
-- reusable modules versus one-off scripts
-- package entry points
-- when to build a library, CLI, or service
+1. 先写一个 happy path
+2. 再手工注入一个真实失败场景
+3. 加日志和错误处理
+4. 记录系统现在依赖了哪些假设
 
-## Common mistakes at this stage
+这个阶段的核心不是“能跑一次”，而是“失败时也表现可预测”。
 
-- no timeout handling on network calls
-- assuming retries are always safe
-- mixing logging with user-facing output streams
-- reading large files eagerly when streaming would be simpler and safer
-- shelling out without handling stderr, exit codes, or argument safety
-- writing "agent" code before the surrounding I/O and failure model is stable
+## 与后续阶段的关系
 
-## Recommended study pattern
+- Stage 04 会把模型 API 接在你这里建立的 HTTP、配置与失败纪律之上
+- Stage 05 会把 agent loop 建在这里的工具抽象与过程控制能力上
+- Stage 06 和 Stage 07 都默认你已经会处理文件、服务和编排，不再把这些当难点
 
-For each subsystem:
+## 阶段闯关标准
 
-1. build a minimal happy-path version
-2. inject one realistic failure mode
-3. add logging and error handling
-4. document what assumptions your code now depends on
+只有当你已经能够：
 
-The failure-path work is not optional. This stage is mainly about operational behavior.
+- 写出一个多命令 CLI 或小型后端服务
+- 解释它的 config、log、retry 和 failure handling 设计
+- 区分顺序、并发和外部子进程编排
+- 让副作用边界清晰、可测试
 
-## Relationship to later stages
+才进入 Stage 04。
 
-- Stage 04 will add model APIs on top of the HTTP and config discipline learned here.
-- Stage 05 will build agent loops on top of the tool and process abstractions from this stage.
-- Stage 06 and Stage 07 will assume you can handle files, services, and orchestration without runtime confusion.
+## 退出标准
 
-## Stage gate
-
-Move on only when you can:
-
-- build a multi-command CLI or small backend service in Node.js
-- explain how it handles config, logs, retries, and failures
-- reason about sequential, concurrent, and externally spawned work
-- structure code so side effects are visible and boundaries are testable
-
-## Exit criteria
-
-You are ready for Stage 04 when Node.js feels like an engineering environment you can control, not just a runtime you can execute code inside.
+当 Node.js 对你来说已经是一个可以控制和组织的工程环境，而不是“只能执行代码的运行时”，就可以进入下一阶段。

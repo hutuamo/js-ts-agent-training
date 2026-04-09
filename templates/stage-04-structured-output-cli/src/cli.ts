@@ -1,2 +1,2 @@
-// Entry point placeholder for the structured output CLI.
-// Suggested responsibility: parse input, call run(), print validated result or controlled error.
+// 结构化输出 CLI 的入口占位符。
+// 建议职责：解析输入，调用 run()，打印校验结果或受控错误。

@@ -1,142 +1,143 @@
-# Stage 02 - TypeScript as an Engineering Constraint
+# Stage 02 - 把 TypeScript 当成工程约束层来用
 
-## Stage intent
+## 阶段目标
 
-This stage turns your JavaScript into maintainable, reviewable backend code. The goal is not to exercise every advanced type feature. The goal is to use TypeScript to make boundaries explicit, remove common classes of mistakes, and support larger Node and agent codebases.
+这个阶段的目标，是把你的 JavaScript 代码提升为更可维护、更容易 review 的后端代码。
 
-For an experienced C/C++ programmer, TypeScript will feel familiar in one sense: it rewards precise contracts. It will feel unfamiliar in another sense: the type system is structural, optional at runtime, and easy to misuse if you chase cleverness instead of clarity.
+目标不是把所有高级类型特性都练一遍，而是让 TypeScript 真正帮你：
+- 显式化系统边界
+- 降低常见错误
+- 支撑更大一些的 Node 与 Agent 代码库
 
-## What TypeScript is for in this curriculum
+对一个有 C/C++ 背景的开发者来说，TypeScript 一方面很熟悉，因为它奖励明确契约；另一方面也很陌生，因为它的类型系统是结构化的、运行时可失真的，而且特别容易因为“聪明过头”而变坏。
 
-Use TypeScript to improve:
+## 在这个训练体系里，TypeScript 是干什么的
 
-- function and module contracts
-- request and response modeling
-- tool input and output boundaries
-- configuration safety
-- refactoring confidence
-- code review clarity
+应该用 TypeScript 改善：
 
-Do not use TypeScript to:
+- 函数与模块契约
+- 请求 / 响应建模
+- 工具输入输出边界
+- 配置安全性
+- 重构信心
+- code review 可读性
 
-- hide weak runtime understanding
-- encode every invariant into unreadable generic machinery
-- assume runtime data is safe just because the compiler is satisfied
+不要把 TypeScript 用来：
 
-## Learning outcomes
+- 掩盖你对运行时的无知
+- 把所有约束都塞进难以阅读的类型体操
+- 因为编译器没报错，就误以为运行时数据一定安全
 
-At stage completion, you should be able to:
+## 学习结果
 
-- configure a strict TypeScript project and explain key compiler options
-- model ordinary application data with type aliases, interfaces, unions, and generics
-- narrow unknown values safely before using them
-- design typed boundaries for CLI commands, APIs, and tool execution
-- separate compile-time guarantees from runtime validation
-- refactor a JS module into TS without creating type noise
+完成本阶段后，你应该能够：
 
-## Topic sequence
+- 配置一个 strict 的 TypeScript 项目，并解释关键编译选项
+- 用 type aliases、interfaces、unions 和 generics 建模普通应用数据
+- 在使用未知值前安全收窄它们
+- 为 CLI、API 和工具执行设计清楚的类型边界
+- 区分编译期保证与运行时校验
+- 把一个 JS 模块改写成 TS，同时避免类型噪音
 
-### 1. Compiler setup and strictness
+## 主题顺序
 
-Learn:
+### 1. 编译器设置与 strictness
 
+学习内容：
 - `tsconfig.json`
-- module and target settings at a practical level
-- strict mode and why it matters
-- emitting JS versus type-check-only workflows
+- module 与 target 的实用配置
+- strict mode 及其意义
+- 生成 JS 与仅类型检查的差别
 
-C/C++ transition note:
+C/C++ 迁移提醒：
 
-Unlike a native compiler, the TS compiler does not make runtime invalid states disappear. It improves reasoning; it does not replace validation.
+TS 编译器不会像原生编译器那样消灭所有无效运行时状态。它是帮助你更好地思考，不是替你做运行时验证。
 
-### 2. Everyday types
+### 2. 日常类型
 
-Learn:
+学习内容：
+- 类型标注与推导
+- 对象类型
+- 数组与 record
+- 可选属性
+- 适度使用 readonly
 
-- annotations and inference
-- object types
-- arrays and records
-- optional properties
-- readonly intent where useful
+目标是让代码对同事来说更清楚，而不是更复杂。
 
-Aim for code that a teammate can read quickly.
+### 3. Union、收窄与类型守卫
 
-### 3. Unions, narrowing, and guards
-
-Learn:
-
-- discriminated unions
-- `unknown` versus `any`
+学习内容：
+- 判别联合
+- `unknown` 与 `any`
 - type guards
-- narrowing through control flow
+- 基于控制流的 narrowing
 
-This is core preparation for model outputs, tool results, and structured workflow state.
+这些内容对模型输出、工具结果和工作流状态都非常关键。
 
-### 4. Function and module contracts
+### 4. 函数与模块契约
 
-Learn:
+学习内容：
+- 参数和返回值类型
+- 异步函数返回类型
+- 对外导出的公共类型
+- 尽量减少实现细节泄漏
 
-- typed parameters and return types
-- async return types
-- exported public types
-- minimizing leakage of implementation details
+### 5. 面向普通工程的泛型
 
-### 5. Generics for ordinary engineering
+学习内容：
+- 可复用容器和 helper 模式
+- 集合上的泛型函数
+- 简单 registry
 
-Learn:
+不要做类型层炫技。如果类型设计比它服务的代码还难读，就说明设计过度了。
 
-- reusable container and helper patterns
-- generic functions over collections
-- simple generic registries
+### 6. 运行时校验的对齐
 
-Avoid type-level stunts. If the generic design is harder to read than the code it supports, simplify it.
+学习内容：
+- 为什么 TypeScript 不能信任外部输入
+- 在边界使用 schema 校验
+- 把解析后的外部数据对齐到内部类型
 
-### 6. Runtime validation alignment
+这对 Agent 系统尤其关键，因为模型输出和工具输入本质上都是外部数据。
 
-Learn:
+## 常见错误
 
-- why TypeScript cannot trust external input
-- schema-based validation at boundaries
-- aligning parsed runtime data with internal types
+- 一碰到不确定就用 `any`
+- 对简单问题过度设计泛型
+- 把可选属性误解成“不需要校验”
+- 用类型断言替代真正的 narrowing
+- 模块边界上的推导类型过宽
+- 误以为 API / 文件 / 模型返回的 JSON 天然符合声明类型
 
-This is mandatory for agent systems, where model outputs and tool inputs are external data.
+## 推荐学习方式
 
-## Common mistakes at this stage
+每个主题都按这个顺序来：
 
-- using `any` to get past confusion instead of fixing the model
-- overmodeling trivial code with excessive generics
-- confusing optional properties with absent validation
-- asserting types instead of narrowing them
-- letting inferred types become too broad at module boundaries
-- assuming JSON from a file, API, or model already matches the declared type
+1. 从能跑的 JavaScript 开始
+2. 先给边界加类型
+3. 再把编译器配置收紧
+4. 去掉不安全假设
+5. 在外部数据进入系统的地方加运行时校验
 
-## Recommended study pattern
+这样可以避免 TypeScript 变成悬空的“纸面设计”。
 
-For each topic:
+## 与后续阶段的关系
 
-1. start from working JavaScript
-2. add types to the boundary first
-3. tighten the compiler settings
-4. remove unsafe assumptions
-5. add runtime validation where data enters the system
+- Stage 03 会依赖你对 process、config、HTTP 与 I/O 边界的类型表达
+- Stage 04 和 Stage 05 会高度依赖工具定义和模型响应的类型契约
+- 生产化 Agent 系统之所以能维护，往往不是因为“类型写得炫”，而是因为边界写得清楚
 
-This order keeps the type system grounded in actual runtime code.
+## 阶段闯关标准
 
-## Relationship to later stages
+只有当你已经能够：
 
-- Stage 03 will depend on typed process, config, HTTP, and I/O boundaries.
-- Stage 04 and Stage 05 rely heavily on typed tool definitions and validated model responses.
-- Production agent work becomes much easier when your TS boundaries are clear and modestly strict.
+- 配置并解释一个 strict TS 项目
+- 在 `type`、`interface`、union 和 generics 之间做清醒选择
+- 明确把外部数据视为“不可信”，直到完成校验
+- 写出比 JS 版本更清楚、而不是更吵的 TS 代码
 
-## Stage gate
+才进入 Stage 03。
 
-Move on only when you can:
+## 退出标准
 
-- configure and explain a strict TS project
-- choose between `type`, `interface`, union, and generic patterns without cargo culting
-- model external data as untrusted until validated
-- write typed application code that is clearer than the JS version, not noisier
-
-## Exit criteria
-
-You are ready for Stage 03 when TypeScript feels like a design tool for backend software, not just a compiler that complains.
+当 TypeScript 对你来说已经是后端工程的设计工具，而不只是一个不停报错的编译器时，就可以进入下一阶段。

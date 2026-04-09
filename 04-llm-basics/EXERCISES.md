@@ -1,130 +1,122 @@
-# Stage 04 Exercises
+# Stage 04 练习
 
-## Exercise policy
+## 练习原则
 
-Every exercise in this stage should produce saved examples or notes. You are building the raw material for later evals and production hardening. Do not rely on memory.
+每个练习都应该产出保存下来的案例或笔记。你在积累后续评估和生产化加固的原始材料。不要依赖记忆。
 
-## Exercise 1 - Minimal model call wrapper
+## 练习 1 - 最小模型调用包装器
 
-Objective: treat the LLM provider like any other external service.
+目标：把 LLM 提供商当成普通外部服务来对待。
 
-Tasks:
+任务：
 
-- create a small wrapper that sends one prompt and returns normalized text output
-- load credentials from configuration instead of hardcoding them
-- log request metadata that is safe to keep
-- distinguish transport failure, provider rejection, and application-level parse failure
+- 创建一个小型包装器，发送一个 prompt，返回归一化文本输出
+- 从配置加载凭证，而不是硬编码
+- 记录可保留的请求元数据
+- 区分 transport 失败、提供商拒绝和应用级解析失败
 
-Progression check:
+进度检查：
 
-- the rest of your code does not depend on raw provider response objects
+- 其他代码不依赖原始提供商响应对象
 
-## Exercise 2 - Prompt contract drill
+## 练习 2 - Prompt 契约训练
 
-Objective: write prompts as engineering contracts rather than vague instructions.
+目标：把 prompt 写成工程契约，而不是模糊指令。
 
-Tasks:
+任务：
 
-- choose one concrete backend task such as summarization, extraction, or classification
-- write a prompt that defines the task, constraints, and output expectations
-- run multiple representative inputs through it
-- record where the prompt fails or becomes ambiguous
-- revise the prompt with minimal wording changes
+- 选一个具体后端任务，如摘要、提取或分类
+- 写一个定义了任务、约束和输出期望的 prompt
+- 用多个有代表性的输入运行它
+- 记录 prompt 在哪里失败或变得模糊
+- 用最小改动修订 prompt
 
-Progression check:
+进度检查：
 
-- you can explain which changes improved reliability and which were unnecessary
+- 你能解释哪些改动提升了可靠性，哪些是不必要的
 
-## Exercise 3 - Structured JSON output with validation
+## 练习 3 - 带校验的结构化 JSON 输出
 
-Objective: ensure model output is not trusted by default.
+目标：确保模型输出默认不被信任。
 
-Tasks:
+任务：
 
-- define a target JSON shape for a practical task
-- ask the model to produce that shape
-- validate the response at runtime
-- reject or repair invalid responses explicitly
-- record at least three invalid or imperfect cases
+- 为一个实际任务定义目标 JSON 形状
+- 让模型产生该形状
+- 在运行时校验响应
+- 显式拒绝或修复无效响应
+- 记录至少三个无效或不完美的案例
 
-Progression check:
+进度检查：
 
-- downstream logic only receives validated data
+- 下游逻辑只接收经过校验的数据
 
-## Exercise 4 - Streaming response drill
+## 练习 4 - 流式响应训练
 
-Objective: learn when streaming helps and when it complicates correctness.
+目标：理解流式何时有帮助，何时会让正确性更复杂。
 
-Tasks:
+任务：
 
-- implement one streamed response path and one buffered response path
-- capture partial chunks without assuming they form valid final output
-- compare perceived latency and implementation complexity
-- document which path you would choose for a CLI and why
+- 实现一个流式响应路径和一个缓冲响应路径
+- 捕获部分 chunk，不假设它们能组成有效最终输出
+- 对比感知延迟和实现复杂度
+- 写一段短文，说明你会为 CLI 选择哪条路径，以及为什么
 
-Progression check:
+进度检查：
 
-- you can state the exact point where a streamed response becomes safe to consume
+- 你能说出流式响应在哪个精确时刻变得可以安全消费
 
-## Exercise 5 - Single tool-calling roundtrip
+## 练习 5 - 单次工具调用往返
 
-Objective: add one controlled action boundary.
+目标：加入一个受控的动作边界。
 
-Tasks:
+任务：
 
-- define one tool with a narrow purpose
-- expose its name, description, and argument schema clearly
-- validate tool arguments before execution
-- normalize the tool result before returning it to the model
-- stop after one tool execution and one follow-up model response
+- 定义一个用途单一的工具
+- 清楚暴露其名称、描述和参数 schema
+- 执行前校验工具参数
+- 归一化工具结果再返回给模型
+- 在一次工具执行和一次后续模型响应后停止
 
-Progression check:
+进度检查：
 
-- invalid tool arguments fail as validation errors, not as hidden runtime behavior
+- 无效工具参数作为校验错误失败，而不是隐藏的运行时行为
 
-## Exercise 6 - Cost and latency measurement drill
+## 练习 6 - 成本与延迟测量训练
 
-Objective: stop treating model usage as free and instantaneous.
+目标：停止把模型使用当成免费和即时的。
 
-Tasks:
+任务：
 
-- measure latency across several requests for one task
-- compare at least two prompt variants or model choices if available
-- record input size, output size, and observed cost indicators
-- write a short note on what you would optimize first
+- 跨多个请求测量一个任务的延迟
+- 如果有条件，对比至少两个 prompt 变体或模型选择
+- 记录输入大小、输出大小和观察到的成本指标
+- 写一段短笔记，说明你会先优化什么
 
-Progression check:
+进度检查：
 
-- you can justify a latency or cost tradeoff with actual measurements
+- 你能为至少一个延迟或成本权衡说出具体数字，而不是猜测
 
-## Exercise 7 - Failure taxonomy notebook
+## 练习 7 - 模型边界记录
 
-Objective: learn how AI integration actually fails.
+目标：建立你自己的失败模式知识库。
 
-Collect concrete examples of:
+任务：
 
-- invalid JSON
-- incomplete output
-- wrong tool selection
-- hallucinated fields or assumptions
-- provider timeout or rate limit
-- prompt ambiguity causing inconsistent behavior
+- 汇总你在练习和项目中观察到的所有模型失效模式
+- 按类型分类（格式错误、prompt 敏感性、截断、不完整输出等）
+- 为每种类型记录你采取的缓解措施
+- 说明哪些类型的失败是最难完全消除的
 
-For each example, write:
+进度检查：
 
-- the input
-- the observed failure
-- the boundary where it should be caught
-- the mitigation you chose
+- 你能说出一个新失败是哪种类型，而不是把它归为“模型抽风”
 
-Progression check:
+## 最低完成要求
 
-- you can separate model mistakes from wrapper bugs and schema bugs
+至少完成：
 
-## Required minimum
-
-Complete at least:
-
-- Exercises 1, 3, 5, and 7
-- one streaming comparison
-- one saved set of prompt examples that you can reuse in Stage 07 eval work
+- 练习 1、2、3、5
+- 一个带校验的结构化输出练习
+- 至少一个流式路径的实现或对比分析
+- 一份你自己的模型失效模式笔记

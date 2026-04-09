@@ -1,106 +1,97 @@
-# Stage 08 Projects
+# Stage 08 项目
 
-## Project 1 - Research Assistant Capstone
+## 项目 1 - 研究助手 Capstone
 
-Build a serious research-oriented backend or CLI system.
+构建一个严肃的研究导向后端或 CLI 系统。
 
-Expected capabilities:
+预期能力：
 
-- bounded corpus ingestion or source collection
-- retrieval with provenance
-- structured intermediate artifacts such as summaries, extracts, or task lists
-- citation-backed final outputs
-- eval scenarios that include unsupported or conflicting-source cases
+- 有界语料库摄入或来源收集
+- 带 provenance 的检索
+- 结构化中间产物，如摘要、提取或任务列表
+- 引用支撑的最终输出
+- 包含不支持或冲突来源案例的评估场景
 
-What this project demonstrates:
+这个项目展示什么：
 
-- grounded context handling
-- workflow composition
-- backend-style artifact generation
+- 有据可查的上下文处理
+- 工作流组合
+- 后端风格的产物生成
 
-Acceptance criteria:
+验收标准：
 
-- answers and outputs can be traced back to sources
-- the system documents how it handles weak or missing evidence
-- the project includes at least one retrieval evaluation set and one operational note
+- 答案和输出能追溯到来源
+- 系统记录了如何处理弱证据或缺失证据
+- 项目包含至少一个检索评估集和一条运维笔记
 
-## Project 2 - Codebase Analyst Capstone
+## 项目 2 - 代码库分析器 Capstone
 
-Build a system that helps inspect and reason about a software repository.
+构建一个帮助检查和推理软件仓库的系统。
 
-Expected capabilities:
+预期能力：
 
-- repository or document traversal
-- structured extraction of repo facts
-- optional retrieval over code or notes
-- report generation such as architecture summaries, review notes, or risk checklists
-- traceable separation between observed facts and generated conclusions
+- 仓库或文档遍历
+- 结构化提取仓库事实
+- 可选的代码或笔记检索
+- 报告生成，如架构摘要、审查笔记或风险清单
+- 可追溯地分离观察事实和生成结论
 
-What this project demonstrates:
+这个项目展示什么：
 
-- tool orchestration
-- evidence-backed analysis
-- practical AI support for backend engineering work
+- 工具编排
+- 证据支撑的分析
+- 后端工程工作的实用 AI 支持
 
-Acceptance criteria:
+验收标准：
 
-- outputs clearly separate factual evidence from interpretation
-- the analysis path is inspectable through logs, traces, or artifacts
-- limitations are documented, especially around incomplete repo visibility or stale context
+- 输出清楚分离事实证据和解释
+- 分析路径可通过日志、trace 或产物检查
+- 局限性被记录，特别是关于不完整仓库可见性或过时上下文
 
-## Project 3 - Operations or Task Workflow Capstone
+## 项目 3 - 运维或任务工作流 Capstone
 
-Build a narrow operational assistant or workflow engine for repeated tasks.
+为重复任务构建一个窄范围运维助手或工作流引擎。
 
-Expected capabilities:
+预期能力：
 
-- bounded task intake
-- deterministic workflow stages with selective model use
-- approval or escalation points where appropriate
-- structured outputs suitable for later review or automation
-- eval coverage for success, rejection, and partial-failure cases
+- 有界任务 intake
+- 选择性模型使用的确定性工作流阶段
+- 适当时有审批或上报点
+- 适合后续审查或自动化的结构化输出
+- 成功、拒绝和部分失败案例的评估覆盖
 
-What this project demonstrates:
+这个项目展示什么：
 
-- workflow-first AI engineering
-- state and tool contract discipline
-- reliability under repeated operational use
+- 工作流优先的 AI 工程
+- 状态和工具契约纪律
+- 重复运维使用下的可靠性
 
-Acceptance criteria:
+验收标准：
 
-- the workflow is easier to reason about than a generic autonomous loop
-- each stage has explicit contracts and validation
-- operator documentation exists for configuration, execution, and failure handling
+- 工作流比通用自主循环更容易推理
+- 每个阶段有显式契约和校验
+- 存在面向运维者的配置、执行和失败处理文档
 
-## Project 4 - Custom Domain Capstone
+## 项目 4 - 自定义领域 Capstone
 
-Build a capstone in a domain you care about, but hold it to the same engineering bar.
+在你关心的领域构建一个 capstone，但要保持相同的工程标准。
 
-Minimum requirements:
+最低要求：
 
-- explicit problem statement and scope
-- bounded architecture
-- at least one meaningful AI integration beyond plain text generation
-- validation, evals, and operator documentation
-- a limitations section that is specific and credible
+- 显式问题陈述和范围
+- 有界架构
+- 至少一个超出普通文本生成的有意义的 AI 集成
+- 校验、评估和运维文档
+- 具体且可信的局限性部分
 
-What this project demonstrates:
+这个项目展示什么：
 
-- transfer of the curriculum to a new domain
-- engineering judgment in scope control
-- ability to defend architecture choices under review
+- 训练体系到新领域的迁移
+- 范围控制中的工程判断
+- 在审查下捍卫架构选择的能力
 
-Acceptance criteria:
+验收标准：
 
-- the project could survive a technical walkthrough with another experienced engineer
-- the chosen architecture is justified against simpler alternatives
-- artifacts are complete enough for someone else to run and evaluate the system
-
-## Recommended selection rule
-
-Choose the capstone whose core difficulty matches the skill you most want to prove:
-
-- retrieval and grounding: Research Assistant
-- tooling and repo reasoning: Codebase Analyst
-- workflow reliability: Operations or Task Workflow
-- domain transfer: Custom Domain Capstone
+- 项目能经受住另一个有经验的工程师的技术讲解
+- 实现和文档讲述同一个故事
+- 权衡和局限性是显式的

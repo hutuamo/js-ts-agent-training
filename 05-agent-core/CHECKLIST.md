@@ -1,30 +1,32 @@
-# Stage 05 Checklist
+# Stage 05 检查清单
 
-## Readiness checklist
+## 就绪检查
 
-- [ ] I can implement an explicit observe-decide-act-update-stop loop.
-- [ ] I can explain why each stop condition exists.
-- [ ] I can define tools with validated arguments and normalized results.
-- [ ] I can distinguish loop state, session state, and state that should not be stored.
-- [ ] I compared a planning-based approach with a direct-execution approach on the same task.
-- [ ] I added guardrails such as max steps, invalid-tool handling, and escalation paths.
-- [ ] I save traces or logs that let me reconstruct a failed run.
-- [ ] I can classify failures by prompt, state, tool selection, tool execution, or stop logic.
-- [ ] I can explain when a deterministic workflow is better than an autonomous loop.
-- [ ] I built at least one small agent system that another engineer could inspect and reason about.
+- [ ] 我能实现一个显式的观察-决策-执行-更新-停止循环。
+- [ ] 我能解释每个停止条件为什么存在。
+- [ ] 我能定义带校验参数和归一化结果的工具。
+- [ ] 我能区分循环状态、会话状态和不应该被存储的状态。
+- [ ] 我对比过同一个任务的基于规划的方法和直接执行的方法。
+- [ ] 我加了护栏，如最大步数、无效工具处理和上报路径。
+- [ ] 我保存了能让我重建失败运行的 trace 或日志。
+- [ ] 我能按 prompt、状态、工具选择、工具执行或停止逻辑对失败分类。
+- [ ] 我能解释何时确定性工作流比自主循环更好。
+- [ ] 我至少构建了一个其他工程师能检查和推理的小型 agent 系统。
 
-## Progression gate
+## 进入下一阶段的门槛
 
-Advance only if you can:
+只有当你已经可以：
 
-- defend your agent architecture in backend terms
-- trace a run from initial request through state updates and tool calls
-- show that the loop is bounded and debuggable
+- 用后端术语捍卫你的 agent 架构
+- 从初始请求追踪一次运行，经历状态更新和工具调用
+- 说明循环是有界的且可调试的
 
-## If you are not ready
+才进入 Stage 06。
 
-Repeat Stage 05 work if any of these are still true:
+## 如果还没准备好
 
-- the model is still implicitly controlling business logic that should live in code
-- state ownership is unclear
-- a failed run cannot be reconstructed from the artifacts you kept
+如果下面这些仍然成立，建议重做 Stage 05：
+
+- 模型仍然隐式控制着应该存在于代码中的业务逻辑
+- 状态所有权不清晰
+- 一次失败的运行无法从你保留的工件中重建

@@ -1,151 +1,157 @@
-# Stage 00 - Foundations, Environment, and Mental Model Reset
+# Stage 00 - 基础环境、工具链与心智模型重置
 
-## Stage intent
+## 阶段目标
 
-This stage is for an experienced programmer, especially one coming from C or C++, who is new to modern JavaScript, TypeScript, and Node.js. The goal is not to relearn programming. The goal is to replace the wrong assumptions that will slow you down when building backend tools, CLIs, and AI-agent systems in the JS/TS ecosystem.
+这个阶段面向已经有编程经验，尤其是有 C 或 C++ 背景、但刚接触现代 JavaScript、TypeScript 与 Node.js 的开发者。
 
-By the end of this stage, you should have a working development environment, a realistic mental model of the runtime, and a repeatable workflow for learning and debugging the rest of the curriculum.
+目标不是重新学习“什么是编程”，而是尽快替换掉那些会在 JS/TS 生态里拖慢你的错误预设，尤其是在后端工具、CLI 和 AI Agent 系统开发中最常见的错误预设。
 
-## Why this stage exists
+完成本阶段后，你应该具备：
 
-Strong systems programmers often struggle in JS/TS for reasons that have little to do with raw programming ability:
+- 一个可工作的开发环境
+- 对运行时足够现实的理解
+- 一套可重复的学习与调试流程
 
-- they expect the runtime to behave like a native process with explicit ownership and predictable blocking behavior
-- they treat package tooling as incidental instead of part of the platform
-- they underestimate module-system friction, async behavior, and library-driven conventions
-- they jump straight into frameworks before understanding the backend and CLI foundations that agent systems depend on
+## 为什么需要这个阶段
 
-This stage corrects that early.
+很多强系统程序员在 JS/TS 里卡住，并不是因为编程能力不够，而是因为他们带进来了不合适的默认假设：
 
-## What you are training for
+- 以为运行时会像原生进程一样，拥有清晰所有权和可预测阻塞行为
+- 把包管理和脚本工具当成“附属品”，而不是平台组成部分
+- 低估模块系统、异步行为和生态约定的影响
+- 还没理解后端与 CLI 基础，就急着跳进框架和上层抽象
 
-The curriculum is biased toward:
+这个阶段就是用来尽早纠正这些问题的。
 
-- CLI tools
-- backend services
-- automation scripts
-- model API integrations
-- tool-calling and agent runtime engineering
+## 你在为哪种开发做准备
 
-It is not primarily a frontend track. You can ignore browser concerns unless a later project explicitly needs them.
+本训练体系明显偏向：
 
-## Learning outcomes
+- CLI 工具
+- 后端服务
+- 自动化脚本
+- 模型 API 接入
+- 工具调用与 Agent 运行时工程
 
-At stage completion, you should be able to:
+它不是前端主线。除非后续项目明确需要，否则你完全可以忽略浏览器方向内容。
 
-- set up and inspect a Node.js-based project without guessing
-- explain how JS execution differs from C/C++ execution
-- describe the event loop, task scheduling, and async boundaries at a practical level
-- use `node`, package scripts, a debugger, and package metadata comfortably
-- identify which C/C++ instincts transfer well and which ones mislead you in JS/TS
-- keep a small engineering journal for decisions, failures, and terminology
+## 学习结果
 
-## Core mental model shifts
+完成本阶段后，你应该能够：
 
-### 1. The runtime is the platform
+- 不靠猜测地搭建并检查一个基于 Node.js 的项目
+- 解释 JS 执行模型与 C/C++ 执行模型的关键差异
+- 从工程实践角度描述 event loop、任务调度与异步边界
+- 熟练使用 `node`、package scripts、调试器与包元数据
+- 分辨哪些 C/C++ 习惯可以迁移，哪些会误导你
+- 维护一份简单的工程日志，用于记录术语、错误和决策
 
-In C/C++, you often own the build chain and can reason close to the machine. In JS/TS, much of day-to-day engineering is about understanding the runtime contract:
+## 核心认知迁移
 
-- module loading
-- package resolution
-- event loop behavior
-- async APIs
-- process environment
-- library conventions
+### 1. 运行时本身就是平台
 
-Ignoring these is the fastest route to fragile code.
+在 C/C++ 中，你常常更靠近编译链和机器本身来思考问题。到了 JS/TS，日常工程很多时候是在理解“运行时契约”本身，包括：
 
-### 2. Tooling is not optional overhead
+- 模块加载
+- 包解析
+- event loop 行为
+- 异步 API
+- 进程环境
+- 库的使用约定
 
-`package.json`, lockfiles, scripts, formatters, linters, and test runners are not decorations. They are the operational shell around most JS/TS codebases. Learn them early so later agent projects feel normal instead of improvised.
+忽略这些，代码就会非常脆弱。
 
-### 3. Asynchrony is structural, not advanced
+### 2. 工具链不是可有可无的负担
 
-In many C/C++ environments, asynchronous design is explicit and often isolated. In Node.js, async I/O is default behavior and shapes ordinary application code. You need to understand when work blocks, when it yields, and where errors actually surface.
+`package.json`、锁文件、脚本、格式化器、lint 工具和调试器，都是平台的一部分。你不必热爱它们，但你必须把它们视作工程现实的一部分。
 
-### 4. Dynamic by default, disciplined by choice
+### 3. “异步”不是“并行”
 
-JavaScript lets weak assumptions survive surprisingly long. TypeScript, tests, runtime validation, and clear module boundaries are how professional teams make JS/TS code reliable enough for production agents.
+这是最常见的误判之一。你需要尽早建立对：
 
-## Topics to cover
+- call stack
+- microtask
+- macrotask
+- Promise 调度
+- timer 调度
 
-### Environment and workflow
+的朴素但正确的理解。
 
-- Node.js LTS installation and version management
-- `npm`, `pnpm`, or `yarn` basics, with a preference for one package manager per repo
-- `package.json`, scripts, dependencies, devDependencies, lockfiles
-- editor setup, formatting, linting, and debugger attachment
-- using `node`, `npx`, and the REPL
+### 4. 先掌握平台，再上框架
 
-### Runtime and execution
+在你还不能稳定写出一个普通 Node CLI 之前，框架只会让问题更模糊，而不是更简单。
 
-- interpreted vs JIT-compiled expectations
-- single-threaded JS execution model versus background I/O and worker escape hatches
-- event loop basics
-- microtasks vs macrotasks at a conceptual level
-- stack traces, uncaught exceptions, and promise rejections
+## 阶段重点主题
 
-### Code organization
+### 1. 环境与工具链
 
-- ESM modules and imports/exports
-- file layout for small backend and CLI projects
-- using scripts as entry points
-- reading package metadata to understand a project quickly
+学习内容：
+- Node.js LTS
+- npm / pnpm / yarn 的基本角色
+- `package.json`
+- `npx`
+- 编辑器调试支持
+- 基本命令行习惯
 
-### Transition notes for C/C++
+### 2. 运行时与执行模型
 
-- no header/source split in the same sense
-- reference semantics and mutation surprises
-- truthiness, `undefined`, `null`, and coercion
-- no compile-time safety by default in plain JS
-- different performance assumptions and profiling workflow
+学习内容：
+- Node 如何运行 JS
+- 脚本如何启动
+- 模块如何解析
+- event loop 的基本行为
+- Promise 与 timer 的执行顺序
 
-## Recommended sequence
+### 3. 项目基本形态
 
-Work through this stage in order:
+学习内容：
+- 项目目录结构
+- 入口文件
+- scripts
+- 最小 CLI 项目
+- 如何观察一个小项目的元数据与依赖
 
-1. Install Node.js LTS and one package manager.
-2. Create a minimal CLI project and run it directly with `node`.
-3. Inspect and edit `package.json` manually.
-4. Add formatter and linter scripts.
-5. Use the debugger or `console` tracing to inspect execution.
-6. Read a few short docs on the event loop and promise scheduling.
-7. Write your own notes on "what felt wrong coming from C/C++ and why."
+### 4. C/C++ 思维迁移
 
-Do not skip the notes. Writing down model mismatches is one of the fastest ways to reduce repeated confusion in later stages.
+学习内容：
+- 哪些直觉仍然有用
+- 哪些直觉会误导你
+- 如何处理运行时类型和异步控制流
+- 为什么在 JS/TS 中需要更多显式边界和更少隐含假设
 
-## Common mistakes at this stage
+## 推荐学习方式
 
-- treating package tooling as cargo-cult configuration
-- memorizing syntax before understanding execution behavior
-- assuming `async` means parallel
-- assuming filesystem, network, and timers behave like blocking system calls
-- copying frontend-oriented starter templates when the target is backend agent work
-- using TypeScript before understanding what plain JavaScript actually does at runtime
+这个阶段不要做大项目。
 
-## How this stage supports later stages
+最好的方式是：
+1. 手工搭一个最小 Node 项目
+2. 跑几段故意设计的小脚本
+3. 验证你对 event loop 和包管理的理解
+4. 记录自己最常犯的误判
 
-- Stage 01 depends on you being comfortable reading and running JS without friction.
-- Stage 02 depends on knowing what problems TypeScript is actually solving.
-- Stage 03 depends on your understanding of process, I/O, and async boundaries.
-- Stage 04 and beyond depend on backend discipline, not framework hype.
+## 常见错误
 
-## Stage gate
+- 还没熟悉 Node，就急着上 TypeScript 或大框架
+- 把 `package.json` 当成黑箱
+- 觉得“异步”就等于“同时执行”
+- 对模块系统仍然糊里糊涂
+- 想把每个 JS 概念都直接映射回 C/C++
 
-Move on only when you can do all of the following without tutorial-following:
+## 与后续阶段的关系
 
-- initialize a small Node project
-- explain the purpose of `package.json` fields you are using
-- run code through both `node` and a package script
-- describe the difference between synchronous code, promise-based code, and deferred callbacks
-- explain at least five C/C++ assumptions that do not map cleanly to JS/TS
+- Stage 01 会在这个阶段的运行时基础上进入 JavaScript 本身
+- Stage 02 依赖你对 JS 行为的正确理解，否则 TypeScript 会被误用
+- Stage 03 依赖你对 Node 项目结构和 I/O 模式的基本认知
 
-## Required deliverables
+## 阶段闯关标准
 
-- one small scratch repo or folder used to test setup and scripts
-- a one-page transition note from C/C++ to JS/TS runtime thinking
-- a short command cheat sheet for your own future reference
+只有当你已经做到下面几点，才进入 Stage 01：
 
-## Exit criteria
+- 能手工初始化一个小型 Node 项目
+- 能运行、修改并调试一个 CLI
+- 能从工程角度解释 event loop 的基本行为
+- 能说清楚 TypeScript 将来能帮你什么，不能帮你什么
 
-You are ready for Stage 01 when the tooling no longer feels mysterious and the runtime no longer feels "magical." You do not need fluency yet. You do need a stable working baseline.
+## 退出标准
+
+当你已经不再把 Node / 包管理 / event loop 当成陌生、模糊、神秘的东西时，就可以进入下一阶段了。

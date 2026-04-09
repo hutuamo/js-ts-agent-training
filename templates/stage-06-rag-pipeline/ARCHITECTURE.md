@@ -1,41 +1,41 @@
-# Architecture - Stage 06 RAG Pipeline
+# 架构说明 - Stage 06 RAG Pipeline
 
-## Core idea
+## 核心理念
 
-Treat retrieval as a data pipeline plus a grounded answer step.
+把检索当作数据流水线加有据可查的答案步骤来对待。
 
-## Core components
+## 核心组件
 
-1. corpus definition
-2. ingestion and normalization
-3. chunking and metadata
-4. indexing and retrieval
-5. grounded answer generation
-6. citation or provenance handling
-7. retrieval evaluation set
+1. 语料库定义
+2. 摄入和归一化
+3. 分块和元数据
+4. 索引和检索
+5. 有据可查的答案生成
+6. 引用或 provenance 处理
+7. 检索评估集
 
-## Boundary rules
+## 边界规则
 
-- corpus quality should be inspectable before retrieval tuning
-- retrieval should be testable independently from generation
-- final answers should identify their evidence
-- unsupported claims should be refused or marked clearly
-- memory and retrieval should remain separate concepts
+- 语料库质量在检索调优前应该可检查
+- 检索应该能独立于生成来测试
+- 最终答案应识别它们的证据
+- 不支持的声明应被拒绝或清晰标记
+- 记忆和检索应保持分离概念
 
-## Recommended flow
+## 推荐流程
 
-1. ingest source material
-2. normalize and chunk
-3. attach metadata
-4. index and retrieve
-5. inspect retrieved evidence
-6. generate a grounded response
-7. record success or failure against labeled queries
+1. 摄入源材料
+2. 归一化并分块
+3. 附加元数据
+4. 索引并检索
+5. 检查检索到的证据
+6. 生成有据可查的响应
+7. 针对带标签查询记录成功或失败
 
-## Failure categories to plan for
+## 需要计划的失败类别
 
-- bad or stale source material
-- weak chunking strategy
-- irrelevant retrieval results
-- missing supporting evidence
-- answer over-claiming beyond retrieved evidence
+- 坏或过时的源材料
+- 弱分块策略
+- 不相关的检索结果
+- 缺失支持证据
+- 答案超出检索证据范围声称

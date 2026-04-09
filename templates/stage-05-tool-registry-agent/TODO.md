@@ -1,20 +1,20 @@
-# TODO - Stage 05 Tool Registry Agent
+# TODO - Stage 05 工具注册表 Agent
 
-## Build checklist
+## 构建检查清单
 
-- [ ] choose one bounded task domain
-- [ ] define loop state
-- [ ] define at least two tools
-- [ ] add argument validation for each tool
-- [ ] add normalized tool result shape
-- [ ] implement step tracing
-- [ ] add max-step stop rule
-- [ ] add refusal or escalation path
-- [ ] save traces from several runs
-- [ ] write a short design note on why this is an agent instead of a workflow
+- [ ] 选一个有界任务领域
+- [ ] 定义循环状态
+- [ ] 定义至少两个工具
+- [ ] 为每个工具添加参数校验
+- [ ] 添加归一化工具结果形状
+- [ ] 实现步骤 trace
+- [ ] 添加最大步数停止规则
+- [ ] 添加拒绝或上报路径
+- [ ] 保存几次运行的 traces
+- [ ] 写一个简短设计笔记，说明为什么这是一个 agent 而不是工作流
 
-## Stretch goals
+## 延伸目标
 
-- [ ] compare planned versus direct execution
-- [ ] add scenario-based tests
-- [ ] add trace review notes for one failure case
+- [ ] 对比规划执行 vs 直接执行
+- [ ] 添加基于场景的测试
+- [ ] 为一个失败案例添加 trace 回顾笔记

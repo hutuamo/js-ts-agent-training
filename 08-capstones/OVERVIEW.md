@@ -1,131 +1,120 @@
-# Stage 08 - Capstones and Portfolio-Grade AI Backend Systems
+# Stage 08 - Capstone 项目组合与作品级 AI 后端系统
 
-## Stage intent
+## 阶段目标
 
-This stage consolidates the curriculum into serious end-to-end projects. The objective is not to maximize feature count. The objective is to produce a project that shows engineering judgment across backend structure, model integration, tool use, retrieval or workflow design, validation, and operational clarity.
+这个阶段把整个训练体系 consolidation 成严肃的端到端项目。目标不是最大化功能数量。目标是产出一个展示工程判断力的项目，涵盖后端结构、模型集成、工具使用、检索或工作流设计、校验和运维清晰度。
 
-A strong capstone should look like software built by a disciplined engineer, not like a demo assembled from disconnected AI features.
+一个强的 capstone 应该看起来像出自有纪律的工程师的软件，而不是用脱节的 AI 功能拼凑出来的 demo。
 
-## What a capstone must demonstrate
+## Capstone 必须展示什么
 
-Your capstone should show that you can:
+你的 capstone 应该能展示你能够：
 
-- choose an appropriate system shape for the problem
-- justify where the model is used and where deterministic code is better
-- define contracts around tools, state, and external data
-- validate outputs before using them
-- produce inspectable traces, logs, or artifacts
-- evaluate behavior with representative tasks
-- explain limitations honestly
+- 为问题选择合适的系统形态
+- 证明在哪里使用模型，在哪里确定性代码更好
+- 定义工具、状态和外部数据的契约
+- 在使用输出前校验它们
+- 产生可检查的 trace、日志或产物
+- 用有代表性的任务评估行为
+- 诚实说明局限性
 
-The project does not need to be large. It does need to be coherent.
+项目不需要很大。它需要是连贯的。
 
-## Recommended capstone directions
+## 推荐的 Capstone 方向
 
-### 1. Research Assistant
+### 1. 研究助手
 
-Good fit if you want to emphasize:
+适合强调：
 
-- retrieval
-- citation-backed answers
-- workflow composition
-- notebook or report generation
+- 检索
+- 引用支撑的答案
+- 工作流组合
+- 笔记本或报告生成
 
-Strong versions of this capstone avoid generic chat UX and instead focus on research artifacts, provenance, and repeatable workflows.
+这个方向的强版本避免通用聊天 UX，而是专注于研究产物、provenance 和可重复工作流。
 
-### 2. Codebase Analyst
+### 2. 代码库分析器
 
-Good fit if you want to emphasize:
+适合强调：
 
-- repository inspection
-- tool orchestration
-- code and document retrieval
-- review or architecture summaries
+- 仓库检查
+- 工具编排
+- 代码和文档检索
+- 审查或架构摘要
 
-Strong versions separate factual repo evidence from model-generated synthesis and keep the analysis traceable.
+这个方向的强版本把事实性仓库证据与模型生成的综合分开，并保持分析可追溯。
 
-### 3. Personal Operations or Task Agent
+### 3. 个人运维或任务 Agent
 
-Good fit if you want to emphasize:
+适合强调：
 
-- bounded task routing
-- local tools and workflow execution
-- state management
-- operator visibility
+- 有界任务路由
+- 本地工具和工作流执行
+- 状态管理
+- 运维可见性
 
-Strong versions are narrow in scope and operationally clear. Avoid the temptation to build a fake universal assistant.
+这个方向的强版本在范围上很窄，运维上很清晰。避免建造一个虚假的通用助手的诱惑。
 
-### 4. Domain-Specific Workflow System
+### 4. 领域专用工作流系统
 
-Good fit if you want to emphasize:
+适合强调：
 
-- deterministic orchestration with selective model use
-- approval points
-- structured artifacts
-- repeatable backend jobs
+- 选择性模型使用的确定性编排
+- 审批点
+- 结构化产物
+- 可重复的后端作业
 
-This is often the strongest option if you care more about reliability than broad autonomy.
+如果你更关心可靠性而不是广泛自主性，这往往是最强的选择。
 
-## Capstone expectations
+## Capstone 期望
 
-Your project should include:
+你的项目应包含：
 
-- a clear problem statement
-- architecture with explicit system boundaries
-- implementation notes for model, tool, retrieval, and state decisions
-- acceptance criteria for core tasks
-- evidence of validation, testing, and eval work
-- operational guidance for setup and execution
-- limitations and next-step roadmap
+- 清晰的问题陈述
+- 带显式系统边界的架构
+- 模型、工具、检索和状态决策的实现笔记
+- 核心任务的接受标准
+- 校验、测试和评估工作的证据
+- 设置和执行的运维指南
+- 局限性和下一步路线图
 
-## Scope guidance
+## 范围指导
 
-Prefer a narrow, well-executed project over a broad and unstable one.
+优先做一个窄的、执行良好的项目，而不是广泛但不稳定的项目。
 
-Good capstone scope:
+好的 capstone 范围：
 
-- one primary workflow or user journey
-- two to five meaningful tools or pipeline stages
-- one retrieval corpus or one bounded state model
-- eval coverage over representative cases
+- 一个主要工作流或用户旅程
+- 两到五个有意义的工具或流水线阶段
+- 一个检索语料库或一个有界状态模型
+- 覆盖有代表性案例的评估
 
-Bad capstone scope:
+坏的 capstone 范围：
 
-- "general assistant" with undefined capabilities
-- many tools with weak contracts
-- memory with no retention policy
-- deployment claims without observability or operational notes
+- “通用助手”，能力未定义
+- 许多工具但契约薄弱
+- 假装什么都能做
 
-## Relationship to earlier stages
+## 常见错误
 
-- Stage 04 should be visible in your prompt, structured-output, and tool-calling discipline.
-- Stage 05 should be visible in your loop or orchestration design and traceability.
-- Stage 06 should be visible in your retrieval, memory, or workflow choices.
-- Stage 07 should be visible in your validation, evals, logs, and operator guidance.
+- 范围蔓延：做着做着就变成“什么都做一点”
+- 把 AI 功能当成工程判断的替代品
+- 只展示 happy path，隐藏失败和局限性
+- 文档和代码讲的是不同的故事
+- 为了“完整”而加入不必要的能力，而不是因为它们有价值
 
-If a capstone does not reflect these stages, it is not complete even if the demo appears impressive.
+## 与之前阶段的关系
 
-## Required artifacts
+这个阶段是你在 00～07 中学到的所有东西的实际应用。你在前面阶段建立的工程纪律、可观测性、边界校验和评估习惯，决定了这个 capstone 是展示能力，还是暴露短板。
 
-Every capstone should produce:
+## 阶段闯关标准
 
-- `README` with project purpose and usage
-- architecture note
-- setup and configuration guide
-- task or scenario list used for evaluation
-- limitations document
-- short demo script, walkthrough note, or equivalent
+一个 capstone 只有在以下情况才算完成：
 
-## Stage gate
+- 实现和文档讲述同一个故事
+- 核心场景被校验且可解释
+- 权衡和局限性是显式的，而不是隐藏在模糊语言中
 
-A capstone passes only when you can:
+## 退出标准
 
-- explain the system architecture and tradeoffs clearly
-- demonstrate representative scenarios end to end
-- show evidence of reliability work, not just feature work
-- point to known limitations without guesswork
-- defend why the project scope is appropriate
-
-## Exit criteria
-
-You complete the curriculum when you can present one or more capstones as real engineering work: structured, inspectable, validated, and credible to another backend engineer.
+当你已经有了一个能展示工程判断力、而不是 AI 功能拼凑的项目时，训练体系就算完成了。

@@ -1,143 +1,143 @@
-# Chapter Mapping
+# 章节映射
 
-## Purpose
+## 目的
 
-This file maps major books and reference materials to the stages in this curriculum.
+本文件将主要书籍和参考资料映射到本训练体系的各阶段。
 
-It is written for an experienced programmer, especially someone coming from C or C++, who wants to learn JavaScript/TypeScript backend and AI agent engineering without getting lost in frontend-heavy or low-value detours.
+它面向有经验的程序员，特别是有 C 或 C++ 背景、想学习 JavaScript/TypeScript 后端和 AI agent 工程、但不想在前端密集或低价值绕路上浪费时间的人。
 
-The goal is not total coverage. The goal is high-yield reading tied to real implementation work.
+目标不是全覆盖。目标是把高收益阅读与真实实现工作绑定。
 
 ---
 
-## 1. *JavaScript: The Definitive Guide (7th ed.)*
+## 1. *JavaScript: The Definitive Guide（第7版）*
 
-### Use in this curriculum
-This is the main book for **Stage 01**, with small supporting value for **Stage 00** and **Stage 03**.
+### 在本训练体系中的用途
+这是 **Stage 01** 的主要书籍，对 **Stage 00** 和 **Stage 03** 有小的辅助价值。
 
-### Read carefully for Stage 01
-Prioritize chapters covering:
-- JavaScript language basics
-- expressions and operators
-- statements and control flow
-- objects
-- arrays
-- functions
-- classes only at a practical level
-- modules
-- standard library essentials
-- asynchronous programming, promises, and async/await
-- iterators and generators at a practical level
+### Stage 01 仔细阅读
+优先覆盖：
+- JavaScript 语言基础
+- 表达式和运算符
+- 语句和控制流
+- 对象
+- 数组
+- 函数
+- 类（仅实用水平）
+- 模块
+- 标准库 essentials
+- 异步编程、Promise 和 async/await
+- 迭代器和生成器（实用水平）
 
-### Read selectively
-Use selective reading for:
-- regular expressions
-- errors and exception handling
-- meta-programming features
-- JavaScript tools and package ecosystem sections
+### 选择性阅读
+有用但不紧急：
+- 正则表达式
+- 错误和异常处理
+- 元编程特性
+- JavaScript 工具和包生态部分
 
-### Skim or defer
-Usually defer browser-heavy material unless your capstone needs it:
-- DOM-heavy chapters
-- browser event/UI APIs
-- client-side graphics and browser-specific APIs
+### 略读或推迟
+通常推迟浏览器密集材料，除非你的 capstone 需要：
+- DOM 密集章节
+- 浏览器事件/UI API
+- 客户端图形和浏览器特定 API
 
-### What to extract into practice
-After each major section, implement one small CLI or backend utility. Do not let this remain a reading-only book.
+### 转化为实践的内容
+每个主要章节后，实现一个小 CLI 或后端工具。不要让这变成只读不练的书。
 
-### C/C++ transition note
-Pay extra attention to:
-- closures
-- prototype-based object behavior
-- reference semantics
-- coercion and truthiness
-- async execution model
+### C/C++ 迁移提醒
+额外注意：
+- 闭包
+- 原型对象行为
+- 引用语义
+- 强制转换和 truthiness
+- 异步执行模型
 
-These are the areas most likely to create false confidence if you map JS too directly onto C++.
+这些是最容易在把 JS 直接映射到 C++ 时产生虚假信心的领域。
 
 ---
 
 ## 2. *Programming TypeScript*
 
-### Use in this curriculum
-Main book for **Stage 02**.
+### 在本训练体系中的用途
+**Stage 02** 的主要书籍。
 
-### Read carefully for Stage 02
-Prioritize:
-- the role of TypeScript over JavaScript
-- basic types and inference
-- functions and callable shapes
-- object types
-- unions and intersections
-- generics
-- compiler configuration and strictness
-- declaration files at a practical level
+### Stage 02 仔细阅读
+优先：
+- TypeScript 相对于 JavaScript 的角色
+- 基本类型和推导
+- 函数和可调用形状
+- 对象类型
+- 联合和交叉
+- 泛型
+- 编译器配置和 strictness
+- 声明文件（实用水平）
 
-### Read selectively
-Useful, but not urgent on first pass:
-- advanced generic patterns
-- library authoring concerns
-- more abstract type-level techniques
+### 选择性阅读
+有用，但首次阅读不紧急：
+- 高级泛型模式
+- 库作者相关问题
+- 更抽象的类型级技术
 
-### Skim or defer
-Defer anything that turns into type-system sport rather than application engineering.
+### 略读或推迟
+推迟任何变成类型系统运动而不是应用工程的内容。
 
-### What to extract into practice
-Map book material into:
-- typed CLI inputs
-- typed API request/response boundaries
-- runtime validation around external data
-- one typed tool registry
+### 转化为实践的内容
+把书材料映射到：
+- 带类型的 CLI 输入
+- 带类型的 API 请求/响应边界
+- 外部数据周围的运行时校验
+- 一个带类型的工具注册表
 
-### C/C++ transition note
-The most important lesson is this:
+### C/C++ 迁移提醒
+最重要的教训是：
 
-> TypeScript improves design clarity, but it does not remove runtime uncertainty.
+> TypeScript 改善设计清晰度，但不消除运行时不确定性。
 
-If the book section tempts you to replace runtime checks with assertions, slow down and validate instead.
+如果书的某节引诱你用断言替代运行时校验，停下来，做校验。
 
 ---
 
 ## 3. *Effective TypeScript*
 
-### Use in this curriculum
-Best used alongside **late Stage 02**, then revisited during **Stage 03**, **Stage 04**, and **Stage 07**.
+### 在本训练体系中的用途
+最适合与 **Stage 02 末期** 并用，然后在 **Stage 03**、**Stage 04** 和 **Stage 07** 期间重新翻阅。
 
-### Best timing
-- First pass: after you already wrote some TS
-- Second pass: while refining architecture and reliability
+### 最佳时机
+- 首次阅读：你已经写了一些 TS 之后
+- 第二次阅读：精化架构和可靠性时
 
-### Focus areas
-Prioritize items related to:
-- avoiding `any`
-- narrowing and soundness
-- designing maintainable public types
-- distinguishing compile-time safety from runtime truth
-- improving readability instead of cleverness
-- safer refactoring and configuration patterns
+### 重点领域
+优先相关条目：
+- 避免 `any`
+- 收窄和 soundness
+- 设计可维护的公共类型
+- 区分编译期安全和运行时truth
+- 改善可读性，而不是聪明
+- 更安全的重构和配置模式
 
-### Use style
-Do not read this like a novel. Use it as:
-- a code review companion
-- a pitfall checklist
-- a “why is this TS design awkward?” troubleshooting book
+### 使用方式
+不要像读小说一样读它。把它当作：
+- code review 伴侣
+- 陷阱检查清单
+- “为什么这个 TS 设计这么别捏？”故障排除书
 
-### What to extract into practice
-Apply it to:
-- strict TS refactors
-- tool and schema boundaries
-- cleaning up inferred types that became too broad
-- making project code easier to review
+### 转化为实践的内容
+应用于：
+- strict TS 重构
+- 工具和 schema 边界
+- 清理变得太宽的推导类型
+- 让项目代码更容易 review
 
 ---
 
 ## 4. *TypeScript Handbook*
 
-### Use in this curriculum
-Reference source for **Stage 02**, with continuing value later.
+### 在本训练体系中的用途
+**Stage 02** 的参考来源，后期继续有价值。
 
-### Best sections for this path
-Prioritize:
+### 本路径最佳章节
+优先：
 - Everyday Types
 - Narrowing
 - More on Functions
@@ -145,185 +145,185 @@ Prioritize:
 - Generics
 - Modules
 - Utility Types
-- tsconfig reference entries as needed
+- 按需的 tsconfig 参考条目
 
-### Use style
-Treat it as the authoritative syntax and feature reference, not your only teacher.
+### 使用方式
+把它当作权威的语法和特性参考，而不是唯一的老师。
 
-### What to extract into practice
-Use it when:
-- a book explanation is fuzzy
-- you need precise compiler behavior
-- you need a concrete example of a language feature
+### 转化为实践的内容
+在以下情况使用：
+- 书里的解释模糊时
+- 需要精确编译器行为时
+- 需要语言特性的具体例子时
 
 ---
 
 ## 5. *Node.js Design Patterns*
 
-### Use in this curriculum
-Main engineering book for **Stage 03**, with supporting value for **Stage 07**.
+### 在本训练体系中的用途
+**Stage 03** 的主要工程书籍，对 **Stage 07** 有辅助价值。
 
-### Read carefully for Stage 03
-Prioritize chapters related to:
-- asynchronous control flow
-- modules and project structure
-- streams
-- event-driven patterns
-- process and service structure
-- integration patterns for external systems
-- resilience and maintainability concerns
+### Stage 03 仔细阅读
+优先相关章节：
+- 异步控制流
+- 模块和项目结构
+- Streams
+- 事件驱动模式
+- 进程和服务结构
+- 外部系统集成模式
+- 弹性和可维护性问题
 
-### Revisit for Stage 07
-Return to sections relevant to:
-- reliability
-- system structure
-- scaling patterns
-- operational discipline
+### Stage 07 重新翻阅
+返回相关章节：
+- 可靠性
+- 系统结构
+- 扩展模式
+- 运维纪律
 
-### What to extract into practice
-Apply directly to:
-- CLI architecture
-- service wrappers
-- retries and timeout wrappers
-- stream handling
-- child process orchestration
-- reusable Node modules
+### 转化为实践的内容
+直接应用于：
+- CLI 架构
+- 服务包装器
+- 重试和超时包装器
+- stream 处理
+- 子进程编排
+- 可复用 Node 模块
 
-### C/C++ transition note
-This book is useful because it helps bridge from “I know systems” to “I know Node systems.”
+### C/C++ 迁移提醒
+这本书有用，因为它帮助从“我懂系统”过渡到“我懂 Node 系统”。
 
 ---
 
-## 6. Node.js Official Documentation
+## 6. Node.js 官方文档
 
-### Use in this curriculum
-Primary reference for **Stage 00**, **Stage 03**, and parts of **Stage 07**.
+### 在本训练体系中的用途
+**Stage 00**、**Stage 03** 和 **Stage 07** 部分的主要参考。
 
-### Prioritize
+### 优先
 - `fs`
 - `path`
 - `process`
 - `stream`
 - `child_process`
 - `http` / `fetch`
-- environment variables and process lifecycle
+- 环境变量和进程生命周期
 
-### Use style
-Read on demand, tied to exercises and projects. Avoid trying to read the docs end to end.
-
----
-
-## 7. MDN JavaScript Documentation
-
-### Use in this curriculum
-Reference for **Stage 00** and **Stage 01**.
-
-### Best use
-- quick clarification of language behavior
-- standard library lookup
-- examples for syntax you partially remember
-
-### Warning
-Do not let MDN pull you into frontend/browser APIs unless your project actually needs them.
+### 使用方式
+按需阅读，与练习和项目绑定。避免试图从头到尾读文档。
 
 ---
 
-## 8. Provider SDK / API Documentation
+## 7. MDN JavaScript 文档
 
-### Use in this curriculum
-Primary external reading for **Stage 04**, then referenced in **Stages 05-07**.
+### 在本训练体系中的用途
+**Stage 00** 和 **Stage 01** 的参考。
 
-### Prioritize
-- authentication and configuration
-- request and response shapes
-- structured output support
-- tool calling
-- streaming behavior
-- error handling and rate limits
-- model selection and cost basics
+### 最佳用途
+- 语言行为的快速澄清
+- 标准库查询
+- 部分记得的语法示例
 
-### Use style
-Pick one provider path first. Avoid trying to compare many providers before you have one stable implementation.
+### 警告
+不要让 MDN 把你拖入前端/浏览器 API，除非你的项目真的需要它们。
 
 ---
 
-## 9. Retrieval / Embedding Documentation
+## 8. 提供商 SDK / API 文档
 
-### Use in this curriculum
-Selective reading for **Stage 06**.
+### 在本训练体系中的用途
+**Stage 04** 的主要外部阅读，然后在 **Stage 05-07** 中参考。
 
-### Prioritize
-- ingestion APIs
-- indexing setup
-- query and filtering behavior
-- metadata support
-- operational constraints
+### 优先
+- 认证和配置
+- 请求和响应结构
+- 结构化输出支持
+- 工具调用
+- 流式行为
+- 错误处理和限速
+- 模型选择和成本基础
 
-### Warning
-Do not let documentation reading replace corpus inspection and retrieval evaluation.
+### 使用方式
+先选一个提供商路径。在你有一个稳定实现之前，避免试图比较许多提供商。
+
+---
+
+## 9. 检索 / Embedding 文档
+
+### 在本训练体系中的用途
+**Stage 06** 的选择性阅读。
+
+### 优先
+- 摄入 API
+- 索引设置
+- 查询和过滤行为
+- 元数据支持
+- 运维约束
+
+### 警告
+不要让文档阅读替代语料检查和检索评估。
 
 ---
 
 ## 10. *Designing Data-Intensive Applications*
 
-### Use in this curriculum
-Selective long-term systems reading for **Stage 07** and stronger capstones in **Stage 08**.
+### 在本训练体系中的用途
+**Stage 07** 和 **Stage 08** 较强 capstone 的选择性长期系统阅读。
 
-### Best use
-Read selectively for:
-- data flow thinking
-- logs and event streams
-- storage and indexing tradeoffs
-- consistency and operational reasoning
+### 最佳用途
+选择性阅读：
+- 数据流思维
+- 日志和事件流
+- 存储和索引权衡
+- 一致性和运维推理
 
-### Warning
-This is not a first-pass build book for this curriculum. Use it to deepen system thinking after you have working projects.
+### 警告
+这不是本训练体系的一阶构建书。在你有了可工作项目之后，用它加深系统思维。
 
 ---
 
 ## 11. *Designing Machine Learning Systems*
 
-### Use in this curriculum
-Selective support for **Stage 07** and **Stage 08**.
+### 在本训练体系中的用途
+**Stage 07** 和 **Stage 08** 的选择性支持。
 
-### Best use
-Read for:
-- evaluation thinking
-- production AI system concerns
-- monitoring and operational quality
-- feedback and iteration loops
+### 最佳用途
+阅读：
+- 评估思维
+- 生产 AI 系统问题
+- 监控和运维质量
+- 反馈和迭代循环
 
-### Warning
-Do not let it replace actually hardening one of your own projects.
+### 警告
+不要让它替代真实加固你自己的一个项目。
 
 ---
 
-## Recommended reading order for this curriculum
+## 本训练体系推荐阅读顺序
 
-### Minimum effective sequence
-1. *JavaScript: The Definitive Guide (7th ed.)*
+### 最小有效序列
+1. *JavaScript: The Definitive Guide（第7版）*
 2. *Programming TypeScript*
-3. *Effective TypeScript* (parallel or second pass)
+3. *Effective TypeScript*（并行或第二轮）
 4. *Node.js Design Patterns*
-5. one provider SDK / API documentation path
-6. selective retrieval and production readings as needed
+5. 一个提供商 SDK / API 文档路径
+6. 按需选择性检索和生产阅读
 
-### Best pairing strategy
-- Stage 01: JS book + MDN
-- Stage 02: Programming TypeScript + Handbook + Effective TypeScript
-- Stage 03: Node.js Design Patterns + Node docs
-- Stage 04: provider docs + your own saved examples
-- Stage 05: your own traces + agent design notes
-- Stage 06: retrieval docs + your own retrieval experiments
-- Stage 07: production readings + your hardened project
-- Stage 08: capstone docs + architecture review materials
+### 最佳搭配策略
+- Stage 01：JS 书 + MDN
+- Stage 02：Programming TypeScript + Handbook + Effective TypeScript
+- Stage 03：Node.js Design Patterns + Node 文档
+- Stage 04：提供商文档 + 你自己保存的案例
+- Stage 05：你自己的 traces + agent 设计笔记
+- Stage 06：检索文档 + 你自己的检索实验
+- Stage 07：生产阅读 + 你加固的项目
+- Stage 08：capstone 文档 + 架构审查材料
 
 ---
 
-## Final advice
+## 最终建议
 
-A good rule for this entire repository is:
+对整个仓库的一个好规则是：
 
-> Read until the next useful implementation becomes clear, then stop reading and build.
+> 读到下一个有用的实现变得清晰时，停下来，开始构建。
 
-For this path, code, traces, notes, and project artifacts matter more than finishing every chapter of every book.
+对于这条路径，代码、traces、笔记和项目产物比读完每一本书的每一章更重要。

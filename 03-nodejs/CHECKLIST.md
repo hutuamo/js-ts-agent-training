@@ -1,31 +1,33 @@
-# Stage 03 Checklist
+# Stage 03 检查清单
 
-## Readiness checklist
+## 就绪检查
 
-- [ ] I can build and run a multi-command Node.js CLI.
-- [ ] I can handle `argv`, environment variables, and exit codes deliberately.
-- [ ] I can load and validate configuration before starting real work.
-- [ ] I can distinguish user-facing output from logs and diagnostics.
-- [ ] I can wrap HTTP calls with timeout and retry behavior.
-- [ ] I know which failures should not be retried.
-- [ ] I can explain transport errors versus application-level errors.
-- [ ] I can choose between eager file reads and streaming for a given task.
-- [ ] I can run child processes and handle stdout, stderr, and exit status.
-- [ ] I can process multiple async jobs with explicit concurrency limits.
-- [ ] I built at least one backend or CLI project with realistic failure handling.
+- [ ] 我能构建并运行一个多命令 Node.js CLI。
+- [ ] 我能有意识地处理 `argv`、环境变量和 exit code。
+- [ ] 我能在开始真实工作前加载并校验配置。
+- [ ] 我能区分面向用户的输出和诊断日志。
+- [ ] 我能为 HTTP 调用加入 timeout 和 retry。
+- [ ] 我知道哪些失败不应该重试。
+- [ ] 我能解释 transport error 与 application-level error 的区别。
+- [ ] 我能根据任务判断该整读文件还是流式处理。
+- [ ] 我能运行子进程，并处理 stdout、stderr 和退出状态。
+- [ ] 我能在多个异步任务中设置明确的并发上限。
+- [ ] 我至少做过一个带真实失败处理的后端或 CLI 项目。
 
-## Progression gate
+## 进入下一阶段的门槛
 
-Advance only if you can:
+只有当你已经可以：
 
-- ship a small Node tool or service that behaves predictably under common failure
-- explain the operational choices in the code
-- keep side effects, orchestration, and business logic separate enough to reason about
+- 交付一个在常见失败下也行为可预测的小型 Node 工具或服务
+- 解释代码中的运维与可靠性取舍
+- 把副作用、编排逻辑和业务逻辑分离到足够可推理的程度
 
-## If you are not ready
+才进入 Stage 04。
 
-Repeat Stage 03 work if any of these are still true:
+## 如果还没准备好
 
-- network calls have no timeout strategy
-- shell commands are being invoked without structured result handling
-- logs are too weak to explain what the tool did and why it failed
+如果下面这些情况还存在，建议继续补 Stage 03：
+
+- 网络调用没有 timeout 策略
+- shell 命令执行没有结构化结果处理
+- 日志不足以解释工具做了什么，以及为什么失败

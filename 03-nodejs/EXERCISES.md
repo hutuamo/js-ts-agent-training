@@ -1,119 +1,121 @@
-# Stage 03 Exercises
+# Stage 03 练习
 
-## Exercise policy
+## 练习原则
 
-All exercises in this stage should include at least one failure-mode check. The baseline is not "works once." The baseline is "behaves predictably under common failure."
+本阶段所有练习都至少要包含一个失败场景检查。
 
-## Exercise 1 - File walker
+最低标准不是“成功跑过一次”，而是“在常见失败下行为仍然可预测”。
 
-Objective: handle local filesystem work cleanly.
+## 练习 1 - 文件遍历器
 
-Tasks:
+目标：把本地文件系统处理写干净。
 
-- walk a directory tree
-- filter files by extension or predicate
-- emit a summary of counts and total size
-- skip unreadable files with a clear warning
+任务：
 
-Progression check:
+- 遍历目录树
+- 按扩展名或自定义条件筛选文件
+- 输出文件数量与总大小摘要
+- 对不可读文件给出清楚警告，而不是直接崩掉
 
-- the script distinguishes traversal logic from reporting logic
+通过标准：
 
-## Exercise 2 - Config loader
+- 脚本能区分“遍历逻辑”和“汇报逻辑”
 
-Objective: stop scattering configuration assumptions.
+## 练习 2 - 配置加载器
 
-Tasks:
+目标：不要把配置假设散落在代码里。
 
-- load configuration from environment variables and optional file input
-- validate required fields
-- provide clear startup errors
-- keep secrets out of normal logs
+任务：
 
-Progression check:
+- 从环境变量和可选配置文件中加载配置
+- 校验必需字段
+- 对启动时的配置错误给出清晰报错
+- 避免把密钥打进普通日志
 
-- startup fails fast when required config is missing or invalid
+通过标准：
 
-## Exercise 3 - Retry and timeout wrapper
+- 当配置缺失或不合法时，系统会在启动阶段快速失败
 
-Objective: treat external I/O as unreliable by default.
+## 练习 3 - 超时与重试包装器
 
-Tasks:
+目标：默认把外部 I/O 当成不可靠。
 
-- wrap an async operation with timeout support
-- add bounded retries with backoff
-- define which errors are retryable
-- log attempts and final failure
+任务：
 
-Progression check:
+- 给异步操作加 timeout 支持
+- 增加有上限的重试与 backoff
+- 定义哪些错误值得重试
+- 记录每次尝试和最终失败
 
-- you can explain why some failures should not be retried
+通过标准：
 
-## Exercise 4 - HTTP client hardening drill
+- 你能解释为什么有些失败不该重试
 
-Objective: prepare for model and tool API integrations.
+## 练习 4 - HTTP client 加固练习
 
-Tasks:
+目标：为模型和工具 API 集成做准备。
 
-- call an HTTP endpoint
-- handle non-2xx responses
-- handle malformed JSON
-- handle timeout and network failure cases
-- normalize the output shape for downstream consumers
+任务：
 
-Progression check:
+- 调用一个 HTTP endpoint
+- 处理非 2xx 响应
+- 处理非法 JSON
+- 处理 timeout 和网络异常
+- 为下游消费者输出归一化结构
 
-- downstream code does not need to know transport-level details
+通过标准：
 
-## Exercise 5 - Stream processing drill
+- 下游代码不需要知道 transport 层细节
 
-Objective: handle larger input without assuming eager loading is always fine.
+## 练习 5 - 流式处理练习
 
-Tasks:
+目标：学会在输入变大时合理使用 stream，而不是默认一次性读入。
 
-- process a large text file or simulated large input stream
-- count lines or extract records incrementally
-- compare a whole-file approach with a streaming approach
-- write a short note on the tradeoff
+任务：
 
-Progression check:
+- 处理一个大文本文件或模拟大输入流
+- 增量统计行数或提取记录
+- 对比整文件读取与流式处理
+- 写一小段说明，解释各自取舍
 
-- you can explain when streaming is justified and when it adds unnecessary complexity
+通过标准：
 
-## Exercise 6 - Child process wrapper
+- 你能解释什么时候 stream 真值得，什么时候只是增加复杂度
 
-Objective: integrate external tools safely.
+## 练习 6 - 子进程包装器
 
-Tasks:
+目标：安全集成本地外部工具。
 
-- invoke an external command
-- capture stdout and stderr
-- handle non-zero exit codes
-- surface a structured result to the caller
+任务：
 
-Progression check:
+- 运行一个外部命令
+- 捕获 stdout 和 stderr
+- 处理非零退出码
+- 向调用方返回结构化结果
 
-- the wrapper does not blur command failure and wrapper failure together
+通过标准：
 
-## Exercise 7 - Concurrency control drill
+- 你的包装器不会把“命令失败”和“包装器本身失败”混为一谈
 
-Objective: reason about multiple async tasks at once.
+## 练习 7 - 并发控制练习
 
-Tasks:
+目标：学会同时管理多个异步任务。
 
-- process a list of async jobs
-- implement a fixed concurrency limit
-- record success and failure counts
-- compare runtime and behavior with sequential execution
+任务：
 
-Progression check:
+- 处理一组异步任务
+- 实现固定并发上限
+- 记录成功数与失败数
+- 对比顺序执行和并发执行的运行表现
 
-- you can explain why unbounded concurrency is often the wrong default
+通过标准：
 
-## Required minimum
+- 你能解释为什么“不设上限并发”往往不是默认正确选项
 
-Complete at least:
+## 最低完成要求
 
-- Exercises 2, 3, 4, and 7
-- one child-process integration
-- one file-processing exercise with explicit failure handling
+至少完成：
+
+- 练习 2、3、4、7
+- 一个子进程集成练习
+- 一个包含显式失败处理的文件处理练习

@@ -1,162 +1,144 @@
-# Stage 07 - Production Reliability, Evals, and Operational Hardening
+# Stage 07 - 生产可靠性、评估与运维加固
 
-## Stage intent
+## 阶段目标
 
-This stage turns working AI systems into operable software. The goal is not "enterprise readiness" in the abstract. The goal is to build systems whose behavior under failure, drift, bad inputs, and operational stress can be described and verified.
+这个阶段把能工作的 AI 系统变成可运维的软件。目标不是抽象的“企业级ready”，而是构建在失败、漂移、坏输入和运维压力下其行为可以被描述和验证的系统。
 
-By this point you should already have model integration, agent orchestration, and retrieval or workflow patterns. Now you need to prove that the system is reliable enough to trust with repeated use.
+到了这个阶段，你应该已经有模型集成、agent 编排和检索或工作流模式。现在你需要证明系统可靠到足以信任它被重复使用。
 
-## Why this stage matters
+## 为什么这个阶段很重要
 
-Prototype AI systems often fail in ways that ordinary backend tests do not catch:
+原型 AI 系统经常以普通后端测试抓不到的方式失败：
 
-- prompt changes silently regress behavior
-- tool outputs drift or change shape
-- retrieval quality degrades as the corpus grows
-- rate limits, timeouts, and provider changes surface intermittently
-- logs are too weak to debug real failures
-- secrets, prompts, and user data leak into traces or artifacts
+- prompt 变更悄悄 regress 了行为
+- 工具输出漂移或改变了形状
+- 检索质量随语料库增长而下降
+- 限速、超时和提供商变更间歇性出现
+- 日志太弱，无法诊断真实失败
+- 密钥、prompt 和用户数据泄漏到 trace 或产物中
 
-This stage is about reducing surprise. Reliability requires contracts, test strategy, eval coverage, observability, and operational discipline.
+这个阶段是关于减少意外。可靠性需要契约、测试策略、评估覆盖、可观测性和运维纪律。
 
-## Learning outcomes
+## 学习结果
 
-At stage completion, you should be able to:
+完成本阶段后，你应该能够：
 
-- validate every external boundary in an AI-backed backend or CLI system
-- build regression tests and eval suites for prompts, tools, retrieval, and workflows
-- add logs, traces, and identifiers that make failures diagnosable
-- handle rate limits, retries, backoff, and fallbacks deliberately
-- manage prompt, schema, and tool version changes safely
-- reason about security, secrets, and data handling in agent systems
-- prepare a service or worker for repeatable deployment and operations
+- 校验 AI 支撑后端或 CLI 系统中每个外部边界
+- 为 prompt、工具、检索和工作流构建回归测试和评估套件
+- 添加使失败可诊断的日志、trace 和标识符
+- 有意识地处理限速、重试、backoff 和 fallback
+- 安全地管理 prompt、schema 和工具版本变更
+- 推理 agent 系统中的安全、密钥和数据处理
+- 准备一个可重复部署和运维的服务或 worker
 
-## Topic sequence
+## 主题顺序
 
-### 1. Validation and contracts everywhere
+### 1. 处处校验与契约
 
-Learn:
+学习内容：
+- 请求校验
+- 工具参数和结果校验
+- 模型输出校验
+- 检索结果期望
+- 启动时的配置校验
 
-- request validation
-- tool argument and result validation
-- model output validation
-- retrieval result expectations
-- config validation at startup
+在边界消除歧义，生产系统失败就会减少。
 
-Production systems fail less when ambiguity is removed at boundaries.
+### 2. 可观测性
 
-### 2. Observability
+学习内容：
+- 结构化日志
+- 请求或运行标识符
+- 每步 trace
+- 延迟和错误指标
+- 脱敏和安全日志实践
 
-Learn:
+你需要足够的细节来调试，而不会把遥测变成负担。
 
-- structured logs
-- request or run identifiers
-- per-step traces
-- latency and error metrics
-- redaction and safe logging practices
+### 3. 重试、backoff 与 fallback
 
-You need enough detail to debug without turning telemetry into a liability.
+学习内容：
+- 哪些失败可重试
+- backoff 策略
+- timeout 设计
+- 适当时引入熔断器思维
+- 降级模式行为
 
-### 3. Retries, backoff, and fallbacks
+不是每个失败都应该触发另一次模型调用。
 
-Learn:
+### 4. 评估与回归工具
 
-- which failures are retryable
-- backoff policies
-- timeout design
-- circuit-breaker style thinking where appropriate
-- degraded-mode behavior
+学习内容：
+- 黄金任务集
+- prompt 回归检查
+- 检索评估集
+- 工具使用场景测试
+- 有用的、而不是模糊的通过/失败标准
 
-Not every failure should trigger another model call.
+评估是你在迭代时保持系统稳定的方式。
 
-### 4. Evals and regression harnesses
+### 5. 版本控制与变更管理
 
-Learn:
+学习内容：
+- prompt 版本
+- schema 版本
+- 工具契约变更
+- 存储产物或记忆格式的迁移
+- 跨版本对比运行
 
-- golden task sets
-- prompt regression checks
-- retrieval evaluation sets
-- tool-use scenario tests
-- pass/fail criteria that are useful, not vague
+### 6. 安全与数据处理
 
-Evals are how you keep the system stable while iterating.
+学习内容：
+- 密钥管理
+- 工具的最小权限访问
+- prompt 注入意识
+- 敏感数据隔离
+- Trace 与日志中的数据泄露风险
 
-### 5. Versioning and change management
+### 7. 部署形状与运维准备
 
-Learn:
+学习内容：
+- 运行时形态决策：CLI、服务、worker 还是混合
+- 环境特定配置处理
+- 启动检查和健康信号
+- 安全关闭或回滚步骤
 
-- prompt versions
-- schema versions
-- tool contract changes
-- migration of stored artifacts or memory formats
-- comparing runs across revisions
+## 常见错误
 
-### 6. Security and data handling
+- 只测 happy path，不测失败路径
+- 日志不够详细，失败后无法重建
+- 重试逻辑对所有错误类型都一样，不区分可重试和不可重试
+- 不做 prompt 版本控制，导致无法回滚
+- 把敏感数据打进普通日志
+- 以为“测过了”就是“可靠”，而不建评估集
 
-Learn:
+## 推荐学习方式
 
-- secret management
-- least-privilege access for tools
-- prompt injection awareness where relevant
-- output handling for unsafe or sensitive content
-- retention and deletion of logs, traces, and memory artifacts
+这个阶段的最佳路径：
 
-### 7. Deployment and runtime operations
+1. 选一个你已在 Stage 04～06 构建的真实项目
+2. 系统地审查每个外部边界，加校验
+3. 加结构化日志和 trace
+4. 定义重试和超时策略
+5. 构建一个小评估套件
+6. 写运维文档
+7. 模拟一次失败 incident
 
-Learn:
+## 与后续阶段的关系
 
-- service versus worker versus CLI deployment shape
-- health checks and startup validation
-- configuration differences across environments
-- rollout and rollback thinking
-- operator-facing documentation
+- Stage 08 的 capstone 会要求你组合所有这些能力，做出一个完整、可演示的项目
+- 本阶段建立的可靠性习惯会决定你后续项目的可维护性
 
-## Recommended study pattern
+## 阶段闯关标准
 
-For each existing Stage 04-06 project you harden:
+只有当你已经可以：
 
-1. map every external boundary
-2. add validation at each boundary
-3. add traceable logging with redaction rules
-4. define retry, timeout, and fallback behavior
-5. assemble a regression and eval set
-6. run failure drills before claiming the system is ready
+- 用日志、测试和评估证明行为
+- 解释常见失败下的运维行为
+- 把系统交给另一个工程师，而不需要靠口口相传的隐性知识
 
-## Common mistakes at this stage
+才进入 Stage 08。
 
-- treating evals as optional because "the demos still work"
-- logging prompts and user data without retention or redaction rules
-- adding retries without classifying failure types
-- changing prompts or schemas without regression comparison
-- assuming provider SDK updates are behaviorally neutral
-- shipping retrieval-backed systems without a retrieval eval set
-- deploying a service with no clear operator documentation
+## 退出标准
 
-## Relationship to other stages
-
-- Stage 04 established model boundaries and structured output validation.
-- Stage 05 established inspectable agent loops and tool orchestration.
-- Stage 06 established retrieval, memory, and workflow structure.
-- Stage 07 hardens all of them into systems that can be operated and tested.
-- Stage 08 capstones should reflect this discipline in both implementation and documentation.
-
-## Required deliverables
-
-- one hardened project from Stage 04, 05, or 06
-- one regression or eval suite covering realistic cases
-- one observability plan covering logs, traces, identifiers, and redaction
-- one operational note covering deployment shape, failure handling, and rollback assumptions
-
-## Stage gate
-
-Move on only when you can:
-
-- explain how the system is validated at every external boundary
-- run a regression or eval suite that catches real behavior changes
-- diagnose failures from logs and traces without guessing blindly
-- justify retry, fallback, and timeout policies
-- describe security and data-handling assumptions explicitly
-
-## Exit criteria
-
-You are ready for Stage 08 when your system is no longer a prototype held together by manual testing. It should be possible to change it, test it, operate it, and explain it under failure.
+当运维对你来说已经是工程设计的自然组成部分，而不是“代码写完后再补的事情”时，就可以进入下一阶段。

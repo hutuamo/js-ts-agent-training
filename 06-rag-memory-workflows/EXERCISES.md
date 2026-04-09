@@ -1,119 +1,120 @@
-# Stage 06 Exercises
+# Stage 06 练习
 
-## Exercise policy
+## 练习原则
 
-Every exercise should preserve provenance. If the system uses external context, you should be able to point to the specific source material involved.
+每个练习都应该保留 provenance。如果系统使用了外部上下文，你应该能够指向所涉及的特定来源材料。
 
-## Exercise 1 - Small corpus ingestion
+## 练习 1 - 小型语料库摄入
 
-Objective: build a retrieval corpus you can inspect.
+目标：构建一个你能检查的检索语料库。
 
-Tasks:
+任务：
 
-- choose a small set of documents, notes, or operational records
-- normalize them into a consistent internal format
-- assign metadata such as source, timestamp, and category
-- document any cleanup assumptions
+- 选一小套文档、笔记或运维记录
+- 将它们归一化为一致的内部格式
+- 分配元数据，如来源、时间戳和类别
+- 记录任何清理假设
 
-Progression check:
+进度检查：
 
-- you can explain the contents and boundaries of the corpus without guessing
+- 你能不靠猜测解释语料库的内容和边界
 
-## Exercise 2 - Chunking strategy comparison
+## 练习 2 - 分块策略对比
 
-Objective: understand how chunking changes retrieval behavior.
+目标：理解分块如何改变检索行为。
 
-Tasks:
+任务：
 
-- create at least two chunking strategies for the same corpus
-- compare chunk size, overlap, and metadata retention
-- run representative queries against both
-- record which failures each strategy introduces
+- 为同一语料库创建至少两种分块策略
+- 对比分块大小、重叠和元数据保留
+- 对两种策略运行有代表性的查询
+- 记录每种策略引入的失败案例
 
-Progression check:
+进度检查：
 
-- you can justify the chosen chunking approach with observed retrieval behavior
+- 你能用观察到的检索行为证明所选分块方法的合理性
 
-## Exercise 3 - Retrieval inspection drill
+## 练习 3 - 检索检查训练
 
-Objective: debug retrieval before generation.
+目标：在生成之前调试检索。
 
-Tasks:
+任务：
 
-- issue a small set of known queries
-- inspect the top retrieved results manually
-- label each result as useful, weak, or wrong
-- identify at least one case of missing relevant context
-- propose one retrieval-layer fix
+- 提出一小套已知查询
+- 手动检查 top 检索结果
+- 把每个结果标记为有用、弱或错误
+- 识别至少一个缺失相关上下文的案例
+- 提出一个检索层修复方案
 
-Progression check:
+进度检查：
 
-- you can diagnose retrieval errors without blaming generation first
+- 你能诊断检索错误，而不是先把责任推给生成
 
-## Exercise 4 - Citation-backed answer generation
+## 练习 4 - 带引用的答案生成
 
-Objective: prevent unsupported answers from looking authoritative.
+目标：防止看起来可信但实际不被支持的答案。
 
-Tasks:
+任务：
 
-- generate answers using retrieved context
-- require source references in the output
-- distinguish direct support from inferred synthesis
-- refuse or mark claims that are not grounded in retrieved evidence
+- 使用检索到的上下文生成答案
+- 在输出中要求来源参考
+- 区分直接支持和推理综合
+- 拒绝或标记没有检索证据支持的声明
 
-Progression check:
+进度检查：
 
-- each answer makes its support path inspectable
+- 每个答案使其支持路径可检查
 
-## Exercise 5 - Memory boundary drill
+## 练习 5 - 记忆边界训练
 
-Objective: define what should persist and what should not.
+目标：定义什么应该持久化，什么不应该。
 
-Tasks:
+任务：
 
-- list candidate memory items such as preferences, summaries, and task artifacts
-- classify each as ephemeral, session-scoped, durable, or forbidden
-- define update and deletion rules
-- write down one privacy or correctness risk for each durable memory type
+- 列出候选记忆项，如偏好、摘要和任务产物
+- 将每个分类为临时的、会话范围的、持久的或禁止的
+- 定义更新和删除规则
+- 写下每种持久记忆类型的一个隐私或正确性风险
 
-Progression check:
+进度检查：
 
-- your memory policy is specific enough that another engineer could implement it
+- 你的记忆策略足够具体，另一个工程师可以实现它
 
-## Exercise 6 - Workflow instead of agent comparison
+## 练习 6 - 工作流替代 Agent 对比
 
-Objective: learn when autonomy is unnecessary.
+目标：学会何时不需要自主性。
 
-Tasks:
+任务：
 
-- choose one task that could be handled by either an agent loop or a deterministic workflow
-- implement or sketch both approaches
-- compare debuggability, reliability, and operator confidence
-- decide which version you would ship first
+- 选一个可以用 agent 循环或确定性工作流处理的任务
+- 实现或勾画两种方法
+- 对比可调试性、可靠性和运维信心
+- 决定你会先交付哪个版本
 
-Progression check:
+进度检查：
 
-- the decision is grounded in system behavior, not in novelty
+- 决策是基于系统行为的，而不是基于新颖性
 
-## Exercise 7 - Retrieval evaluation set
+## 练习 7 - 检索评估集
 
-Objective: create the beginnings of a real eval harness.
+目标：创建真实评估工具的雏形。
 
-Tasks:
+任务：
 
-- assemble a small labeled set of queries and expected source hits
-- define what counts as acceptable retrieval
-- record misses and partial matches
-- add at least one adversarial or ambiguous query
+- 组装一个小型的带标签查询集和预期来源命中
+- 定义什么算可接受的检索
+- 记录未命中和部分匹配
+- 用这个集子评估你的检索策略
 
-Progression check:
+进度检查：
 
-- you have a reusable set that can catch regressions after corpus or prompt changes
+- 你能用这个集子衡量改进，而不是仅凭主观感受
 
-## Required minimum
+## 最低完成要求
 
-Complete at least:
+至少完成：
 
-- Exercises 2, 3, 4, and 5
-- one workflow-versus-agent comparison
-- one labeled retrieval set that can be reused in Stage 07
+- 练习 1、2、3、4
+- 一个完整的端到端检索流水线
+- 一个带引用的答案生成机制
+- 一个书面的记忆策略

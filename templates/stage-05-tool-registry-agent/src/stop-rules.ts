@@ -1,1 +1,1 @@
-// Define stop, refusal, and escalation conditions here.
+// 在此处定义停止、拒绝和上报条件。

@@ -1,160 +1,160 @@
-# Common Pitfalls
+# 常见陷阱
 
-## Purpose
+## 目的
 
-This file collects the most common failure modes for experienced programmers moving into JavaScript/TypeScript backend and AI agent engineering.
+这份文件总结的是：对一个有编程经验、尤其是有 C/C++ 背景的人来说，在转向 JavaScript / TypeScript 后端与 AI Agent 工程时，最容易踩的坑是什么。
 
-## 1. Treating JavaScript as if it were just a slower C++
+## 1. 把 JavaScript 当成“语法随便一点的 C++”
 
-Problem:
-- You keep expecting runtime behavior, object structure, and typing discipline to behave like a static native-language environment.
+问题：
+- 你默认希望运行时行为、对象结构和类型感受都像静态语言一样稳定。
 
-What goes wrong:
-- confusion around closures, `this`, prototypes, coercion, and async behavior
-- frustration that leads to overcomplicated abstractions too early
+后果：
+- 在闭包、`this`、原型、类型转换和异步行为上频繁误判
+- 因为不舒服而过早引入复杂抽象
 
-Better approach:
-- learn the runtime on its own terms first
-- prefer explicit code over clever JS idioms
+更好的做法：
+- 先按 JavaScript 自己的运行时规律来理解它
+- 多写显式代码，少依赖晦涩 JS 习惯用法
 
-## 2. Trying to use TypeScript to erase runtime uncertainty
+## 2. 想靠 TypeScript 消除所有运行时不确定性
 
-Problem:
-- You expect TypeScript types to make external JSON, model output, and config magically trustworthy.
+问题：
+- 你潜意识里觉得：只要类型写对了，外部 JSON、模型输出和配置就可信了。
 
-What goes wrong:
-- invalid data passes through because it was asserted, not validated
-- code looks typed but fails at runtime
+后果：
+- 没验证的数据被直接放行
+- 看起来“很有类型”，运行时却照样炸
 
-Better approach:
-- use TypeScript for design clarity
-- use runtime validation at every external boundary
+更好的做法：
+- 用 TypeScript 改善设计表达
+- 在所有外部边界做运行时校验
 
-## 3. Learning frameworks before learning the runtime
+## 3. 还没掌握运行时，就先上重框架
 
-Problem:
-- You reach for heavy frameworks before you can write or debug a plain Node script.
+问题：
+- 你还不能熟练写一个普通 Node 脚本，却先上 LangChain、复杂框架或一堆脚手架。
 
-What goes wrong:
-- you cannot tell whether a bug belongs to your code, the framework, or the platform
-- abstractions feel magical instead of useful
+后果：
+- 出 bug 时你分不清是平台问题、框架问题还是自己代码问题
+- 抽象变成“神秘”，而不是“省力”
 
-Better approach:
-- hand-build one small version first
-- adopt frameworks only after you can name the problem they solve
+更好的做法：
+- 先手写一个小系统
+- 只有当你说得出框架到底帮你解决什么，再去用它
 
-## 4. Building agent loops before model boundaries are stable
+## 4. 模型边界还没稳，就急着做 agent loop
 
-Problem:
-- You jump to autonomous systems before you can get structured output and tool calling to behave predictably.
+问题：
+- 你还没把结构化输出、工具调用和校验做稳，就开始上 autonomous loop。
 
-What goes wrong:
-- failures blur together
-- you cannot tell whether the issue is prompt design, output parsing, tool validation, or orchestration
+后果：
+- 失败全部混在一起
+- 你分不清是 prompt、schema、tool 还是 loop 设计的问题
 
-Better approach:
-- make Stage 04 reliable before entering Stage 05
+更好的做法：
+- 先把 Stage 04 的边界打牢，再进入 Stage 05
 
-## 5. Using prompts to encode rules that belong in code
+## 5. 用 prompt 承担本该写进代码的规则
 
-Problem:
-- Business logic drifts into long prompt text.
+问题：
+- 本该由程序逻辑保证的规则，被塞进了 prompt 文本。
 
-What goes wrong:
-- behavior becomes harder to test and refactor
-- prompt changes create invisible regressions
+后果：
+- 系统更难测试和重构
+- 改 prompt 会带来隐蔽回归
 
-Better approach:
-- keep prompts focused on interpretation or generation tasks
-- keep deterministic rules in ordinary code
+更好的做法：
+- prompt 负责解释和生成
+- 代码负责确定性规则与状态转换
 
-## 6. Treating RAG as mandatory
+## 6. 把 RAG 当成每个项目的标配
 
-Problem:
-- You assume every AI system needs embeddings, chunking, and retrieval.
+问题：
+- 你默认只要是 AI 项目，就必须有向量库、chunking 和 retrieval。
 
-What goes wrong:
-- complexity grows without improving the task
-- weak workflows are hidden behind retrieval jargon
+后果：
+- 系统复杂度暴涨，却不一定提升结果质量
+- 工作流设计薄弱的问题被检索层掩盖
 
-Better approach:
-- first ask whether the task really needs external grounded context
-- if not, keep the system simpler
+更好的做法：
+- 先问这个任务到底需不需要外部可检索上下文
+- 不需要就保持系统简单
 
-## 7. Calling something a memory system when it is really a log dump
+## 7. 把“记忆系统”做成日志垃圾堆
 
-Problem:
-- Everything gets stored because it might be useful later.
+问题：
+- 什么都想存，因为“以后可能有用”。
 
-What goes wrong:
-- stale, irrelevant, or risky data accumulates
-- state becomes harder to reason about
+后果：
+- 积累大量过时、无关甚至敏感的数据
+- 状态越来越难理解
 
-Better approach:
-- define memory classes explicitly: ephemeral, session, durable, forbidden
-- add retention and deletion rules
+更好的做法：
+- 明确区分：临时、会话级、长期、禁止持久化
+- 给每类记忆定义更新和删除规则
 
-## 8. Ignoring operational failure in Node.js
+## 8. 忽视 Node.js 的普通工程失败
 
-Problem:
-- Scripts work on the happy path but have weak handling for bad config, network errors, rate limits, or child-process failures.
+问题：
+- 脚本 happy path 能跑，但配置错、网络波动、限流、子进程失败时一塌糊涂。
 
-What goes wrong:
-- the first non-ideal environment breaks the system
-- “AI failures” are blamed for ordinary engineering mistakes
+后果：
+- 第一次上线到真实环境就不稳
+- 最后把普通工程问题都误以为是“AI 不可靠”
 
-Better approach:
-- add timeouts, retries, logging, startup validation, and structured errors early
+更好的做法：
+- 尽早加入 timeout、retry、日志、启动校验和结构化错误
 
-## 9. Over-scoping the capstone
+## 9. 毕业项目范围失控
 
-Problem:
-- You try to build a universal assistant instead of one strong system.
+问题：
+- 你想一步做成“通用智能助理”。
 
-What goes wrong:
-- no part of the project is reliable enough to be impressive
-- architecture becomes hard to explain
+后果：
+- 没有任何部分足够扎实
+- 架构难解释，结果也不稳定
 
-Better approach:
-- choose one narrow workflow or domain
-- prove depth, not breadth
+更好的做法：
+- 选一个窄而深的工作流或场景
+- 用深度证明能力，不用宽度堆概念
 
-## 10. Confusing a demo with a system
+## 10. 把 demo 当成系统
 
-Problem:
-- One successful run is treated as evidence of readiness.
+问题：
+- 一次成功运行，就被当成“已经能用了”。
 
-What goes wrong:
-- regressions are missed
-- failure modes stay invisible
-- maintenance becomes guesswork
+后果：
+- 回归问题没人发现
+- 失败模式一直隐藏着
+- 后期维护全靠猜
 
-Better approach:
-- save examples
-- build eval cases
-- test failure behavior, not just success behavior
+更好的做法：
+- 保存例子
+- 建 eval case
+- 测失败，不只测成功
 
-## 11. Logging too little or too much
+## 11. 日志太少，或者日志太多
 
-Problem:
-- Either you have no trace of what happened, or you log prompts, secrets, and sensitive data carelessly.
+问题：
+- 要么完全看不出发生了什么，要么把 prompt、密钥和敏感数据全打进日志。
 
-What goes wrong:
-- debugging is impossible, or observability becomes a liability
+后果：
+- 调试不了，或者安全性变成新问题
 
-Better approach:
-- log boundaries, identifiers, decisions, and failure classes
-- redact secrets and sensitive payloads
+更好的做法：
+- 记录边界、标识符、决策点和失败类型
+- 对敏感信息做脱敏
 
-## 12. Using autonomy where workflow would be better
+## 12. 该用 workflow 的地方，硬要用 autonomy
 
-Problem:
-- You use a free-form loop for a task that is really a fixed sequence with approvals.
+问题：
+- 明明是固定步骤加审批的任务，却硬塞进自由 agent loop。
 
-What goes wrong:
-- control is weaker than necessary
-- reliability is worse than it needs to be
+后果：
+- 控制力变弱
+- 可靠性不升反降
 
-Better approach:
-- choose workflows when the task is repeatable and structure helps
-- reserve agent loops for places where dynamic choice truly adds value
+更好的做法：
+- 对结构稳定、重复性高的任务优先用 workflow
+- 真正需要动态决策时再上 agent loop

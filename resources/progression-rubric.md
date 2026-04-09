@@ -1,36 +1,36 @@
-# Progression Rubric
+# 进阶评估标准
 
-## Stage completion checklist
+## 阶段完成检查
 
-For every stage, confirm the following before moving on:
+每完成一个阶段前，请确认以下几点：
 
-- [ ] I completed the required drills.
-- [ ] I built the mini-project(s).
-- [ ] I can explain the main concepts in my own words.
-- [ ] I can debug common failure cases.
-- [ ] I wrote short notes on what confused me and how I resolved it.
+- [ ] 我完成了该阶段要求的练习。
+- [ ] 我完成了该阶段的 mini-project。
+- [ ] 我能用自己的话解释核心概念。
+- [ ] 我能调试该阶段常见失败场景。
+- [ ] 我写下了自己困惑的点，以及我是怎么解决的。
 
-## Mastery levels
+## 能力等级
 
 ### Beginner
-- Can follow examples and modify them safely.
-- Understands basic syntax and flow.
-- Can build small working programs.
+- 能安全地跟着例子改代码。
+- 理解基本语法和执行流程。
+- 能做出小型可运行程序。
 
 ### Intermediate
-- Can design modules independently.
-- Can debug unfamiliar code.
-- Can integrate APIs and external systems.
-- Can structure non-trivial projects.
+- 能独立设计模块。
+- 能调试不熟悉的代码。
+- 能接入 API 和外部系统。
+- 能组织非平凡项目结构。
 
 ### Advanced
-- Can make architecture tradeoffs consciously.
-- Can build reliable workflows and agents.
-- Can add validation, logging, and evaluation.
-- Can explain system behavior and limitations clearly.
+- 能有意识地做架构取舍。
+- 能构建可靠的 workflow 和 agent。
+- 能加入校验、日志和评估。
+- 能解释系统行为和限制。
 
-### Expert direction
-- Can mentor others and review designs critically.
-- Can build reusable frameworks/internal libraries.
-- Can handle operational and security constraints.
-- Can evaluate and improve agent reliability systematically.
+### Expert 方向
+- 能指导别人并批判性 review 设计。
+- 能构建可复用的内部框架或库。
+- 能处理运维、安全和权限约束。
+- 能系统性地评估和提升 agent 可靠性。
